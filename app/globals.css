@@ -3,9 +3,10 @@
 @plugin 'daisyui/theme' {
 	name: 'dark';
 	default: true;
-	--color-primary: #eab308;
-	--color-secondary: #94242c;
+	--color-primary: #03f5f7;
+	--color-secondary: #eab308;
 	--color-primary-content: #130c00;
+	--color-secondary-content: #130c00;
 	--color-base-content: #a6adbb;
 }
 

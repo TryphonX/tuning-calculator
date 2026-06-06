@@ -1,3 +1,4 @@
+import { Page } from '@/modules/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaPlay, FaGithub } from 'react-icons/fa6';
@@ -56,7 +57,7 @@ export default function AboutSection() {
 							&ndash;{' '}
 							<strong>
 								your ultimate companion for achieving peak
-								performance in Car Mechanic Simulator 21
+								performance in Car Mechanic Simulator
 							</strong>
 							.
 							<span className="block font-thin text-xs text-base-content/75">
@@ -74,7 +75,7 @@ export default function AboutSection() {
 
 					<div className="flex-col space-y-4">
 						<div>
-							<Link className="block" href="/calculator">
+							<Link className="block" href={Page.Cms21Calculator}>
 								<button className="btn btn-primary btn-wide">
 									<FaPlay aria-hidden /> Try it out now!
 								</button>

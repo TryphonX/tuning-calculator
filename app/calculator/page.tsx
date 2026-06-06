@@ -1,31 +1,29 @@
-'use client';
-
-import CalculatorWrapper from '@/components/CalculatorWrapper';
-import CompatiblePartsCard from '@/components/CompatiblePartsCard';
-import EngineCard from '@/components/EngineCard';
-import SelectedPartsCard from '@/components/SelectedPartsCard';
+import { Page } from '@/modules/navigation';
+import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa6';
 
 export default function Calculator() {
 	return (
-		<CalculatorWrapper>
-			<h1 className="hidden">Calculator</h1>
-			<div
-				className="
-				grow
-				flex flex-col
-				lg:flex lg:flex-col
-				xl:grid xl:grid-flow-row xl:grid-cols-5 xl:gap-8 m-8"
-			>
-				<div className="xl:col-span-2 flex-col space-y-8">
-					<EngineCard />
-					<SelectedPartsCard className="max-xl:hidden" />
-					<CompatiblePartsCard className="xl:hidden" />
-				</div>
-				<div className="xl:col-span-3 flex-col space-y-8">
-					<CompatiblePartsCard className="max-xl:hidden" />
-					<SelectedPartsCard className="xl:hidden" />
+		<div className="hero min-h-[88.5vh]">
+			<div className="hero-content text-center">
+				<div className="max-w-xl">
+					<h1 className="text-5xl font-bold text-primary">
+						Coming Soon!
+					</h1>
+					<p className="py-6">
+						Car Mechanic Simulator 26 Tuning Calculator will be
+						released once the full game is released and the
+						necessary data can be extracted. Stay tuned for updates,
+						and in the meantime, check out CMS 21 Tuning Calculator,
+						if you haven&apos;t already!
+					</p>
+					<Link href={Page.Cms21Calculator}>
+						<button className="btn btn-primary">
+							To CMS 21 Calculator <FaArrowRight aria-hidden />
+						</button>
+					</Link>
 				</div>
 			</div>
-		</CalculatorWrapper>
+		</div>
 	);
 }
