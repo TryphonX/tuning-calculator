@@ -151,7 +151,7 @@ export default function SelectedPartsTable() {
 								</th>
 							</tr>
 						)}
-						<tr className="bg-primary text-primary-content">
+						<tr className="bg-secondary text-secondary-content">
 							<th>Total:</th>
 							<th className="text-right">
 								+{totalBoost.toFixed(2)}%
@@ -161,14 +161,14 @@ export default function SelectedPartsTable() {
 							</th>
 							<th
 								className="text-right max-md:hidden"
-								title={(repairs
-									? repairs.netCostToBoost
-									: totalCostToBoost
+								title={(repairs ?
+									repairs.netCostToBoost
+								:	totalCostToBoost
 								).toFixed(2)}
 							>
-								{(repairs
-									? repairs.netCostToBoost
-									: totalCostToBoost
+								{(repairs ?
+									repairs.netCostToBoost
+								:	totalCostToBoost
 								).toFixed(0)}{' '}
 								CR/Boost
 							</th>

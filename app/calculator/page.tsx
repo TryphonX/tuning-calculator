@@ -18,7 +18,7 @@ export default function Calculator() {
 						if you haven&apos;t already!
 					</p>
 					<Link href={Page.Cms21Calculator}>
-						<button className="btn btn-primary">
+						<button className="btn btn-secondary">
 							To CMS 21 Calculator <FaArrowRight aria-hidden />
 						</button>
 					</Link>

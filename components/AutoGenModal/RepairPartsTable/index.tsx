@@ -23,13 +23,13 @@ const RangeInput = ({
 				How many to be repaired of this part?
 			</label>
 			<div
-				className="max-sm:tooltip max-sm:tooltip-primary w-full"
+				className="max-sm:tooltip max-sm:tooltip-secondary w-full"
 				data-tip={ref.current?.value}
 			>
 				<input
 					id={id}
 					ref={ref}
-					className="range range-xs range-primary w-full"
+					className="range range-xs range-secondary w-full"
 					type="range"
 					min={0}
 					max={part.quantity}

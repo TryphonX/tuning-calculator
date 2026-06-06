@@ -27,7 +27,7 @@ const CostElement = ({ generatedSetup }: CostElementProps) => {
 				{generatedSetup.repairs.netCost} CR
 			</span>
 			<div
-				className="badge badge-primary font-semibold"
+				className="badge badge-secondary font-semibold"
 				aria-label={`Total saved after repairs: ${generatedSetup.repairs.totalSaved} CR`}
 			>
 				-{generatedSetup.repairs.totalSaved} CR *
@@ -52,7 +52,7 @@ const CostToBoostElement = ({ generatedSetup }: CostElementProps) => {
 				{generatedSetup.repairs.netCostToBoost.toFixed(2)} CR / Boost
 			</span>
 			<div
-				className="badge badge-primary font-semibold"
+				className="badge badge-secondary font-semibold"
 				aria-label={`Total saved CR per boost after repairs: ${(
 					generatedSetup.costToBoost -
 					generatedSetup.repairs.netCostToBoost
@@ -76,7 +76,7 @@ export default function AutoGenModalSetupScreen({
 }: AutoGenModalSetupScreenProps) {
 	return (
 		<div className="my-4">
-			{generatedSetup ? (
+			{generatedSetup ?
 				<>
 					<div className="overflow-x-auto w-full border rounded-2xl border-base-200">
 						<table className="table table-md sm:table-lg table-zebra">
@@ -127,11 +127,9 @@ export default function AutoGenModalSetupScreen({
 						</div>
 					)}
 				</>
-			) : (
-				<p>There is no possible setup configuration.</p>
-			)}
+			:	<p>There is no possible setup configuration.</p>}
 			<div className="justify-between modal-action">
-				<button className="btn btn-secondary" onClick={onDiscard}>
+				<button className="btn btn-error" onClick={onDiscard}>
 					<FaArrowRotateLeft aria-hidden /> Discard
 				</button>
 				<button
