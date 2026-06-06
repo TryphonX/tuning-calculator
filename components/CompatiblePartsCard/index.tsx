@@ -38,7 +38,7 @@ export default function CompatiblePartsCard({ className }: BaseProps) {
 				</>
 			),
 			disabled: !selectedParts.length || locked,
-			className: 'btn-secondary max-sm:btn-sm',
+			className: 'btn-error max-sm:btn-sm',
 			onClick: () => UpdateSelectedPartsEvent.dispatch([]),
 		}),
 		[selectedParts, locked],

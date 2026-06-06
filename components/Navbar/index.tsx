@@ -17,7 +17,7 @@ export default function Navbar() {
 							className="rounded-xl font-bold"
 							href={Page.Cms26Calculator}
 						>
-							CMS 26{' '}
+							CMS 2026{' '}
 							<span className="text-xs text-primary/70">
 								Coming Soon!
 							</span>
@@ -28,7 +28,7 @@ export default function Navbar() {
 							className="rounded-xl"
 							href={Page.Cms21Calculator}
 						>
-							CMS 21
+							CMS 2021
 						</Link>
 					</li>
 					<li className="sm:hidden">
@@ -36,8 +36,19 @@ export default function Navbar() {
 							<summary />
 							<ul className="p-2 bg-base-100 rounded-t-none z-10">
 								<li>
-									<Link href={Page.Cms21Calculator}>
-										CMS 21
+									<Link
+										href={Page.Cms21Calculator}
+										className="whitespace-nowrap"
+									>
+										CMS 2021
+									</Link>
+								</li>
+								<li>
+									<Link
+										href={Page.Cms26Calculator}
+										className="whitespace-nowrap"
+									>
+										CMS 2026
 									</Link>
 								</li>
 							</ul>
