@@ -4,7 +4,7 @@ parts_from_engines = set()
 
 engine_names = set()
 
-with open ('./data/engines.json') as engines_file:
+with open ('./data/cms21/engines.json') as engines_file:
 	engines_data = json.load(engines_file)
 	engine_names = set(engines_data.keys())
 	for engine_name in engines_data.keys():
@@ -14,7 +14,7 @@ with open ('./data/engines.json') as engines_file:
 
 parts_from_parts = set()
 
-with open ('./data/tuning-parts.json') as parts_file:
+with open ('./data/cms21/tuning-parts.json') as parts_file:
 	parts_data = json.load(parts_file)
 
 	for part_name in parts_data.keys():
