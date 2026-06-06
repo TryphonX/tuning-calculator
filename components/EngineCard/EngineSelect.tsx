@@ -1,7 +1,7 @@
 'use client';
 
 import { Engine, EngineName } from '@/@types/calculator';
-import engines from '../../data/engines.json';
+import engines from '../../data/cms21/engines.json';
 import { ChangeEvent, useCallback, useContext, useState } from 'react';
 import { CalculatorContext } from '@/modules/contexts';
 import { ChangeEngineEvent } from '@/modules/customEvents';

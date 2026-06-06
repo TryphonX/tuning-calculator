@@ -35,7 +35,7 @@ export default function GithubIssueSection() {
 							href="https://github.com/TryphonX/cms-tuning-calculator/issues/new"
 							target="_blank"
 						>
-							<button className="btn btn-primary btn-block">
+							<button className="btn btn-secondary btn-block">
 								<FaGithub aria-hidden /> Open an issue
 							</button>
 						</Link>
