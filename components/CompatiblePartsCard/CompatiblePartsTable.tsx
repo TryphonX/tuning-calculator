@@ -144,7 +144,7 @@ export default function CompatiblePartsTable() {
 							<td className="w-0">
 								<input
 									type="checkbox"
-									className="checkbox checkbox-sm 2xl:checkbox-md checkbox-primary"
+									className="checkbox checkbox-sm 2xl:checkbox-md checkbox-secondary"
 									data-part-toggle-all-checkbox
 									disabled={locked}
 									aria-label="Select all parts"
@@ -206,7 +206,7 @@ export default function CompatiblePartsTable() {
 									<td>
 										<input
 											type="checkbox"
-											className="checkbox checkbox-sm 2xl:checkbox-md checkbox-primary"
+											className="checkbox checkbox-sm 2xl:checkbox-md checkbox-secondary"
 											data-part-checkbox
 											disabled={part.missing || locked}
 											onChange={handleTogglePart}
@@ -217,18 +217,18 @@ export default function CompatiblePartsTable() {
 									</td>
 									<td
 										className={
-											part.missing
-												? 'line-through text-secondary'
-												: ''
+											part.missing ?
+												'line-through text-error'
+											:	''
 										}
 									>
 										x{part.quantity} {part.name}
 									</td>
 									<td
 										className={`text-right ${
-											part.missing
-												? 'line-through text-secondary'
-												: ''
+											part.missing ?
+												'line-through text-error'
+											:	''
 										}`}
 									>
 										+
@@ -240,9 +240,9 @@ export default function CompatiblePartsTable() {
 									</td>
 									<td
 										className={`text-right ${
-											part.missing
-												? 'line-through text-secondary'
-												: ''
+											part.missing ?
+												'line-through text-error'
+											:	''
 										}`}
 									>
 										{tuningPartData?.cost * part.quantity}{' '}
@@ -250,9 +250,9 @@ export default function CompatiblePartsTable() {
 									</td>
 									<td
 										className={`text-right max-md:hidden ${
-											part.missing
-												? 'line-through text-secondary'
-												: ''
+											part.missing ?
+												'line-through text-error'
+											:	''
 										}`}
 										title={(
 											tuningPartData?.cost /

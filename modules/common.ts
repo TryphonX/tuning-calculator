@@ -5,10 +5,10 @@ import {
 	TuningPartName,
 } from '@/@types/calculator';
 import { PartSortBy } from '@/@types/globals';
-import tuningParts from '@/data/tuning-parts.json';
+import tuningParts21 from '@/data/cms21/tuning-parts.json';
 
 export const getFullPartByName = (partName: TuningPartName) =>
-	tuningParts[partName];
+	tuningParts21[partName];
 
 export const partSortFn = (sortBy: PartSortBy) => {
 	switch (sortBy) {

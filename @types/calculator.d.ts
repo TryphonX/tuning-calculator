@@ -1,5 +1,5 @@
-import engines from '@/data/engines.json';
-import tuningParts from '@/data/tuning-parts.json';
+import engines from '@/data/cms21/engines.json';
+import tuningParts from '@/data/cms21/tuning-parts.json';
 
 export declare interface CompatiblePart extends TuningPartBase {
 	/**

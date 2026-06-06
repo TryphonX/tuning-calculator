@@ -39,7 +39,7 @@ export default function AutoGenModalInitScreen({
 					max="100"
 					defaultValue={targetIncrease}
 					onChange={onTargetChange}
-					className="range range-primary w-full"
+					className="range range-secondary w-full"
 				/>
 			</label>
 			<div className="flex justify-between px-2.5 mt-2 text-xs">

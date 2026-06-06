@@ -16,7 +16,7 @@ export default function SelectedPartsCard({ className }: BaseProps) {
 					<FaUnlock aria-hidden /> Unlock
 				</>
 			),
-			className: 'btn-primary',
+			className: 'btn-secondary',
 			onClick: () => {
 				UnlockEvent.dispatch();
 			},

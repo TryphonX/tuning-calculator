@@ -34,7 +34,7 @@ export default function Footer() {
 						reserved
 					</p>
 					<p className="text-xs text-base-content/80">
-						<span className="text-primary font-semibold">
+						<span className="text-secondary font-semibold">
 							v{process.env.APP_VERSION}
 						</span>{' '}
 						| {dateString}
@@ -47,7 +47,7 @@ export default function Footer() {
 						href="https://github.com/TryphonX/cms-tuning-calculator/issues/new"
 						target="_blank"
 					>
-						<button className="btn btn-primary btn-sm">
+						<button className="btn btn-secondary btn-sm">
 							<FaGithub aria-hidden /> Open an issue
 						</button>
 					</Link>
