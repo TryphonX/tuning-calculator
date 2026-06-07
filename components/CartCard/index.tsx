@@ -1,28 +1,48 @@
-import { BaseProps } from '@/@types/globals';
+import { Action, BaseProps } from '@/@types/globals';
 import { CalculatorContext } from '@/modules/contexts';
-import { UnlockEvent } from '@/modules/customEvents';
-import { useContext } from 'react';
-import { FaUnlock } from 'react-icons/fa6';
+import { UnlockEvent, UpdateSelectedPartsEvent } from '@/modules/customEvents';
+import { useContext, useMemo } from 'react';
+import { FaRegCircleXmark, FaUnlock } from 'react-icons/fa6';
 import Card from '../Card';
 import { SelectedPartsTable } from './SelectedPartsTable';
 
 export const CartCard = ({ className }: BaseProps) => {
-	const { locked } = useContext(CalculatorContext);
+	const { locked, selectedParts } = useContext(CalculatorContext);
 
-	const actions = [
-		{
+	const unlockAction: Action = useMemo(
+		() => ({
 			label: (
 				<>
 					<FaUnlock aria-hidden /> Unlock
 				</>
 			),
-			className: 'btn-secondary btn-soft',
+			className: 'btn-secondary',
 			onClick: () => {
 				UnlockEvent.dispatch();
 			},
 			disabled: !locked,
-		},
-	];
+		}),
+		[locked],
+	);
+
+	const clearAction: Action = useMemo(
+		() => ({
+			label: (
+				<>
+					<FaRegCircleXmark aria-hidden /> Clear
+				</>
+			),
+			disabled: !selectedParts.length || locked,
+			className: 'btn-error',
+			onClick: () => UpdateSelectedPartsEvent.dispatch([]),
+		}),
+		[selectedParts, locked],
+	);
+
+	const actions: Action[] = useMemo(
+		() => [unlockAction, clearAction],
+		[unlockAction, clearAction],
+	);
 
 	return (
 		<Card title="Cart" className={className} actions={actions}>
