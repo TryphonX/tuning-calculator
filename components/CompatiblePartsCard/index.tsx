@@ -1,7 +1,7 @@
 import { Action, BaseProps } from '@/@types/globals';
 import Card from '../Card';
 import CompatiblePartsTable from './CompatiblePartsTable';
-import { FaEraser, FaWandMagicSparkles } from 'react-icons/fa6';
+import { FaRegCircleXmark, FaWandMagicSparkles } from 'react-icons/fa6';
 import { UpdateSelectedPartsEvent } from '@/modules/customEvents';
 import { useContext, useMemo } from 'react';
 import { CalculatorContext } from '@/modules/contexts';
@@ -34,7 +34,7 @@ export default function CompatiblePartsCard({ className }: BaseProps) {
 		() => ({
 			label: (
 				<>
-					<FaEraser aria-hidden /> Clear
+					<FaRegCircleXmark aria-hidden /> Clear
 				</>
 			),
 			disabled: !selectedParts.length || locked,

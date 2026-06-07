@@ -1,4 +1,6 @@
 import GithubIssueSection from '@/components/GithubIssueSection';
+import { Page } from '@/modules/navigation';
+import Link from 'next/link';
 
 export default function Home() {
 	return (
@@ -17,9 +19,11 @@ export default function Home() {
 								to boost ratio for your job!
 							</div>
 							<div className="flex flex-row justify-center space-x-2">
-								<button className="btn btn-secondary btn-lg">
-									Get started now
-								</button>
+								<Link href={Page.Cms21Calculator}>
+									<button className="btn btn-secondary btn-lg">
+										Get started now
+									</button>
+								</Link>
 							</div>
 							<p className="text-sm text-primary">
 								CMS 2026 Coming Soon!

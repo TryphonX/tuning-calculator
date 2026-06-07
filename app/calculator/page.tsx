@@ -6,11 +6,11 @@ export default function Calculator() {
 	return (
 		<div className="hero min-h-[88.5vh]">
 			<div className="hero-content text-center">
-				<div className="max-w-xl">
+				<div className="max-w-xl space-y-4">
 					<h1 className="text-5xl font-bold text-primary">
 						Coming Soon!
 					</h1>
-					<p className="py-6">
+					<p className="py-2">
 						Car Mechanic Simulator 26 Tuning Calculator will be
 						released once the full game is released and the
 						necessary data can be extracted. Stay tuned for updates,
