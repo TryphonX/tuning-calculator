@@ -1,35 +1,42 @@
 'use client';
 
 import CalculatorWrapper from '@/components/CalculatorWrapper';
-import { CartCard } from '@/components/CartCard';
-import EngineCard from '@/components/EngineCard';
-import { CompatiblePartsCard } from '@/components/PartsCard';
+import { ManualCalculator } from '@/components/ManualCalculator';
+import { TabData, Tabs } from '@/components/Tabs';
+import { useMemo } from 'react';
+import { LuWandSparkles } from 'react-icons/lu';
+
+const TABS_NAME = 'cms-calc-21-tabs';
 
 export default function Calculator() {
+	const tabs: TabData[] = useMemo<TabData[]>(
+		() => [
+			{
+				title: (
+					<>
+						<LuWandSparkles aria-hidden /> Auto-generate
+					</>
+				),
+				content: <ManualCalculator />,
+				default: true,
+			},
+			{
+				title: (
+					<>
+						<LuWandSparkles aria-hidden /> Manual
+					</>
+				),
+				content: <ManualCalculator />,
+			},
+		],
+		[],
+	);
+
 	return (
 		<CalculatorWrapper>
 			<h1 className="hidden">Car Mechanic Simulator 21 Calculator</h1>
-			{/* Desktop View */}
-			<div
-				className="
-				grow
-				hidden
-				xl:p-8
-				xl:grid xl:grid-flow-row xl:grid-cols-5 xl:gap-12 m-8"
-			>
-				<div className="xl:col-span-2 flex-col space-y-8 xl:space-y-12">
-					<EngineCard />
-					<CartCard className="max-xl:hidden" />
-				</div>
-				<div className="xl:col-span-3 flex-col space-y-8 xl:space-y-12">
-					<CompatiblePartsCard className="max-xl:hidden" />
-				</div>
-			</div>
-			{/* Mobile View */}
-			<div className="grow flex flex-col m-8 gap-8 xl:hidden">
-				<EngineCard />
-				<CompatiblePartsCard />
-				<CartCard />
+			<div className="p-8 xl:p-16">
+				<Tabs tabsName={TABS_NAME} tabs={tabs}></Tabs>
 			</div>
 		</CalculatorWrapper>
 	);
