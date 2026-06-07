@@ -1,9 +1,9 @@
 'use client';
 
 import CalculatorWrapper from '@/components/CalculatorWrapper';
-import CompatiblePartsCard from '@/components/CompatiblePartsCard';
+import { CartCard } from '@/components/CartCard';
 import EngineCard from '@/components/EngineCard';
-import SelectedPartsCard from '@/components/SelectedPartsCard';
+import { CompatiblePartsCard } from '@/components/PartsCard';
 
 export default function Calculator() {
 	return (
@@ -14,13 +14,14 @@ export default function Calculator() {
 				className="
 				grow
 				hidden
-				xl:grid xl:grid-flow-row xl:grid-cols-5 xl:gap-8 m-8"
+				xl:p-8
+				xl:grid xl:grid-flow-row xl:grid-cols-5 xl:gap-12 m-8"
 			>
-				<div className="xl:col-span-2 flex-col space-y-8">
+				<div className="xl:col-span-2 flex-col space-y-8 xl:space-y-12">
 					<EngineCard />
-					<SelectedPartsCard className="max-xl:hidden" />
+					<CartCard className="max-xl:hidden" />
 				</div>
-				<div className="xl:col-span-3 flex-col space-y-8">
+				<div className="xl:col-span-3 flex-col space-y-8 xl:space-y-12">
 					<CompatiblePartsCard className="max-xl:hidden" />
 				</div>
 			</div>
@@ -28,7 +29,7 @@ export default function Calculator() {
 			<div className="grow flex flex-col m-8 gap-8 xl:hidden">
 				<EngineCard />
 				<CompatiblePartsCard />
-				<SelectedPartsCard />
+				<CartCard />
 			</div>
 		</CalculatorWrapper>
 	);

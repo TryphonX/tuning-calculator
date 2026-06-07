@@ -1,15 +1,15 @@
 import { Action, BaseProps } from '@/@types/globals';
-import Card from '../Card';
-import CompatiblePartsTable from './CompatiblePartsTable';
-import { FaRegCircleXmark, FaWandMagicSparkles } from 'react-icons/fa6';
+import { CalculatorContext } from '@/modules/contexts';
 import { UpdateSelectedPartsEvent } from '@/modules/customEvents';
 import { useContext, useMemo } from 'react';
-import { CalculatorContext } from '@/modules/contexts';
+import { FaRegCircleXmark, FaWandMagicSparkles } from 'react-icons/fa6';
 import AutoGenModal from '../AutoGenModal';
+import Card from '../Card';
+import { PartsTable } from './PartsTable';
 
 const AUTO_GEN_MODAL_ID = 'autoGenModal';
 
-export default function CompatiblePartsCard({ className }: BaseProps) {
+export const CompatiblePartsCard = ({ className }: BaseProps) => {
 	const { currentEngine, selectedParts, locked } =
 		useContext(CalculatorContext);
 
@@ -56,10 +56,10 @@ export default function CompatiblePartsCard({ className }: BaseProps) {
 				footerActions={footerActions}
 			>
 				<div className="mt-4">
-					<CompatiblePartsTable />
+					<PartsTable />
 				</div>
 			</Card>
 			<AutoGenModal id={AUTO_GEN_MODAL_ID} />
 		</>
 	);
-}
+};

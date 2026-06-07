@@ -1,13 +1,13 @@
 'use client';
 
-import { CalculatorContext } from '@/modules/contexts';
-import { useContext, useEffect, useState } from 'react';
-import { UpdateSortEvent } from '@/modules/customEvents';
-import { partSortFn, getFullPartByName } from '@/modules/common';
 import { PartSortBy } from '@/@types/globals';
+import { getFullPartByName, partSortFn } from '@/modules/common';
+import { CalculatorContext } from '@/modules/contexts';
+import { UpdateSortEvent } from '@/modules/customEvents';
+import { useContext, useEffect, useState } from 'react';
 import SortBtn from '../SortBtn';
 
-export default function SelectedPartsTable() {
+export const SelectedPartsTable = () => {
 	const { currentEngine, selectedParts, repairs } =
 		useContext(CalculatorContext);
 
@@ -178,4 +178,4 @@ export default function SelectedPartsTable() {
 			</div>
 		</>
 	);
-}
+};

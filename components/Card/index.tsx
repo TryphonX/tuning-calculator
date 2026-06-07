@@ -65,7 +65,7 @@ function FooterActions({ footerActions }: FooterActionsProps) {
 	if (!footerActions || !footerActions.length) return null;
 
 	return (
-		<div className="card-actions justify-end">
+		<div className="card-actions mt-6 justify-end">
 			{footerActions.map((action) => (
 				<button
 					key={`${action.label}-footeraction`}
@@ -97,7 +97,7 @@ export default function Card({
 
 	return (
 		<div
-			className={`card card-border border-base-content/10 shadow-xl shadow-base-200 ${getClassName()}`}
+			className={`card card-border bg-base-200/50 border-base-content/10 shadow-xl shadow-base-200 ${getClassName()}`}
 		>
 			<div className="card-body">
 				<Header title={title} actions={actions} />

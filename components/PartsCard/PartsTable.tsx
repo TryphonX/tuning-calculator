@@ -1,6 +1,14 @@
 'use client';
 
+import { TuningPartName } from '@/@types/calculator';
+import { PartSortBy } from '@/@types/globals';
+import { getFullPartByName, partSortFn } from '@/modules/common';
 import { CalculatorContext } from '@/modules/contexts';
+import {
+	ToggleSelectedPartEvent,
+	UpdateSelectedPartsEvent,
+	UpdateSortEvent,
+} from '@/modules/customEvents';
 import {
 	ChangeEvent,
 	useCallback,
@@ -8,16 +16,8 @@ import {
 	useEffect,
 	useState,
 } from 'react';
-import { TuningPartName } from '@/@types/calculator';
-import {
-	ToggleSelectedPartEvent,
-	UpdateSelectedPartsEvent,
-	UpdateSortEvent,
-} from '@/modules/customEvents';
-import { partSortFn, getFullPartByName } from '@/modules/common';
-import { PartSortBy } from '@/@types/globals';
-import SortBtn from '../SortBtn';
 import MissingPartAlert from '../MissingPartAlert';
+import SortBtn from '../SortBtn';
 
 const getPartCheckboxes = () =>
 	document.querySelectorAll(
@@ -47,7 +47,7 @@ const handleTogglePart = ({ currentTarget }: ChangeEvent<HTMLInputElement>) => {
 	);
 };
 
-export default function CompatiblePartsTable() {
+export const PartsTable = () => {
 	const { currentEngine, selectedParts, locked } =
 		useContext(CalculatorContext);
 	const [partMissing, setPartMissing] = useState(false);
@@ -273,4 +273,4 @@ export default function CompatiblePartsTable() {
 			</div>
 		</>
 	);
-}
+};

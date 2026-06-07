@@ -1,12 +1,12 @@
 import { BaseProps } from '@/@types/globals';
-import Card from '../Card';
-import SelectedPartsTable from './SelectedPartsTable';
 import { CalculatorContext } from '@/modules/contexts';
-import { useContext } from 'react';
 import { UnlockEvent } from '@/modules/customEvents';
+import { useContext } from 'react';
 import { FaUnlock } from 'react-icons/fa6';
+import Card from '../Card';
+import { SelectedPartsTable } from './SelectedPartsTable';
 
-export default function SelectedPartsCard({ className }: BaseProps) {
+export const CartCard = ({ className }: BaseProps) => {
 	const { locked } = useContext(CalculatorContext);
 
 	const actions = [
@@ -31,4 +31,4 @@ export default function SelectedPartsCard({ className }: BaseProps) {
 			</div>
 		</Card>
 	);
-}
+};

@@ -13,9 +13,9 @@ type SortBtnProps = {
 export default function SortBtn({ sortBy, values }: SortBtnProps) {
 	const handleClick = useCallback(() => {
 		UpdateSortEvent.dispatch(
-			sortBy === (values[0] as PartSortBy)
-				? (values[1] as PartSortBy)
-				: (values[0] as PartSortBy),
+			sortBy === (values[0] as PartSortBy) ?
+				(values[1] as PartSortBy)
+			:	(values[0] as PartSortBy),
 		);
 	}, [sortBy, values]);
 
@@ -26,11 +26,9 @@ export default function SortBtn({ sortBy, values }: SortBtnProps) {
 			}`}
 			onClick={handleClick}
 		>
-			{sortBy === values[0] ? (
+			{sortBy === values[0] ?
 				<FaCaretUp aria-label="Sort ascending" />
-			) : (
-				<FaCaretDown aria-label="Sort descending" />
-			)}
+			:	<FaCaretDown aria-label="Sort descending" />}
 		</button>
 	);
 }
