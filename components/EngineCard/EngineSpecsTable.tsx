@@ -10,7 +10,7 @@ export default function EngineSpecsTable() {
 
 	return (
 		<figure className="col-span-3 sm:col-span-2 w-full">
-			<div className="overflow-x-auto w-full border rounded-2xl border-base-200">
+			<div className="overflow-x-auto w-full border rounded-xl border-base-content/10">
 				<table className="table table-lg xl:table-md 2xl:table-lg table-zebra">
 					<tbody>
 						<tr>

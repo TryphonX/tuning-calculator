@@ -84,17 +84,14 @@ const RepairPartsTable = ({ repairParts, onRepairPartsChange }: Props) => {
 
 	return (
 		<div className="py-4">
-			<div className="overflow-x-auto overflow-y-auto max-h-[40vh] w-full rounded-2xl border border-base-200">
+			<div className="overflow-x-auto overflow-y-auto max-h-[40vh] w-full rounded-xl border border-base-content/10">
 				<table className="table table-pin-rows table-xs sm:table-sm xl:table-md table-zebra">
 					<thead>
-						<tr>
-							<th colSpan={2} className="font-bold text-center">
-								Repair parts
+						<tr className="text-lg">
+							<th className="w-1/2 xl:w-1/3 2xl:w-1/2">
+								Repair Part
 							</th>
-						</tr>
-						<tr>
-							<th className="w-1/2 xl:w-1/3 2xl:w-1/2">Part </th>
-							<th className="text-right">Quantity </th>
+							<th className="text-right">Quantity</th>
 						</tr>
 					</thead>
 					<tbody>

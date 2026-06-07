@@ -9,7 +9,10 @@ const MissingPartAlert = ({ partMissing }: Props) => {
 	if (!partMissing) return null;
 
 	return (
-		<div role="alert" className="alert alert-warning py-2 px-4 mb-4">
+		<div
+			role="alert"
+			className="alert alert-warning alert-soft py-2 px-4 mb-4"
+		>
 			<FaTriangleExclamation aria-hidden />
 			<div>
 				<p className="text-sm font-bold">

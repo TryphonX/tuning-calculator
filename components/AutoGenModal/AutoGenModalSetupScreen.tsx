@@ -27,7 +27,7 @@ const CostElement = ({ generatedSetup }: CostElementProps) => {
 				{generatedSetup.repairs.netCost} CR
 			</span>
 			<div
-				className="badge badge-secondary font-semibold"
+				className="badge badge-accent badge-soft font-semibold"
 				aria-label={`Total saved after repairs: ${generatedSetup.repairs.totalSaved} CR`}
 			>
 				-{generatedSetup.repairs.totalSaved} CR *
@@ -52,7 +52,7 @@ const CostToBoostElement = ({ generatedSetup }: CostElementProps) => {
 				{generatedSetup.repairs.netCostToBoost.toFixed(2)} CR / Boost
 			</span>
 			<div
-				className="badge badge-secondary font-semibold"
+				className="badge badge-accent badge-soft font-semibold"
 				aria-label={`Total saved CR per boost after repairs: ${(
 					generatedSetup.costToBoost -
 					generatedSetup.repairs.netCostToBoost
@@ -78,7 +78,7 @@ export default function AutoGenModalSetupScreen({
 		<div className="my-4">
 			{generatedSetup ?
 				<>
-					<div className="overflow-x-auto w-full border rounded-2xl border-base-200">
+					<div className="overflow-x-auto w-full border rounded-xl border-base-content/10">
 						<table className="table table-md sm:table-lg table-zebra">
 							<tbody>
 								<tr>
@@ -118,7 +118,7 @@ export default function AutoGenModalSetupScreen({
 								over others that might seem cheaper, because
 								they do not take the repairs into consideration.
 							</p>
-							<p className="text-sm text-primary">
+							<p className="text-sm text-accent">
 								Repairing:{' '}
 								{generatedSetup.repairs.repairPartNames.join(
 									', ',
@@ -129,11 +129,11 @@ export default function AutoGenModalSetupScreen({
 				</>
 			:	<p>There is no possible setup configuration.</p>}
 			<div className="justify-between modal-action">
-				<button className="btn btn-error" onClick={onDiscard}>
+				<button className="btn btn-error btn-soft" onClick={onDiscard}>
 					<FaArrowRotateLeft aria-hidden /> Discard
 				</button>
 				<button
-					className="btn btn-primary"
+					className="btn btn-primary btn-soft"
 					disabled={!generatedSetup}
 					onClick={onApply}
 				>

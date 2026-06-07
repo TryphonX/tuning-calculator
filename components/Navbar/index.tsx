@@ -13,10 +13,7 @@ export default function Navbar() {
 			<div className="flex-none">
 				<ul className="menu menu-horizontal px-1">
 					<li className="max-sm:hidden">
-						<Link
-							className="rounded-xl font-bold"
-							href={Page.Cms26Calculator}
-						>
+						<Link href={Page.Cms26Calculator}>
 							CMS 2026{' '}
 							<span className="text-xs text-primary/70">
 								Coming Soon!
@@ -24,12 +21,7 @@ export default function Navbar() {
 						</Link>
 					</li>
 					<li className="max-sm:hidden">
-						<Link
-							className="rounded-xl"
-							href={Page.Cms21Calculator}
-						>
-							CMS 2021
-						</Link>
+						<Link href={Page.Cms21Calculator}>CMS 2021</Link>
 					</li>
 					<li className="sm:hidden">
 						<details>

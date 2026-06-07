@@ -65,7 +65,10 @@ export default function AutoGenModalInitScreen({
 				</div>
 			</div>
 			<div className="modal-action">
-				<button className="btn btn-primary" onClick={onGenerate}>
+				<button
+					className="btn btn-primary btn-soft"
+					onClick={onGenerate}
+				>
 					<FaWandMagicSparkles /> Generate
 				</button>
 			</div>

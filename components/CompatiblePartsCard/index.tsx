@@ -17,7 +17,7 @@ export default function CompatiblePartsCard({ className }: BaseProps) {
 		() => ({
 			label: <FaWandMagicSparkles aria-hidden />,
 			optionalLabel: 'Auto-generate',
-			className: 'btn-primary',
+			className: 'btn-primary btn-soft',
 			disabled: !currentEngine,
 			onClick: () => {
 				const modal = document.getElementById(AUTO_GEN_MODAL_ID);
@@ -38,7 +38,7 @@ export default function CompatiblePartsCard({ className }: BaseProps) {
 				</>
 			),
 			disabled: !selectedParts.length || locked,
-			className: 'btn-error max-sm:btn-sm',
+			className: 'btn-error btn-soft max-sm:btn-sm',
 			onClick: () => UpdateSelectedPartsEvent.dispatch([]),
 		}),
 		[selectedParts, locked],

@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
+import { Ubuntu } from 'next/font/google';
 import './globals.css';
 import { ReactNode } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Head from 'next/head';
 
-const ubuntu = Montserrat({ weight: '400', subsets: ['latin'] });
+const ubuntu = Ubuntu({ weight: '400', subsets: ['latin'] });
 
 export const metadata: Metadata = {
 	title: 'Tuning Calculator',
