@@ -36,16 +36,6 @@
 	--noise: 0;
 }
 
-@theme {
-	--background-image-gradient-radial: radial-gradient(
-		var(--tw-gradient-stops)
-	);
-	--background-image-gradient-conic: conic-gradient(
-		from 180deg at 50% 50%,
-		var(--tw-gradient-stops)
-	);
-}
-
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
