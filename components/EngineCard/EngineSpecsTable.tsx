@@ -1,17 +1,40 @@
 'use client';
 
-import { CalculatorContext } from '@/modules/contexts';
-import { useContext } from 'react';
+import { selectCurrentEngine } from '@/lib/features/calculator/calculatorSlice';
+import { useAppSelector } from '@/lib/hooks';
 
 export default function EngineSpecsTable() {
-	const { currentEngine } = useContext(CalculatorContext);
+	const currentEngine = useAppSelector(selectCurrentEngine);
 
-	if (!currentEngine) return;
+	if (!currentEngine) {
+		return (
+			<figure>
+				<div className="overflow-x-auto w-full border rounded-xl border-base-content/10">
+					<table className="table table-md table-zebra">
+						<tbody>
+							<tr>
+								<th className="w-1/4">Power</th>
+								<td>N/A</td>
+							</tr>
+							<tr>
+								<th>Torque</th>
+								<td>N/A</td>
+							</tr>
+							<tr>
+								<th>Gearbox</th>
+								<td>N/A</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</figure>
+		);
+	}
 
 	return (
-		<figure className="col-span-3 sm:col-span-2 w-full">
+		<figure>
 			<div className="overflow-x-auto w-full border rounded-xl border-base-content/10">
-				<table className="table table-lg xl:table-md 2xl:table-lg table-zebra">
+				<table className="table table-md table-zebra">
 					<tbody>
 						<tr>
 							<th className="w-1/4">Power</th>

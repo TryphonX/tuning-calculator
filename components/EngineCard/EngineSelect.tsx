@@ -1,19 +1,15 @@
 'use client';
 
 import { Engine, EngineName } from '@/@types/calculator';
-import engines from '../../data/cms21/engines.json';
-import { ChangeEvent, useCallback, useContext, useState } from 'react';
-import { CalculatorContext } from '@/modules/contexts';
-import { ChangeEngineEvent } from '@/modules/customEvents';
 import { BaseProps } from '@/@types/globals';
+import {
+	selectCurrentEngine,
+	selectEngine,
+} from '@/lib/features/calculator/calculatorSlice';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { ENGINE_CONFIGURATIONS } from '@/modules/common';
-
-const handleEngineChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
-	const engineName = target.value as EngineName;
-	ChangeEngineEvent.dispatch(
-		structuredClone(engines[engineName as EngineName]) as Engine,
-	);
-};
+import { ChangeEvent, useCallback, useState } from 'react';
+import engines from '../../data/cms21/engines.json';
 
 const EngineConfigOptions = () => {
 	return (
@@ -27,8 +23,19 @@ const EngineConfigOptions = () => {
 };
 
 export default function EngineSelect({ className }: BaseProps) {
-	const { currentEngine } = useContext(CalculatorContext);
-	const [engineConfig, setEngineConfig] = useState('');
+	const currentEngine = useAppSelector(selectCurrentEngine);
+	const dispatch = useAppDispatch();
+	const [engineConfig, setEngineConfig] = useState<string>('');
+
+	const handleEngineChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
+		const engineName = target.value as EngineName | null;
+		const engine =
+			engineName ?
+				(structuredClone(engines[engineName as EngineName]) as Engine)
+			:	null;
+
+		dispatch(selectEngine(engine));
+	};
 
 	const handleEngineConfigChange = ({
 		target,
@@ -39,13 +46,13 @@ export default function EngineSelect({ className }: BaseProps) {
 			return;
 		}
 
-		ChangeEngineEvent.dispatch(
-			structuredClone(
-				Object.values(engines).find(
-					(engine) => engine.specs.configuration === target.value,
-				) ?? null,
-			) as Engine | null,
-		);
+		const newEngine = structuredClone(
+			Object.values(engines).find(
+				(engine) => engine.specs.configuration === target.value,
+			) ?? null,
+		) as Engine | null;
+
+		dispatch(selectEngine(newEngine));
 	};
 
 	const EngineOptions = () => {
@@ -72,8 +79,8 @@ export default function EngineSelect({ className }: BaseProps) {
 	);
 
 	return (
-		<div className={getClassName()}>
-			<label className="select xl:select-md w-full">
+		<div className={`flex flex-col sm:flex-row gap-4 ${getClassName()}`}>
+			<label className="select sm:select-sm md:select-md w-full">
 				<span className="label">Configuration</span>
 				<select
 					value={engineConfig}
@@ -83,7 +90,7 @@ export default function EngineSelect({ className }: BaseProps) {
 				</select>
 			</label>
 
-			<label className="select mt-3 xl:select-md w-full">
+			<label className="select sm:select-sm md:select-md w-full">
 				<span className="label">Engine</span>
 				<select
 					value={currentEngine?.name ?? ''}
