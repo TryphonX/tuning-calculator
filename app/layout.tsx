@@ -1,10 +1,10 @@
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 import type { Metadata } from 'next';
 import { Ubuntu } from 'next/font/google';
-import './globals.css';
-import { ReactNode } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Head from 'next/head';
+import { ReactNode } from 'react';
+import './globals.css';
 
 const ubuntu = Ubuntu({ weight: '400', subsets: ['latin'] });
 
