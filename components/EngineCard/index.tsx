@@ -1,4 +1,6 @@
 import { BaseProps } from '@/@types/globals';
+import { selectCurrentEngine } from '@/lib/features/calculator/calculatorSlice';
+import { useAppSelector } from '@/lib/hooks';
 import Card from '../Card';
 import { StepsNavigation } from '../StepsNavigation';
 import EngineImage from './EngineImage';
@@ -6,6 +8,8 @@ import EngineSelect from './EngineSelect';
 import EngineSpecsTable from './EngineSpecsTable';
 
 export default function EngineCard({ className }: BaseProps) {
+	const currentEngine = useAppSelector(selectCurrentEngine);
+
 	return (
 		<Card title="Engine" className={className}>
 			<div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 gap-4">
@@ -15,7 +19,7 @@ export default function EngineCard({ className }: BaseProps) {
 						<EngineSelect />
 						<EngineSpecsTable />
 					</div>
-					<StepsNavigation />
+					<StepsNavigation nextDisabled={!currentEngine} />
 				</div>
 			</div>
 		</Card>

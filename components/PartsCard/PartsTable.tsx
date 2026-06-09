@@ -2,20 +2,16 @@
 
 import { TuningPartName } from '@/@types/calculator';
 import { PartSortBy } from '@/@types/globals';
+import {
+	selectCalculator,
+	setPartMissing,
+	toggleSelectedPart,
+	updateSelectedParts,
+} from '@/lib/features/calculator/calculatorSlice';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { getFullPartByName, partSortFn } from '@/modules/common';
-import { CalculatorContext } from '@/modules/contexts';
-import {
-	ToggleSelectedPartEvent,
-	UpdateSelectedPartsEvent,
-	UpdateSortEvent,
-} from '@/modules/customEvents';
-import {
-	ChangeEvent,
-	useCallback,
-	useContext,
-	useEffect,
-	useState,
-} from 'react';
+import { UpdateSortEvent } from '@/modules/customEvents';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import MissingPartAlert from '../MissingPartAlert';
 import SortBtn from '../SortBtn';
 
@@ -37,21 +33,11 @@ const markAllCheckboxes = (checked: boolean) => {
 	});
 };
 
-const handleTogglePart = ({ currentTarget }: ChangeEvent<HTMLInputElement>) => {
-	const partName = currentTarget.dataset.partName!;
-	const partQt = ~~currentTarget.dataset.partQt!;
-
-	ToggleSelectedPartEvent.dispatch(
-		{ name: partName as TuningPartName, quantity: partQt },
-		currentTarget.checked,
-	);
-};
-
 export const PartsTable = () => {
+	const dispatch = useAppDispatch();
 	const { currentEngine, selectedParts, locked } =
-		useContext(CalculatorContext);
-	const [partMissing, setPartMissing] = useState(false);
-
+		useAppSelector(selectCalculator);
+	const [anyPartMissing, setAnyPartMissing] = useState(false);
 	const [sortBy, setSortBy] = useState<PartSortBy>('name_asc');
 
 	// onMount
@@ -103,40 +89,47 @@ export const PartsTable = () => {
 	});
 
 	useEffect(() => {
-		setPartMissing(false);
+		setAnyPartMissing(false);
 	}, [currentEngine]);
+
+	const handleTogglePart = useCallback(
+		({ currentTarget }: ChangeEvent<HTMLInputElement>) => {
+			const partName = currentTarget.dataset.partName! as TuningPartName;
+			const partQt = ~~currentTarget.dataset.partQt!;
+
+			dispatch(toggleSelectedPart({ name: partName, quantity: partQt }));
+		},
+		[],
+	);
 
 	const handleToggleAllParts = useCallback(
 		({ currentTarget }: ChangeEvent<HTMLInputElement>) => {
-			if (currentTarget.checked) {
-				UpdateSelectedPartsEvent.dispatch(
+			const newParts =
+				currentTarget.checked ?
 					currentEngine!.compatibleParts
 						.filter((part) => !part.missing)
 						.map((part) => ({
 							name: part.name,
 							quantity: part.quantity,
-						})),
-				);
+						}))
+				:	[];
 
-				markAllCheckboxes(true);
-			} else {
-				UpdateSelectedPartsEvent.dispatch([]);
-
-				markAllCheckboxes(false);
-			}
+			dispatch(updateSelectedParts(newParts));
+			markAllCheckboxes(currentTarget.checked);
 		},
 		[currentEngine],
 	);
 
-	if (!currentEngine) return;
-
-	const sortedCompatibleParts = currentEngine.compatibleParts.sort(
-		partSortFn(sortBy),
+	const sortedCompatibleParts = useMemo(
+		() => currentEngine?.compatibleParts.toSorted(partSortFn(sortBy)),
+		[currentEngine, sortBy],
 	);
+
+	if (!currentEngine) return;
 
 	return (
 		<>
-			<MissingPartAlert partMissing={partMissing} />
+			<MissingPartAlert partMissing={anyPartMissing} />
 			<div className="overflow-x-auto w-full rounded-xl border border-base-content/10">
 				<table className="table table-xs sm:table-md table-zebra">
 					<thead className="text-lg">
@@ -185,14 +178,14 @@ export const PartsTable = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{sortedCompatibleParts.map((part) => {
+						{sortedCompatibleParts!.map((part) => {
 							const tuningPartData = getFullPartByName(part.name);
 
 							if (!tuningPartData) {
 								console.warn(`Part missing: ${part.name}`);
-								part.missing = true;
-								if (!partMissing) {
-									setPartMissing(true);
+								dispatch(setPartMissing(part.name));
+								if (!anyPartMissing) {
+									setAnyPartMissing(true);
 								}
 							}
 

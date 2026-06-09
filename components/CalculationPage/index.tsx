@@ -1,8 +1,8 @@
 'use client';
 
-import { selectCurrentStep } from '@/lib/features/calculator/calculatorSlice';
+import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
 import { useAppSelector } from '@/lib/hooks';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { LuWandSparkles } from 'react-icons/lu';
 import EngineCard from '../EngineCard';
 import { ManualCalculator } from '../ManualCalculator';
@@ -13,7 +13,7 @@ const TABS_NAME = 'cms-calc-21-tabs';
 const STEPS = ['Engine selection', 'Tuning method', 'Cart'];
 
 export const CalculationPage = () => {
-	const currentStep = useAppSelector(selectCurrentStep);
+	const { currentStep, method } = useAppSelector(selectCalculator);
 
 	const tabs: TabData[] = useMemo<TabData[]>(
 		() => [
@@ -24,7 +24,8 @@ export const CalculationPage = () => {
 					</>
 				),
 				content: <ManualCalculator />,
-				default: true,
+				default: method === 'auto',
+				method: 'auto',
 			},
 			{
 				title: (
@@ -33,12 +34,14 @@ export const CalculationPage = () => {
 					</>
 				),
 				content: <ManualCalculator />,
+				default: method === 'manual',
+				method: 'manual',
 			},
 		],
-		[],
+		[method],
 	);
 
-	const CurrentStepView = () => {
+	const CurrentStepView = useCallback(() => {
 		switch (currentStep) {
 			case 0:
 				return (
@@ -53,7 +56,9 @@ export const CalculationPage = () => {
 			default:
 				return null;
 		}
-	};
+	}, [currentStep, tabs]);
+
+	const currentStepVisual = method === 'auto' ? currentStep : currentStep + 1;
 
 	return (
 		<>
@@ -64,7 +69,7 @@ export const CalculationPage = () => {
 						{STEPS.map((step, index) => (
 							<li
 								key={index}
-								className={`step ${index <= currentStep ? 'step-secondary' : ''}`}
+								className={`step ${index <= currentStepVisual ? 'step-secondary' : ''}`}
 							>
 								{step}
 							</li>

@@ -1,13 +1,14 @@
 import { Action, BaseProps } from '@/@types/globals';
-import { CalculatorContext } from '@/modules/contexts';
+import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
+import { useAppSelector } from '@/lib/hooks';
 import { UnlockEvent, UpdateSelectedPartsEvent } from '@/modules/customEvents';
-import { useContext, useMemo } from 'react';
+import { useMemo } from 'react';
 import { FaRegCircleXmark, FaUnlock } from 'react-icons/fa6';
 import Card from '../Card';
 import { SelectedPartsTable } from './SelectedPartsTable';
 
 export const CartCard = ({ className }: BaseProps) => {
-	const { locked, selectedParts } = useContext(CalculatorContext);
+	const { locked, selectedParts } = useAppSelector(selectCalculator);
 
 	const unlockAction: Action = useMemo(
 		() => ({

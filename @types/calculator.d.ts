@@ -1,7 +1,13 @@
 import engines from '@/data/cms21/engines.json';
 import tuningParts from '@/data/cms21/tuning-parts.json';
 
+export type Method = 'auto' | 'manual';
+
 export declare interface CompatiblePart extends TuningPartBase {
+	/**
+	 * The name of the part
+	 */
+	name: TuningPartName;
 	/**
 	 * The number of times this type of part is fitted on each engine
 	 */
@@ -64,6 +70,10 @@ export declare interface TuningPartBase {
 }
 
 export declare interface SelectedPart extends TuningPartBase {
+	/**
+	 * The name of the part
+	 */
+	name: TuningPartName;
 	/**
 	 * The number of times this type of part is fitted on each engine
 	 */

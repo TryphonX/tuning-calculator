@@ -1,4 +1,10 @@
-import { Engine, SelectedPart, TuningSetup } from '@/@types/calculator';
+import {
+	Engine,
+	Method,
+	SelectedPart,
+	TuningPartName,
+	TuningSetup,
+} from '@/@types/calculator';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 
@@ -6,8 +12,9 @@ interface CalculatorState {
 	currentEngine: Engine | null;
 	selectedParts: SelectedPart[];
 	locked: boolean;
-	repairs: TuningSetup['repairs'] | undefined;
+	repairs?: TuningSetup['repairs'];
 	currentStep: number;
+	method: Method;
 }
 
 const initialState: CalculatorState = {
@@ -16,6 +23,7 @@ const initialState: CalculatorState = {
 	locked: false,
 	repairs: undefined,
 	currentStep: 0,
+	method: 'auto',
 };
 
 export const calculatorSlice = createSlice({
@@ -24,6 +32,9 @@ export const calculatorSlice = createSlice({
 	reducers: {
 		selectEngine: (state, action: PayloadAction<Engine | null>) => {
 			state.currentEngine = action.payload;
+			state.selectedParts = initialState.selectedParts;
+			state.locked = initialState.locked;
+			state.repairs = initialState.repairs;
 		},
 		toggleSelectedPart: (state, action: PayloadAction<SelectedPart>) => {
 			const part = action.payload;
@@ -37,6 +48,14 @@ export const calculatorSlice = createSlice({
 				);
 			} else {
 				state.selectedParts = [...state.selectedParts, part];
+			}
+		},
+		setPartMissing: (state, action: PayloadAction<TuningPartName>) => {
+			const part = state.currentEngine?.compatibleParts.find(
+				(part) => part.name === action.payload,
+			);
+			if (part) {
+				part.missing = true;
 			}
 		},
 		updateSelectedParts: (state, action: PayloadAction<SelectedPart[]>) => {
@@ -60,17 +79,22 @@ export const calculatorSlice = createSlice({
 		prevStep: (state) => {
 			state.currentStep = Math.max(state.currentStep - 1, 0);
 		},
+		setMethod: (state, action: PayloadAction<Method>) => {
+			state.method = action.payload;
+		},
 	},
 });
 
 export const {
 	selectEngine,
 	toggleSelectedPart,
+	setPartMissing,
 	updateSelectedParts,
 	unlock,
 	setRepairs,
 	nextStep,
 	prevStep,
+	setMethod,
 } = calculatorSlice.actions;
 
 export const selectCalculator = (state: RootState) => state.calculator;

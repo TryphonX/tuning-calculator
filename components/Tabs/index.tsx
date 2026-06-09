@@ -1,9 +1,13 @@
+import { Method } from '@/@types/calculator';
+import { setMethod } from '@/lib/features/calculator/calculatorSlice';
+import { useAppDispatch } from '@/lib/hooks';
 import { Fragment } from 'react';
 
 export interface TabData {
 	title: React.ReactNode;
 	content: React.ReactNode;
 	default?: boolean;
+	method?: Method;
 }
 
 interface Props {
@@ -12,6 +16,7 @@ interface Props {
 }
 
 export const Tabs = ({ tabsName, tabs }: Props) => {
+	const dispatch = useAppDispatch();
 	return (
 		<div className="tabs tabs-box p-2">
 			{tabs.map((tab, index) => (
@@ -21,6 +26,13 @@ export const Tabs = ({ tabsName, tabs }: Props) => {
 							type="radio"
 							name={tabsName}
 							defaultChecked={tab.default}
+							onChange={({
+								target,
+							}: React.ChangeEvent<HTMLInputElement>) => {
+								if (target.checked && tab.method) {
+									dispatch(setMethod(tab.method));
+								}
+							}}
 						/>
 						{tab.title}
 					</label>

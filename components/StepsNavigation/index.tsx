@@ -8,7 +8,16 @@ import {
 } from '@/lib/features/calculator/calculatorSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 
-export const StepsNavigation = ({ className }: BaseProps) => {
+interface Props extends BaseProps {
+	nextDisabled?: boolean;
+	forceLastStep?: boolean;
+}
+
+export const StepsNavigation = ({
+	className,
+	nextDisabled,
+	forceLastStep,
+}: Props) => {
 	const currentStep = useAppSelector(selectCurrentStep);
 	const dispatch = useAppDispatch();
 
@@ -23,13 +32,16 @@ export const StepsNavigation = ({ className }: BaseProps) => {
 					Back
 				</button>
 			)}
-			<button
-				type="button"
-				className="btn btn-secondary"
-				onClick={() => dispatch(nextStep())}
-			>
-				Proceed
-			</button>
+			{!forceLastStep && (
+				<button
+					type="button"
+					className="btn btn-secondary"
+					disabled={nextDisabled}
+					onClick={() => dispatch(nextStep())}
+				>
+					Proceed
+				</button>
+			)}
 		</div>
 	);
 };

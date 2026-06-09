@@ -1,15 +1,16 @@
 'use client';
 
 import { PartSortBy } from '@/@types/globals';
+import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
+import { useAppSelector } from '@/lib/hooks';
 import { getFullPartByName, partSortFn } from '@/modules/common';
-import { CalculatorContext } from '@/modules/contexts';
 import { UpdateSortEvent } from '@/modules/customEvents';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import SortBtn from '../SortBtn';
 
 export const SelectedPartsTable = () => {
 	const { currentEngine, selectedParts, repairs } =
-		useContext(CalculatorContext);
+		useAppSelector(selectCalculator);
 
 	const [sortBy, setSortBy] = useState<PartSortBy>('name_asc');
 
@@ -27,9 +28,12 @@ export const SelectedPartsTable = () => {
 		};
 	}, []);
 
-	if (!currentEngine) return;
+	const sortedSelectedParts = useMemo(
+		() => selectedParts.toSorted(partSortFn(sortBy)),
+		[selectedParts, sortBy],
+	);
 
-	const sortedSelectedParts = selectedParts.sort(partSortFn(sortBy));
+	if (!currentEngine) return;
 
 	const totalBoost = selectedParts.reduce(
 		(sum, current) =>
@@ -48,8 +52,8 @@ export const SelectedPartsTable = () => {
 	return (
 		<>
 			<div className="overflow-x-auto w-full rounded-xl border border-base-content/10">
-				<table className="table table-sm sm:table-md xl:table-md table-zebra">
-					<thead className="text-sm">
+				<table className="table table-sm sm:table-md table-zebra">
+					<thead>
 						<tr>
 							<th className="w-1/2 xl:w-1/3 2xl:w-1/2">
 								Part{' '}
