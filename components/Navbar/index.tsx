@@ -1,11 +1,11 @@
+import { Page } from '@/modules/navigation';
 import Link from 'next/link';
 import { FaPaypal } from 'react-icons/fa6';
-import { Page } from '@/modules/navigation';
 import { HiMenuAlt2 } from 'react-icons/hi';
 
 export default function Navbar() {
 	return (
-		<div role="navigation" className="navbar bg-base-100 shadow-sm">
+		<div role="navigation" className="navbar bg-base-100">
 			<div className="navbar-start">
 				<div className="dropdown">
 					<div
