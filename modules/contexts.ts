@@ -5,5 +5,5 @@ export const CalculatorContext = createContext({
 	currentEngine: null as Engine | null,
 	selectedParts: [] as SelectedPart[],
 	locked: false,
-	repairs: undefined as TuningSetup['repairs'],
+	repairs: undefined as TuningSetup['replacementParts'],
 });

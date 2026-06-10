@@ -8,7 +8,7 @@ type CardProps = BasePropsWithChildren &
 	};
 
 const getActionClassName = (action: Action) =>
-	'btn join-item btn-sm ' + `${action.className ?? 'btn-neutral'}`;
+	'btn join-item btn-xs ' + `${action.className ?? 'btn-neutral'}`;
 
 type HeaderProps = ActionsProps & {
 	title?: string;
@@ -27,9 +27,10 @@ function Actions({ actions }: { actions?: Action[] }) {
 
 	return (
 		<div className="join">
-			{actions.map((action) => (
+			{actions.map((action, index) => (
 				<button
-					key={`${action.label}-action`}
+					type="button"
+					key={`action-${index}`}
 					className={getActionClassName(action)}
 					disabled={action.disabled}
 					onClick={action.onClick}
@@ -66,9 +67,10 @@ function FooterActions({ footerActions }: FooterActionsProps) {
 
 	return (
 		<div className="card-actions mt-6 justify-end">
-			{footerActions.map((action) => (
+			{footerActions.map((action, index) => (
 				<button
-					key={`${action.label}-footeraction`}
+					type="button"
+					key={`footeraction-${index}`}
 					className={getFActionClassName(action)}
 					disabled={action.disabled}
 					onClick={action.onClick}

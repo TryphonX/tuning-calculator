@@ -1,29 +1,23 @@
 import {
-	RepairParts,
-	TuningPart,
+	CalculatorWorkerMessage,
 	TuningPartName,
 	TuningSetup,
 } from '@/@types/calculator';
 
 const isNewSetupBetter = (newSetup: TuningSetup, currentBest: TuningSetup) => {
-	const newSetUpNetCost = newSetup.repairs?.netCost ?? newSetup.cost;
-	const currentBestNetCost = currentBest.repairs?.netCost ?? currentBest.cost;
+	const newSetUpNetCost = newSetup.replacementParts?.netCost ?? newSetup.cost;
+	const currentBestNetCost =
+		currentBest.replacementParts?.netCost ?? currentBest.cost;
 
-	return newSetUpNetCost !== currentBestNetCost
-		? newSetUpNetCost < currentBestNetCost
-		: newSetup.boost > currentBest.boost;
+	return newSetUpNetCost !== currentBestNetCost ?
+			newSetUpNetCost < currentBestNetCost
+		:	newSetup.boost > currentBest.boost;
 };
 
-onmessage = function (
-	e: MessageEvent<{
-		parts: TuningPart[];
-		targetBoostIncrease: number;
-		repairParts: RepairParts;
-	}>,
-) {
+onmessage = function (e: MessageEvent<CalculatorWorkerMessage>) {
 	const parts = e.data.parts;
 	const targetBoostIncrease = e.data.targetBoostIncrease;
-	const repairParts = e.data.repairParts;
+	const repairParts = e.data.replacementParts;
 
 	const numParts = parts.length;
 	let bestSetup: TuningSetup | null = null;
@@ -50,7 +44,7 @@ onmessage = function (
 
 				// remove the cost of the original part if it is being repaired
 				if (Object.keys(repairParts).includes(part.name)) {
-					netCost += repairParts[part.name];
+					netCost += repairParts[part.name].deductibleCost;
 					repairPartNames.push(part.name);
 					hasRepairParts = true;
 				}
@@ -65,15 +59,15 @@ onmessage = function (
 				cost: comboCost,
 				boost: comboBoost,
 				costToBoost: costToBoost,
-				repairs: hasRepairParts
-					? {
-							repairPartNames: repairPartNames,
+				replacementParts:
+					hasRepairParts ?
+						{
+							names: repairPartNames,
 							netCost: netCost,
 							netCostToBoost: netCost / comboBoost,
 							totalSaved: comboCost - netCost,
-							// eslint-disable-next-line no-mixed-spaces-and-tabs
-					  }
-					: undefined,
+						}
+					:	undefined,
 			};
 
 			// update bestSetup

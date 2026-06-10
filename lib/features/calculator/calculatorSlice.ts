@@ -3,7 +3,6 @@ import {
 	Method,
 	SelectedPart,
 	TuningPartName,
-	TuningSetup,
 } from '@/@types/calculator';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
@@ -12,7 +11,6 @@ interface CalculatorState {
 	currentEngine: Engine | null;
 	selectedParts: SelectedPart[];
 	locked: boolean;
-	repairs?: TuningSetup['repairs'];
 	currentStep: number;
 	method: Method;
 }
@@ -21,7 +19,6 @@ const initialState: CalculatorState = {
 	currentEngine: null,
 	selectedParts: [],
 	locked: false,
-	repairs: undefined,
 	currentStep: 0,
 	method: 'auto',
 };
@@ -30,11 +27,10 @@ export const calculatorSlice = createSlice({
 	name: 'calculator',
 	initialState,
 	reducers: {
-		selectEngine: (state, action: PayloadAction<Engine | null>) => {
+		updateEngine: (state, action: PayloadAction<Engine | null>) => {
 			state.currentEngine = action.payload;
 			state.selectedParts = initialState.selectedParts;
 			state.locked = initialState.locked;
-			state.repairs = initialState.repairs;
 		},
 		toggleSelectedPart: (state, action: PayloadAction<SelectedPart>) => {
 			const part = action.payload;
@@ -64,15 +60,6 @@ export const calculatorSlice = createSlice({
 		unlock: (state) => {
 			state.locked = false;
 		},
-		setRepairs: (
-			state,
-			action: PayloadAction<TuningSetup['repairs'] | undefined>,
-		) => {
-			state.repairs = action.payload;
-			if (action.payload) {
-				state.locked = true;
-			}
-		},
 		nextStep: (state) => {
 			state.currentStep += 1;
 		},
@@ -86,12 +73,11 @@ export const calculatorSlice = createSlice({
 });
 
 export const {
-	selectEngine,
+	updateEngine,
 	toggleSelectedPart,
 	setPartMissing,
 	updateSelectedParts,
 	unlock,
-	setRepairs,
 	nextStep,
 	prevStep,
 	setMethod,
@@ -103,7 +89,6 @@ export const selectCurrentEngine = (state: RootState) =>
 export const selectSelectedParts = (state: RootState) =>
 	state.calculator.selectedParts;
 export const selectLocked = (state: RootState) => state.calculator.locked;
-export const selectRepairs = (state: RootState) => state.calculator.repairs;
 export const selectCurrentStep = (state: RootState) =>
 	state.calculator.currentStep;
 

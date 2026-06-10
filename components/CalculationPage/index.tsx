@@ -4,6 +4,8 @@ import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { useCallback, useMemo } from 'react';
 import { LuWandSparkles } from 'react-icons/lu';
+import { AutoGenTuningView } from '../AutoGen/AutoGenTuningView';
+import { CartView } from '../CartView';
 import EngineCard from '../EngineCard';
 import { ManualCalculator } from '../ManualCalculator';
 import { TabData, Tabs } from '../Tabs';
@@ -23,7 +25,7 @@ export const CalculationPage = () => {
 						<LuWandSparkles aria-hidden /> Auto-generate
 					</>
 				),
-				content: <ManualCalculator />,
+				content: <AutoGenTuningView />,
 				default: method === 'auto',
 				method: 'auto',
 			},
@@ -52,13 +54,16 @@ export const CalculationPage = () => {
 			case 1:
 				return <Tabs tabsName={TABS_NAME} tabs={tabs}></Tabs>;
 			case 2:
-				return <div>Step 3: Placeholder</div>;
+				return <CartView />;
 			default:
 				return null;
 		}
 	}, [currentStep, tabs]);
 
-	const currentStepVisual = method === 'auto' ? currentStep : currentStep + 1;
+	const currentStepVisual = useMemo(
+		() => (method === 'manual' && currentStep === 1 ? 2 : currentStep),
+		[currentStep, method],
+	);
 
 	return (
 		<>

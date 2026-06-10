@@ -3,8 +3,12 @@
 import { Engine, EngineName } from '@/@types/calculator';
 import { BaseProps } from '@/@types/globals';
 import {
+	resetReplacementParts,
+	setGeneratedSetup,
+} from '@/lib/features/autoGen/autoGenSlice';
+import {
 	selectCurrentEngine,
-	selectEngine,
+	updateEngine,
 } from '@/lib/features/calculator/calculatorSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { ENGINE_CONFIGURATIONS } from '@/modules/common';
@@ -34,7 +38,9 @@ export default function EngineSelect({ className }: BaseProps) {
 				(structuredClone(engines[engineName as EngineName]) as Engine)
 			:	null;
 
-		dispatch(selectEngine(engine));
+		dispatch(updateEngine(engine));
+		dispatch(resetReplacementParts());
+		dispatch(setGeneratedSetup(null));
 	};
 
 	const handleEngineConfigChange = ({
@@ -52,7 +58,8 @@ export default function EngineSelect({ className }: BaseProps) {
 			) ?? null,
 		) as Engine | null;
 
-		dispatch(selectEngine(newEngine));
+		dispatch(updateEngine(newEngine));
+		dispatch(resetReplacementParts());
 	};
 
 	const EngineOptions = () => {

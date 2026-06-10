@@ -64,7 +64,7 @@ export const UnlockEvent = {
 
 export const SetRepairsEvent = {
 	name: 'setRepairsEvent',
-	dispatch: (repairs: TuningSetup['repairs']) => {
+	dispatch: (repairs: TuningSetup['replacementParts']) => {
 		dispatchEvent(
 			new CustomEvent(SetRepairsEvent.name, {
 				detail: repairs,

@@ -1,6 +1,7 @@
 'use client';
 
 import { PartSortBy } from '@/@types/globals';
+import { selectAutoGen } from '@/lib/features/autoGen/autoGenSlice';
 import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { getFullPartByName, partSortFn } from '@/modules/common';
@@ -9,8 +10,9 @@ import { useEffect, useMemo, useState } from 'react';
 import SortBtn from '../SortBtn';
 
 export const SelectedPartsTable = () => {
-	const { currentEngine, selectedParts, repairs } =
+	const { currentEngine, selectedParts, method } =
 		useAppSelector(selectCalculator);
+	const { generatedSetup } = useAppSelector(selectAutoGen);
 
 	const [sortBy, setSortBy] = useState<PartSortBy>('name_asc');
 
@@ -136,42 +138,54 @@ export const SelectedPartsTable = () => {
 						})}
 					</tbody>
 					<tfoot className="text-xs 2xl:text-sm">
-						{repairs && (
-							<tr>
-								<th>Repairs</th>
-								<th
-									colSpan={2}
-									className="text-right text-primary"
-								>
-									-{repairs.totalSaved} CR
-								</th>
-								<th className="text-right text-primary">
-									-
-									{(
-										totalCostToBoost -
-										repairs.netCostToBoost
-									).toFixed(0)}{' '}
-									CR/Boost
-								</th>
-							</tr>
-						)}
+						{method === 'auto' &&
+							generatedSetup?.replacementParts && (
+								<tr className="bg-accent text-accent-content border-b border-accent-content">
+									<th>Replacement Parts</th>
+									<th
+										colSpan={2}
+										className="text-right font-bold"
+									>
+										-
+										{
+											generatedSetup.replacementParts
+												.totalSaved
+										}{' '}
+										CR
+									</th>
+									<th className="text-right font-bold">
+										-
+										{(
+											totalCostToBoost -
+											generatedSetup.replacementParts
+												.netCostToBoost
+										).toFixed(0)}{' '}
+										CR/Boost
+									</th>
+								</tr>
+							)}
 						<tr className="bg-secondary text-secondary-content">
 							<th>Total:</th>
 							<th className="text-right">
 								+{totalBoost.toFixed(2)}%
 							</th>
 							<th className="text-right">
-								{repairs ? repairs.netCost : totalCost} CR
+								{generatedSetup?.replacementParts ?
+									generatedSetup.replacementParts.netCost
+								:	totalCost}{' '}
+								CR
 							</th>
 							<th
 								className="text-right max-md:hidden"
-								title={(repairs ?
-									repairs.netCostToBoost
+								title={(generatedSetup?.replacementParts ?
+									generatedSetup.replacementParts
+										.netCostToBoost
 								:	totalCostToBoost
 								).toFixed(2)}
 							>
-								{(repairs ?
-									repairs.netCostToBoost
+								{(generatedSetup?.replacementParts ?
+									generatedSetup.replacementParts
+										.netCostToBoost
 								:	totalCostToBoost
 								).toFixed(0)}{' '}
 								CR/Boost
