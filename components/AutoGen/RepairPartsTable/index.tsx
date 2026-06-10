@@ -16,7 +16,6 @@ export const RepairPartsTable = () => {
 
 	const onRepairPartsChange = useCallback(
 		(repairParts: ReplacementParts) => {
-			console.log(1, repairParts);
 			dispatch(setReplacementParts(repairParts));
 		},
 		[dispatch],

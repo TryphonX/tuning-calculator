@@ -89,7 +89,6 @@ export const CartView = () => {
 	useEffect(() => {
 		if (method === 'auto') {
 			generateSetup(currentEngine!, targetIncrease, replacementParts);
-			console.log('test');
 		}
 	}, [
 		currentEngine,
