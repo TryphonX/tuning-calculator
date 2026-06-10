@@ -15,17 +15,6 @@ import { ENGINE_CONFIGURATIONS } from '@/modules/common';
 import { ChangeEvent, useCallback, useState } from 'react';
 import engines from '../../data/cms21/engines.json';
 
-const EngineConfigOptions = () => {
-	return (
-		<>
-			<option value="">Any</option>
-			{ENGINE_CONFIGURATIONS.map((option) => (
-				<option key={option}>{option}</option>
-			))}
-		</>
-	);
-};
-
 export default function EngineSelect({ className }: BaseProps) {
 	const currentEngine = useAppSelector(selectCurrentEngine);
 	const dispatch = useAppDispatch();
@@ -62,24 +51,6 @@ export default function EngineSelect({ className }: BaseProps) {
 		dispatch(resetReplacementParts());
 	};
 
-	const EngineOptions = () => {
-		return (
-			<>
-				{!engineConfig && <option>-- None --</option>}
-				{Object.keys(engines)
-					.filter(
-						(key) =>
-							!engineConfig ||
-							engines[key as EngineName].specs.configuration ===
-								engineConfig,
-					)
-					.map((option) => (
-						<option key={option}>{option}</option>
-					))}
-			</>
-		);
-	};
-
 	const getClassName = useCallback(
 		() => (className ? ` ${className}` : ''),
 		[className],
@@ -93,7 +64,10 @@ export default function EngineSelect({ className }: BaseProps) {
 					value={engineConfig}
 					onChange={handleEngineConfigChange}
 				>
-					<EngineConfigOptions />
+					<option value="">Any</option>
+					{ENGINE_CONFIGURATIONS.map((option) => (
+						<option key={option}>{option}</option>
+					))}
 				</select>
 			</label>
 
@@ -103,7 +77,17 @@ export default function EngineSelect({ className }: BaseProps) {
 					value={currentEngine?.name ?? ''}
 					onChange={handleEngineChange}
 				>
-					<EngineOptions />
+					{!engineConfig && <option>-- None --</option>}
+					{Object.keys(engines)
+						.filter(
+							(key) =>
+								!engineConfig ||
+								engines[key as EngineName].specs
+									.configuration === engineConfig,
+						)
+						.map((option) => (
+							<option key={option}>{option}</option>
+						))}
 				</select>
 			</label>
 		</div>
