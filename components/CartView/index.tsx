@@ -122,8 +122,8 @@ export const CartView = () => {
 		<Card title="Cart">
 			<div className="flex flex-col justify-between gap-10">
 				{isLoading && (
-					<div className="text-center mt-8">
-						<span className="loading loading-bars w-28 text-primary"></span>
+					<div className="mt-4">
+						<SelectedPartsTable isSkeleton />
 					</div>
 				)}
 				{!isLoading && method === 'auto' && !generatedSetup && (
