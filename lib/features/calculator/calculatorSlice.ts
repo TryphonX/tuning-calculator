@@ -69,6 +69,13 @@ export const calculatorSlice = createSlice({
 		setMethod: (state, action: PayloadAction<Method>) => {
 			state.method = action.payload;
 		},
+		resetCalculatorState: (state) => {
+			state.currentEngine = initialState.currentEngine;
+			state.selectedParts = initialState.selectedParts;
+			state.locked = initialState.locked;
+			state.currentStep = initialState.currentStep;
+			state.method = initialState.method;
+		},
 	},
 });
 
@@ -81,6 +88,7 @@ export const {
 	nextStep,
 	prevStep,
 	setMethod,
+	resetCalculatorState,
 } = calculatorSlice.actions;
 
 export const selectCalculator = (state: RootState) => state.calculator;

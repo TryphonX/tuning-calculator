@@ -41,6 +41,12 @@ export const autoGenSlice = createSlice({
 		setWithReplacements: (state, action: PayloadAction<boolean>) => {
 			state.withReplacements = action.payload;
 		},
+		resetAutoGenState: (state) => {
+			state.generatedSetup = initialState.generatedSetup;
+			state.targetIncrease = initialState.targetIncrease;
+			state.replacementParts = initialState.replacementParts;
+			state.withReplacements = initialState.withReplacements;
+		},
 	},
 });
 
@@ -50,6 +56,7 @@ export const {
 	setReplacementParts,
 	resetReplacementParts,
 	setWithReplacements,
+	resetAutoGenState,
 } = autoGenSlice.actions;
 
 export const selectAutoGen = (state: RootState) => state.autoGen;

@@ -1,8 +1,12 @@
 'use client';
 
-import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
-import { useAppSelector } from '@/lib/hooks';
-import { useCallback, useMemo } from 'react';
+import { resetAutoGenState } from '@/lib/features/autoGen/autoGenSlice';
+import {
+	resetCalculatorState,
+	selectCalculator,
+} from '@/lib/features/calculator/calculatorSlice';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { useCallback, useEffect, useMemo } from 'react';
 import { LuWandSparkles, LuWrench } from 'react-icons/lu';
 import { AutoGenTuningView } from '../AutoGen/AutoGenTuningView';
 import { CartView } from '../CartView';
@@ -15,6 +19,7 @@ const TABS_NAME = 'cms-calc-21-tabs';
 const STEPS = ['Engine selection', 'Tuning method', 'Cart'];
 
 export const CalculationPage = () => {
+	const dispatch = useAppDispatch();
 	const { currentStep, method } = useAppSelector(selectCalculator);
 
 	const tabs: TabData[] = useMemo<TabData[]>(
@@ -60,6 +65,13 @@ export const CalculationPage = () => {
 		() => (method === 'manual' && currentStep === 1 ? 2 : currentStep),
 		[currentStep, method],
 	);
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetCalculatorState());
+			dispatch(resetAutoGenState());
+		};
+	}, [dispatch]);
 
 	return (
 		<>
