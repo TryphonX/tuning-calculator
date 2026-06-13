@@ -1,4 +1,5 @@
 import { Page } from '@/modules/navigation';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FaPaypal } from 'react-icons/fa6';
 import { HiMenuAlt2 } from 'react-icons/hi';
@@ -32,6 +33,14 @@ export default function Navbar() {
 					</ul>
 				</div>
 				<Link href={Page.Home} className="btn btn-ghost text-xl">
+					<Image
+						src="/cms-tuning-calculator/images/logo.svg"
+						alt="tuning calculator logo"
+						aria-hidden
+						width={50}
+						height={50}
+						priority
+					/>
 					CmsTuningCalculator
 				</Link>
 			</div>

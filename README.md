@@ -195,7 +195,7 @@ Distributed under the GNU GPL v3 License. See `COPYING.txt` for more information
 - [Img Shields](https://shields.io)
 - [React Icons](https://react-icons.github.io/react-icons)
 - [Best README Template](https://github.com/othneildrew/Best-README-Template)
-- [Favicon Generator](https://favicon.io/favicon-generator/)
+- [Favicon.io](https://favicon.io/)
 - [semantic-release][semantic-release-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

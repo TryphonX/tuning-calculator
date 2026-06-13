@@ -9,11 +9,12 @@ import './globals.css';
 const ubuntu = Ubuntu({ weight: '400', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Tuning Calculator',
+	title: 'CmsTuningCalculator',
 	description:
-		'Web app that makes tuning cars in Car Mechanic Simulator 21 easier.',
+		'Web app that makes tuning cars in Car Mechanic Simulator easier.',
 	authors: { name: 'Tryfon Xydas' },
 	keywords: [
+		'CmsTuningCalculator',
 		'Car Mechanic Simulator',
 		'CMS21',
 		'Car',
@@ -21,6 +22,10 @@ export const metadata: Metadata = {
 		'Simulator',
 		'21',
 		'CMS',
+		'Tuning',
+		'Calculator',
+		'CMS26',
+		'26',
 	],
 };
 
@@ -32,6 +37,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" data-theme="dark">
 			<Head>
+				<link rel="icon" href="/favicon.ico" sizes="any" />
 				<link
 					rel="preload"
 					as="image"
