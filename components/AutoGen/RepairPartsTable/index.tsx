@@ -34,7 +34,7 @@ export const RepairPartsTable = () => {
 			<div className="overflow-x-auto overflow-y-auto max-h-[40vh] w-full rounded-xl">
 				<table className="table table-pin-rows table-xs sm:table-sm xl:table-md">
 					<thead>
-						<tr className="text-lg outline-1 outline-base-200">
+						<tr className="text-lg">
 							<th className="w-1/2">Repair Part</th>
 							<th className="text-right">Quantity</th>
 						</tr>

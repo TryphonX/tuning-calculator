@@ -19,7 +19,7 @@ export const Hero = () => {
 						priority
 					/>
 					<h1 className="text-2xl sm:text-4xl md:text-5xl font-bold">
-						About CmsTuningCalculator
+						CmsTuningCalculator
 					</h1>
 					<div className="py-6 flex flex-col space-y-4">
 						<p>
