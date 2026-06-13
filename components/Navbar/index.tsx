@@ -30,13 +30,20 @@ export default function Navbar() {
 						<li>
 							<Link href={Page.About}>About</Link>
 						</li>
+						<li className="sm:hidden">
+							<Link
+								href="https://paypal.me/TryphonKsydas"
+								target="_blank"
+							>
+								<FaPaypal /> Donate
+							</Link>
+						</li>
 					</ul>
 				</div>
 				<Link href={Page.Home} className="btn btn-ghost text-xl">
 					<Image
 						src="/cms-tuning-calculator/images/logo.svg"
 						alt="tuning calculator logo"
-						className="hidden sm:block"
 						aria-hidden
 						width={30}
 						height={30}
@@ -58,7 +65,7 @@ export default function Navbar() {
 					</li>
 				</ul>
 			</div>
-			<div className="navbar-end">
+			<div className="navbar-end hidden sm:inline-flex">
 				<Link href="https://paypal.me/TryphonKsydas" target="_blank">
 					<button
 						type="button"
