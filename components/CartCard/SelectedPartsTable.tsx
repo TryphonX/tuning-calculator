@@ -102,8 +102,8 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 
 	return (
 		<>
-			<div className="overflow-x-auto w-full rounded-xl border border-base-content/10">
-				<table className="table table-sm sm:table-md table-zebra">
+			<div className="overflow-x-auto w-full rounded-xl">
+				<table className="table table-sm sm:table-md">
 					<thead>
 						<tr>
 							<th className="w-1/2 xl:w-1/3 2xl:w-1/2">

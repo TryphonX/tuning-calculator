@@ -3,7 +3,7 @@ import { FaGithub } from 'react-icons/fa6';
 
 export default function GithubIssueSection() {
 	return (
-		<div className="hero min-h-screen bg-base-100">
+		<div className="hero min-h-screen relative">
 			<div className="hero-content p-8">
 				<div className="grid grid-cols-1 grid-rows-4 md:grid-cols-3 md:grid-rows-2 gap-8">
 					<div className="flex flex-col">

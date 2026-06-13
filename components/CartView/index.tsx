@@ -17,6 +17,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { getFullPartByName } from '@/modules/common';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { FaCartShopping } from 'react-icons/fa6';
 import Card from '../Card';
 import { SelectedPartsTable } from '../CartCard/SelectedPartsTable';
 import { StepsNavigation } from '../StepsNavigation';
@@ -40,6 +41,16 @@ export const CartView = () => {
 		}
 		return null;
 	}, []);
+
+	const cardTitle = useMemo(
+		() => (
+			<h2 className="space-x-2">
+				<FaCartShopping aria-hidden className="inline-block" />
+				<span>Cart</span>
+			</h2>
+		),
+		[],
+	);
 
 	const generateSetup = useCallback(
 		(
@@ -119,7 +130,7 @@ export const CartView = () => {
 	}, [generatedSetup, dispatch, currentEngine]);
 
 	return (
-		<Card title="Cart">
+		<Card title={cardTitle}>
 			<div className="flex flex-col justify-between gap-10">
 				{isLoading && (
 					<div className="mt-4">

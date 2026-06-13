@@ -5,7 +5,7 @@ import {
 } from '@/lib/features/calculator/calculatorSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useMemo } from 'react';
-import { FaRegCircleXmark } from 'react-icons/fa6';
+import { FaCartShopping, FaRegCircleXmark } from 'react-icons/fa6';
 import Card from '../Card';
 import { SelectedPartsTable } from './SelectedPartsTable';
 
@@ -29,8 +29,18 @@ export const CartCard = ({ className }: BaseProps) => {
 
 	const actions: Action[] = useMemo(() => [clearAction], [clearAction]);
 
+	const cardTitle = useMemo(
+		() => (
+			<h2 className="space-x-2">
+				<FaCartShopping aria-hidden className="inline-block" />
+				<span>Cart</span>
+			</h2>
+		),
+		[],
+	);
+
 	return (
-		<Card title="Cart" className={className} actions={actions}>
+		<Card title={cardTitle} className={className} actions={actions}>
 			<div className="mt-4">
 				<SelectedPartsTable />
 			</div>

@@ -130,8 +130,8 @@ export const PartsTable = () => {
 	return (
 		<>
 			<MissingPartAlert partMissing={anyPartMissing} />
-			<div className="overflow-x-auto w-full rounded-xl border border-base-content/10">
-				<table className="table table-xs sm:table-md table-zebra">
+			<div className="overflow-x-auto w-full rounded-xl">
+				<table className="table table-xs sm:table-md">
 					<thead className="text-lg">
 						<tr>
 							<td className="w-0">

@@ -1,17 +1,20 @@
 import { Action, BasePropsWithChildren } from '@/@types/globals';
 import { useCallback } from 'react';
 
+type CardLevel = '-1' | '0' | '1';
+
 type CardProps = BasePropsWithChildren &
 	HeaderProps &
 	FooterActionsProps & {
-		title?: string;
+		title?: React.ReactNode;
+		cardLevel?: CardLevel;
 	};
 
 const getActionClassName = (action: Action) =>
 	'btn join-item btn-xs ' + `${action.className ?? 'btn-neutral'}`;
 
 type HeaderProps = ActionsProps & {
-	title?: string;
+	title?: React.ReactNode;
 };
 
 type ActionsProps = {
@@ -91,15 +94,28 @@ export default function Card({
 	actions,
 	children,
 	footerActions,
+	cardLevel = '0',
 }: CardProps) {
 	const getClassName = useCallback(
 		() => (className ? ` ${className}` : ''),
 		[className],
 	);
 
+	const getCardLevelClassName = useCallback(() => {
+		switch (cardLevel) {
+			case '-1':
+				return 'bg-base-300';
+			case '1':
+				return 'bg-base-100';
+			case '0':
+			default:
+				return 'bg-base-200';
+		}
+	}, [cardLevel]);
+
 	return (
 		<div
-			className={`card card-border bg-base-200/50 border-base-content/10 shadow-xl shadow-base-200 ${getClassName()}`}
+			className={`card border-t border-base-content/10 ${getCardLevelClassName()} shadow-md ${getClassName()}`.trimEnd()}
 		>
 			<div className="card-body">
 				<Header title={title} actions={actions} />

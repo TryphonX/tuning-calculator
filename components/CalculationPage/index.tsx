@@ -3,7 +3,7 @@
 import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { useCallback, useMemo } from 'react';
-import { LuWandSparkles } from 'react-icons/lu';
+import { LuWandSparkles, LuWrench } from 'react-icons/lu';
 import { AutoGenTuningView } from '../AutoGen/AutoGenTuningView';
 import { CartView } from '../CartView';
 import EngineCard from '../EngineCard';
@@ -32,7 +32,7 @@ export const CalculationPage = () => {
 			{
 				title: (
 					<>
-						<LuWandSparkles aria-hidden /> Manual
+						<LuWrench aria-hidden /> Manual
 					</>
 				),
 				content: <ManualCalculator />,
@@ -63,22 +63,24 @@ export const CalculationPage = () => {
 
 	return (
 		<>
-			<h1 className="hidden">Car Mechanic Simulator 21 Calculator</h1>
-			<div className="p-8 xl:p-16 space-y-16">
-				<div className="flex w-full justify-center">
-					<ul className="steps steps-horizontal w-2xl">
-						{STEPS.map((step, index) => (
-							<li
-								key={index}
-								className={`step ${index <= currentStepVisual ? 'step-secondary' : ''}`}
-							>
-								{step}
-							</li>
-						))}
-					</ul>
-				</div>
-				<div className="flex justify-center">
-					<CurrentStepView />
+			<div className="relative">
+				<h1 className="hidden">Car Mechanic Simulator 21 Calculator</h1>
+				<div className="p-8 xl:p-16 space-y-16">
+					<div className="flex w-full justify-center">
+						<ul className="steps steps-horizontal w-2xl">
+							{STEPS.map((step, index) => (
+								<li
+									key={index}
+									className={`step ${index <= currentStepVisual ? 'step-secondary' : ''}`}
+								>
+									{step}
+								</li>
+							))}
+						</ul>
+					</div>
+					<div className="flex justify-center">
+						<CurrentStepView />
+					</div>
 				</div>
 			</div>
 		</>

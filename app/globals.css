@@ -7,7 +7,7 @@
 	color-scheme: 'dark';
 	/* https://www.realtimecolors.com/?colors=e1fafa-030f0f-08fdfd-eab308-cada28&fonts=Inter-Inter */
 	--color-base-100: hsl(180, 50%, 5%);
-	--color-base-200: hsl(180, 50%, 3.5%);
+	--color-base-200: hsl(180, 50%, 4%);
 	--color-base-300: hsl(180, 50%, 2%);
 	--color-base-content: oklch(97.807% 0.029 256.847);
 	--color-primary: #03f5f7;

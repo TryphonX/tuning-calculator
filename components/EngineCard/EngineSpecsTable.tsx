@@ -9,8 +9,8 @@ export default function EngineSpecsTable() {
 	if (!currentEngine) {
 		return (
 			<figure>
-				<div className="overflow-x-auto w-full border rounded-xl border-base-content/10">
-					<table className="table table-md table-zebra">
+				<div className="overflow-x-auto w-full rounded-xl">
+					<table className="table table-md">
 						<tbody>
 							<tr>
 								<th className="w-1/4">Power</th>
@@ -33,8 +33,8 @@ export default function EngineSpecsTable() {
 
 	return (
 		<figure>
-			<div className="overflow-x-auto w-full border rounded-xl border-base-content/10">
-				<table className="table table-md table-zebra">
+			<div className="overflow-x-auto w-full rounded-xl">
+				<table className="table table-md">
 					<tbody>
 						<tr>
 							<th className="w-1/4">Power</th>

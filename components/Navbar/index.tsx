@@ -36,9 +36,10 @@ export default function Navbar() {
 					<Image
 						src="/cms-tuning-calculator/images/logo.svg"
 						alt="tuning calculator logo"
+						className="hidden sm:block"
 						aria-hidden
-						width={50}
-						height={50}
+						width={30}
+						height={30}
 						priority
 					/>
 					CmsTuningCalculator

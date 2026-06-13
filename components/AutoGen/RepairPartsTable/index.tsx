@@ -31,10 +31,10 @@ export const RepairPartsTable = () => {
 
 	return (
 		<div className="py-4">
-			<div className="overflow-x-auto overflow-y-auto max-h-[40vh] w-full rounded-xl border border-base-content/10">
-				<table className="table table-pin-rows table-xs sm:table-sm xl:table-md table-zebra">
+			<div className="overflow-x-auto overflow-y-auto max-h-[40vh] w-full rounded-xl">
+				<table className="table table-pin-rows table-xs sm:table-sm xl:table-md">
 					<thead>
-						<tr className="text-lg">
+						<tr className="text-lg outline-1 outline-base-200">
 							<th className="w-1/2">Repair Part</th>
 							<th className="text-right">Quantity</th>
 						</tr>
