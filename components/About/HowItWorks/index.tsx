@@ -65,7 +65,9 @@ export const HowitWorks = () => {
 					</Card>
 				</div>
 				<p className="text-center text-lg font-semibold mt-8">
-					Say goodbye to guesswork and hello to precision tuning.
+					Say goodbye to <span className="text-error">guesswork</span>{' '}
+					and hello to{' '}
+					<span className="text-accent">precision tuning</span>
 				</p>
 			</div>
 		</div>

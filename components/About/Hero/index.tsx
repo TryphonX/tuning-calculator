@@ -34,16 +34,25 @@ export const Hero = () => {
 							access to vital information like cost, performance
 							boost, and the cost-to-boost ratio.
 						</p>
-						<p className="text-xs text-base-content/75">
-							This app is a personal project and is not associated
-							with the makers and/or publishers of the game in any
-							way shape or form.
-							<span className="block font-thin text-xs text-base-content/75">
+						<div className="text-xs text-base-content/75 space-y-1">
+							<p>
+								&quot;Database&quot; is doing a lot of heavy
+								lifting here; it&apos;s a bunch of JSON files
+								that I&apos;ve painstakingly curated and
+								cross-referenced to ensure accuracy. If you find
+								any discrepancies, please report them via the
+								GitHub link below.
+							</p>
+							<p>
+								This app is a personal project and is not
+								associated with the makers and/or publishers of
+								the game in any way shape or form.
+							</p>
+							<p>
 								Don&apos;t go through the effort of running any
-								of this text through ai detectors; I was lazy, I
-								admit it.
-							</span>
-						</p>
+								of this text through ai detectors; I was lazy.
+							</p>
+						</div>
 					</div>
 
 					<div className="flex-col space-y-4">
