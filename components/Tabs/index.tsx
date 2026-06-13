@@ -18,7 +18,7 @@ interface Props {
 export const Tabs = ({ tabsName, tabs }: Props) => {
 	const dispatch = useAppDispatch();
 	return (
-		<div className="tabs tabs-box p-2">
+		<div className="tabs tabs-box tabs-sm p-2 pb-4 max-w-[1920px]">
 			{tabs.map((tab, index) => (
 				<Fragment key={index}>
 					<label className="tab gap-2">
@@ -36,7 +36,7 @@ export const Tabs = ({ tabsName, tabs }: Props) => {
 						/>
 						{tab.title}
 					</label>
-					<div className="tab-content bg-base-100 border-base-300 p-6 mt-2 rounded-2xl">
+					<div className="tab-content bg-base-100 border-base-300 pb-2 xl:p-4 mt-2 rounded-2xl">
 						{tab.content}
 					</div>
 				</Fragment>

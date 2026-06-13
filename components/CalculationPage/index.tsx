@@ -46,11 +46,7 @@ export const CalculationPage = () => {
 	const CurrentStepView = useCallback(() => {
 		switch (currentStep) {
 			case 0:
-				return (
-					<div className="flex justify-center">
-						<EngineCard className="w-4xl" />
-					</div>
-				);
+				return <EngineCard className="w-4xl" />;
 			case 1:
 				return <Tabs tabsName={TABS_NAME} tabs={tabs}></Tabs>;
 			case 2:
@@ -81,7 +77,9 @@ export const CalculationPage = () => {
 						))}
 					</ul>
 				</div>
-				<CurrentStepView />
+				<div className="flex justify-center">
+					<CurrentStepView />
+				</div>
 			</div>
 		</>
 	);

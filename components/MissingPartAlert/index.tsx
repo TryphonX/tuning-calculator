@@ -11,9 +11,9 @@ const MissingPartAlert = ({ partMissing }: Props) => {
 	return (
 		<div
 			role="alert"
-			className="alert alert-warning alert-soft py-2 px-4 mb-4"
+			className="alert alert-warning alert-soft py-2 px-4 mb-4 max-sm:items-start"
 		>
-			<LuTriangleAlert size={24} aria-hidden />
+			<LuTriangleAlert className="max-sm:mt-2" size={24} aria-hidden />
 			<div>
 				<p className="text-sm font-bold">
 					Some parts are missing data! Please double check within the

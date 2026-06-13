@@ -1,30 +1,17 @@
 import { Action, BaseProps } from '@/@types/globals';
-import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
-import { useAppSelector } from '@/lib/hooks';
-import { UnlockEvent, UpdateSelectedPartsEvent } from '@/modules/customEvents';
+import {
+	selectCalculator,
+	updateSelectedParts,
+} from '@/lib/features/calculator/calculatorSlice';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useMemo } from 'react';
-import { FaRegCircleXmark, FaUnlock } from 'react-icons/fa6';
+import { FaRegCircleXmark } from 'react-icons/fa6';
 import Card from '../Card';
 import { SelectedPartsTable } from './SelectedPartsTable';
 
 export const CartCard = ({ className }: BaseProps) => {
-	const { locked, selectedParts } = useAppSelector(selectCalculator);
-
-	const unlockAction: Action = useMemo(
-		() => ({
-			label: (
-				<>
-					<FaUnlock aria-hidden /> Unlock
-				</>
-			),
-			className: 'btn-secondary',
-			onClick: () => {
-				UnlockEvent.dispatch();
-			},
-			disabled: !locked,
-		}),
-		[locked],
-	);
+	const dispatch = useAppDispatch();
+	const { selectedParts } = useAppSelector(selectCalculator);
 
 	const clearAction: Action = useMemo(
 		() => ({
@@ -33,17 +20,14 @@ export const CartCard = ({ className }: BaseProps) => {
 					<FaRegCircleXmark aria-hidden /> Clear
 				</>
 			),
-			disabled: !selectedParts.length || locked,
+			disabled: !selectedParts.length,
 			className: 'btn-error',
-			onClick: () => UpdateSelectedPartsEvent.dispatch([]),
+			onClick: () => dispatch(updateSelectedParts([])),
 		}),
-		[selectedParts, locked],
+		[dispatch, selectedParts.length],
 	);
 
-	const actions: Action[] = useMemo(
-		() => [unlockAction, clearAction],
-		[unlockAction, clearAction],
-	);
+	const actions: Action[] = useMemo(() => [clearAction], [clearAction]);
 
 	return (
 		<Card title="Cart" className={className} actions={actions}>
