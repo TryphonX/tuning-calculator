@@ -1,4 +1,5 @@
 import { Page } from '@/modules/navigation';
+import { PreloadedLogo } from '@/modules/resources';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaGithub, FaPlay } from 'react-icons/fa6';
@@ -10,8 +11,8 @@ export const Hero = () => {
 				<div>
 					<Image
 						className="mb-6 rounded-full size-4/12 md:size-1/4 lg:size-1/6 mx-auto"
-						src="/cms-tuning-calculator/images/logo.svg"
-						alt="tuning calculator logo"
+						src={PreloadedLogo.src}
+						alt={PreloadedLogo.alt}
 						aria-hidden
 						width={202.66}
 						height={202.66}

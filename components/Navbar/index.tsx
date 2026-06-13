@@ -1,4 +1,5 @@
 import { Page } from '@/modules/navigation';
+import { PreloadedLogo } from '@/modules/resources';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaPaypal } from 'react-icons/fa6';
@@ -42,8 +43,8 @@ export default function Navbar() {
 				</div>
 				<Link href={Page.Home} className="btn btn-ghost text-xl">
 					<Image
-						src="/cms-tuning-calculator/images/logo.svg"
-						alt="tuning calculator logo"
+						src={PreloadedLogo.src}
+						alt={PreloadedLogo.alt}
 						aria-hidden
 						width={30}
 						height={30}

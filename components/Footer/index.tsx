@@ -1,3 +1,4 @@
+import { PreloadedAvatar } from '@/modules/resources';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa6';
@@ -24,8 +25,8 @@ export default function Footer() {
 						aria-hidden
 						width={54}
 						height={54}
-						src="/cms-tuning-calculator/images/Avatar2020.webp"
-						alt="TryphonX's avatar"
+						src={PreloadedAvatar.src}
+						alt={PreloadedAvatar.alt}
 					/>
 				</Link>
 				<div className="space-y-1">

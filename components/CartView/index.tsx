@@ -130,7 +130,7 @@ export const CartView = () => {
 	}, [generatedSetup, dispatch, currentEngine]);
 
 	return (
-		<Card title={cardTitle}>
+		<Card title={cardTitle} className="w-full max-w-7xl">
 			<div className="flex flex-col justify-between gap-10">
 				{isLoading && (
 					<div className="mt-4">

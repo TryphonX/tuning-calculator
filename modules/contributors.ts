@@ -1,3 +1,5 @@
+import { PreloadedAvatar } from './resources';
+
 export interface Contributor {
 	name: string;
 	username: string;
@@ -10,7 +12,7 @@ export const contributors: Contributor[] = [
 	{
 		name: 'Tryfon Xydas',
 		username: 'TryphonX',
-		avatarUrl: '/cms-tuning-calculator/images/Avatar2020.webp',
+		avatarUrl: PreloadedAvatar.src,
 		isCreator: true,
 		websiteUrl: 'https://tryphonx.github.io',
 	},
