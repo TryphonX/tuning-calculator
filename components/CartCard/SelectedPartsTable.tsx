@@ -201,12 +201,9 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 					<tfoot className="text-xs 2xl:text-sm">
 						{method === 'auto' &&
 							generatedSetup?.replacementParts && (
-								<tr className="bg-accent text-accent-content border-b border-accent-content">
+								<tr className="bg-accent text-accent-content border-b border-accent-conten font-bold">
 									<th>Replacement Parts</th>
-									<th
-										colSpan={2}
-										className="text-right font-bold"
-									>
+									<th colSpan={2} className="text-right">
 										-
 										{
 											generatedSetup.replacementParts
@@ -214,7 +211,7 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 										}{' '}
 										CR
 									</th>
-									<th className="text-right font-bold">
+									<th className="text-right max-md:hidden">
 										-
 										{(
 											totalCostToBoost -

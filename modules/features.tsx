@@ -72,7 +72,7 @@ export const FEATURES: Feature[] = [
 	},
 	{
 		icon: (
-			<span aria-label="CMS21 to CMS26">
+			<span role="img" aria-label="CMS21 to CMS26">
 				<span aria-hidden>
 					CMS2
 					<span aria-hidden className="text-rotate duration-5000">

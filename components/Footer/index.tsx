@@ -16,7 +16,7 @@ export default function Footer() {
 		<>
 			<footer className="max-sm:footer-vertical footer footer-horizontal bg-base-300 text-base-content p-10">
 				<nav>
-					<h6 className="footer-title">Help</h6>
+					<h2 className="footer-title">Help</h2>
 					<Link
 						className="link link-hover"
 						href="https://github.com/TryphonX/cms-tuning-calculator#usage"
@@ -37,7 +37,7 @@ export default function Footer() {
 					</Link>
 				</nav>
 				<nav>
-					<h6 className="footer-title">Github</h6>
+					<h2 className="footer-title">Github</h2>
 					<Link
 						className="link link-hover"
 						href="https://github.com/TryphonX/cms-tuning-calculator"
@@ -64,7 +64,7 @@ export default function Footer() {
 					</Link>
 				</nav>
 				<nav>
-					<h6 className="footer-title">Socials</h6>
+					<h2 className="footer-title">Socials</h2>
 					<Link
 						className="link link-hover inline-flex items-center gap-2"
 						href="https://tryphonx.github.io/"
