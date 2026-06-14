@@ -26,7 +26,7 @@
 <h3 align="center">CMS Tuning Calculator</h3>
 
   <p align="center">
-    This web app tool is useful for tuning cars in the game (Car Mechanic Simulator 21). Provides a lot of functionalities that make tuning considerably easier as well as allowing you to explore the most efficient way of tuning the car to the desired boost percentage. All tuning combinations by this tool will always be "symmetrical" - it will not allow you to switch some of the same part with tuned parts, it's either all or nothing. This tool can also suggest the optimal setup if you want, or you can make your own informed decision.
+    Tune efficiently using this calculator to determine the optimal setups with the best cost to boost ratio for your job!
     <br />
     <!--
 		<a href="https://github.com/tryphonx/cms-tuning-calculator/docs/"><strong>Explore the docs »</strong></a>
@@ -42,26 +42,18 @@
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#usage">Usage</a>
-      <ul>
-        <li><a href="#first-step">First Step</a></li>
-        <li><a href="#second-step">Second Step</a></li>
-        <li><a href="#third-step">Third Step</a></li>
-      </ul>
-    </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+- [About The Project](#about-the-project)
+- [User Manual](#user-manual)
+  - [First step](#first-step)
+  - [Second Step](#second-step)
+    - [Auto-generate](#auto-generate)
+    - [Manual](#manual)
+      - [Available Parts Card](#available-parts-card)
+  - [Third Step](#third-step)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+- [Contributors ✨](#contributors-)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -73,42 +65,41 @@ This web app tool is useful for tuning cars in the game (Car Mechanic Simulator 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE INSTRUCTIONS -->
-## Usage
+## User Manual
 
-The use of this app is relatively easy. The calculator app is broken down into three basic components.
-
-1. Engine Card
-2. Available Parts Card
-3. Cart Card
-4. Auto-generation (not shown on the screenshot)
-
-![The three components](images/v2/main-instructions.png)
+The use of this app is relatively easy. The process is split into 2-3 steps, depending on your choices. You can always go back to the previous step and change your choices, but keep in mind that changing your engine will clear all your previous choices.
 
 ### First step
 
-First step is to pick an engine from the dropdown menu in the **_Engine Card_**.
-
-When you pick an engine, the Engine Card is immediately updated to reflect your choice and the rest of the functionality of the app is unlocked on the rest of the components.
-
-![Engine Card, Step 1](images/v2/engine-dropdown.png)
+First step is to pick an engine from the dropdown menu in the **_Engine Card_**. To make things easier, the engines can also be filtered by configurations (I4, V6, V8, V12). When you pick an engine, the Engine Card is immediately updated and you are allowed to proceed to the next step. The dropdown menu is searchable, so you can type the name of the engine you want to find.
 
 > **⚠️ Note:** When you pick a new engine, all the choices you make in the other components will be cleared.
 
-After making your choice, an **image of the engine** (1) is shown along with its **specifications** (2). Engine specifications include _power_, _torque_ and _gearbox_.
-
-![Engine Card, Results](images/v2/engine-post-pick.png)
+After making your choice, an **image of the engine** is shown along with its **specifications**. Engine specifications include _power_, _torque_ and _gearbox_.
 
 ### Second Step
 
-Second step is to check the _**Available Parts Card**_ and choose which parts to tune or use the _**Auto-generate**_ button.
+Second step is where the two methods split up. You choose between **_Auto-generate_** and **_Manual_**.
 
-#### Available Parts Card
+#### Auto-generate
+
+If you choose to auto-generate the optimal setup, you will be prompted to enter the desired target boost increase. Optionally, if there are damaged parts that you will have to replace, you can let the algorithm know. This way you might get a better deal if the damaged part is worth tuning instead of replacing with a stock one.
+
+On the right side, you will see the **_Overview_** card, which will show you the target boost increase, whether you're including replacement parts and which ones. You then click proceed to move to the next and final step.
+
+#### Manual
+
+If you choose the manual appraoach, you will have to check the _**Available Parts Card**_ and choose which parts to tune. The card will have a table with all compatible parts for that engine along with their boost increase, cost and cost/boost ratio. You can sort the table by any of the columns to make your decision easier.
+
+On the right side, you will see the _**Cart**_ card, which will be updating in real time with the total boost increase, total cost and total cost/boost ratio of the parts you have selected. When you're happy with your selections, you can use the build on the game. There is no third step for the manual approach, as you can see the results in real time.
+
+##### Available Parts Card
 
 This card will be now displaying a table with all (known) available parts for that engine. For each part, important info will be displayed in order to make the best decision about which parts to tune or not.
 
 Specifically, for each part you receive this information:
 
-The first column (1) is where you can choose the parts you want to tune. Simply click the checkbox of the part you want to tune and the part will be used in the calculation. Clicking the first checkbox will select (or deselect) all parts.
+The first column (checkbox column) is where you can choose the parts you want to tune. Simply click the checkbox of the part you want to tune and the part will be used in the calculation. Clicking the first checkbox will select (or deselect) all parts.
 
 | Information          | Description                                                  |
 | -------------------- | ------------------------------------------------------------ |
@@ -120,35 +111,11 @@ The first column (1) is where you can choose the parts you want to tune. Simply 
 > \* total, if the part appears multiple times in the engine  
 > \*\* not visible on small screens
 
-The **Clear** (6) button at the bottom right corner of the card will empty your list of selected parts so you can start your list from scratch.
-
-The **Auto-generate** (7) button at the top right corner of the card will open the auto-generation window. Shown later.
-
-![Available Parts Card](images/v2/compatible-parts-main.png)
-
 > **⚠️  Note:** When choosing a part that appears multiple times in an engine, keep in mind all of them will be added as selected parts. You can not add 1 of a part that has 2 on an engine.
-
-#### Auto-generate ✨
-
-The Auto-generate button leads you to a different process, where you enter the desired outcome and you get the optimal setup.
-
-Specifically, you are greeted with a popup requesting you input the target boost increase (1). You can see the currently selected value below the slider (2). When ready, click the **🪄 Generate** button.
-
-![Auto-generate main window](images/v2/auto-generate-1.png)
-
-By clicking the **🪄 Generate** button, you will get the optimal setup, if there is one that fulfills the requirements. You will be given the stats of the proposed setup (1) as well as the options to discard (2) -and go to the previous page- and apply changes (3). Pressing apply changes will replace any prior selection of parts you had with the ones that the optimal setup consists of. The popup will close and you will be able to see the results in the next step.
-
-![Auto-generate feature results](images/v2/auto-generate-2.png)
 
 ### Third Step
 
-Third step is to check the _**Cart Card**_.
-
-This is kind of your "shopping cart" in a way. It includes a list of all the parts you've selected along with its info (same as in compatible parts) and their total values.
-
-> `NEW!` You can now also take repairs into consideration. If you have selected a part that is damaged, the app will automatically calculate the cost of replacing it deduct it from the cart if the part is being tuned. You will have indications if a part that is being tuned is one of the parts you want to replace.
-
-![Cart Card](images/v2/selected-parts-main.png)
+Third step -and final- step for the auto-generate approach is to check the _**Cart Card**_. It includes a list of all the parts you've selected along with their info (boost, cost, etc.) and their total values. If some of the replacement parts specified are used in the setup, you will also see them highlighted on the table and you will see their effect on the total cost.
 
 _[Visit the app now to try it »](https://tryphonx.github.io/cms-tuning-calculator/)_
 
@@ -177,21 +144,22 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes
 4. Push to the Branch (`git push origin feat/amazingFeature`)
 5. Open a Pull Request to `dev`
-
-> `New!` Commit messages no longer go through linting. Feel free to use any format you like. Pull requests are squashed instead.
+6. Pull requests will be reviewed and squashed into `dev` branch
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the GNU GPL v3 License. See `COPYING.txt` for more information.
+Distributed under the GNU GPL v3 License. See [COPYING.txt](/COPYING.txt) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
+- [TailwindCSS](https://tailwindcss.com)
+- [DaisyUI](https://daisyui.com)
 - [Img Shields](https://shields.io)
 - [React Icons](https://react-icons.github.io/react-icons)
 - [Best README Template](https://github.com/othneildrew/Best-README-Template)

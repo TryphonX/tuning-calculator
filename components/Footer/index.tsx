@@ -19,7 +19,7 @@ export default function Footer() {
 					<h2 className="footer-title">Help</h2>
 					<Link
 						className="link link-hover"
-						href="https://github.com/TryphonX/cms-tuning-calculator#usage"
+						href="https://github.com/TryphonX/cms-tuning-calculator#user-manual"
 					>
 						User Guide
 					</Link>
