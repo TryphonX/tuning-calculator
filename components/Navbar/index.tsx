@@ -29,6 +29,11 @@ export default function Navbar() {
 							<Link href={Page.Cms21Calculator}>CMS 2021</Link>
 						</li>
 						<li>
+							<Link href={Page.HelpAndSupport}>
+								Help & Support
+							</Link>
+						</li>
+						<li>
 							<Link href={Page.About}>About</Link>
 						</li>
 						<li className="sm:hidden">
@@ -60,6 +65,9 @@ export default function Navbar() {
 					</li>
 					<li>
 						<Link href={Page.Cms21Calculator}>CMS 2021</Link>
+					</li>
+					<li>
+						<Link href={Page.HelpAndSupport}>Help & Support</Link>
 					</li>
 					<li>
 						<Link href={Page.About}>About</Link>

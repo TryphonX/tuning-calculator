@@ -7,7 +7,7 @@ interface Props {
 
 export const FeatureCard = ({ feature }: Props) => {
 	return (
-		<div className="card bg-secondary/10 shadow-md row-span-3 grid grid-rows-subgrid">
+		<div className="card bg-secondary/10 shadow-md row-span-3 grid grid-rows-subgrid hover:outline outline-accent hover:translate-y-[-0.5rem] transition-all duration-200">
 			<div className="card-body row-span-3 grid grid-rows-subgrid">
 				<div className="row-span-3 grid grid-rows-subgrid gap-2 h-full grid-flow-row place-content-start">
 					<h2 className="card-title text-accent">

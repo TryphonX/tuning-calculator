@@ -3,4 +3,5 @@ export enum Page {
 	Cms21Calculator = '/calculator-cms21',
 	Cms26Calculator = '/calculator',
 	About = '/about',
+	HelpAndSupport = '/help-support',
 }

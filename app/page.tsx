@@ -1,4 +1,5 @@
 import { FeatureGrid } from '@/components/FeatureGrid';
+import GithubIssueSection from '@/components/GithubIssueSection';
 import { Page } from '@/modules/navigation';
 import { PLLogo } from '@/modules/resources';
 import Image from 'next/image';
@@ -7,7 +8,7 @@ import Link from 'next/link';
 export default function Home() {
 	return (
 		<>
-			<div className="relative">
+			<div className="relative mb-40">
 				<div className="bg-linear-to-b from-base-100 via-base-300 to-base-100 absolute w-full h-full" />
 				<div className="hero py-20">
 					<div className="hero-content text-center flex-col w-full">
@@ -46,7 +47,7 @@ export default function Home() {
 					</div>
 				</div>
 				<FeatureGrid />
-				{/* <GithubIssueSection /> */}
+				<GithubIssueSection />
 			</div>
 		</>
 	);
