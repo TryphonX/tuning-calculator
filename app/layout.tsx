@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import { PreloadedAvatar, PreloadedLogo } from '@/modules/resources';
+import { PLAvatar, PLLogo } from '@/modules/resources';
 import type { Metadata } from 'next';
 import { Ubuntu } from 'next/font/google';
 import Head from 'next/head';
@@ -42,8 +42,8 @@ export default function RootLayout({
 		<html lang="en" data-theme="dark">
 			<Head>
 				<link rel="icon" href="/favicon.ico" sizes="any" />
-				<link rel="preload" as="image" href={PreloadedLogo.src} />
-				<link rel="preload" as="image" href={PreloadedAvatar.src} />
+				<link rel="preload" as="image" href={PLLogo.src} />
+				<link rel="preload" as="image" href={PLAvatar.src} />
 			</Head>
 			<body className={`${ubuntu.className} flex flex-col min-h-svh`}>
 				<Navbar />

@@ -1,4 +1,4 @@
-import { PreloadedAvatar } from './resources';
+import { PLAvatar } from './resources';
 
 export interface Contributor {
 	name: string;
@@ -8,11 +8,11 @@ export interface Contributor {
 	websiteUrl?: string;
 }
 
-export const contributors: Contributor[] = [
+export const CONTRIBUTORS: Contributor[] = [
 	{
 		name: 'Tryfon Xydas',
 		username: 'TryphonX',
-		avatarUrl: PreloadedAvatar.src,
+		avatarUrl: PLAvatar.src,
 		isCreator: true,
 		websiteUrl: 'https://tryphonx.github.io',
 	},

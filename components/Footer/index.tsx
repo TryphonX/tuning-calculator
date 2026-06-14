@@ -1,4 +1,4 @@
-import { PreloadedLogo } from '@/modules/resources';
+import { PLLogo } from '@/modules/resources';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -107,8 +107,8 @@ export default function Footer() {
 						aria-hidden
 						width={54}
 						height={54}
-						src={PreloadedLogo.src}
-						alt={PreloadedLogo.alt}
+						src={PLLogo.src}
+						alt={PLLogo.alt}
 					/>
 					<div className="space-y-1">
 						<p>

@@ -21,10 +21,9 @@ const nextConfig = {
 	basePath: '/cms-tuning-calculator',
 	env: {
 		APP_VERSION: packagejson.version,
-		LAST_PUBLISH:
-			getIsMainBranch() ?
-				process.env.LAST_PUBLISH
-			:	new Date().toISOString(),
+		LAST_PUBLISH: getIsMainBranch()
+			? process.env.LAST_PUBLISH
+			: new Date().toISOString(),
 	},
 	images: {
 		remotePatterns: [

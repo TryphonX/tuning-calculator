@@ -3,12 +3,12 @@ interface Resource {
 	alt: string;
 }
 
-export const PreloadedLogo: Resource = {
+export const PLLogo: Resource = {
 	src: '/cms-tuning-calculator/images/logo.svg',
 	alt: 'CmsTuningCalculator Logo',
 };
 
-export const PreloadedAvatar: Resource = {
+export const PLAvatar: Resource = {
 	src: '/cms-tuning-calculator/images/Avatar2020.webp',
 	alt: "TryphonX's Avatar",
 };
