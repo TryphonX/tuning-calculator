@@ -1,5 +1,6 @@
 'use client';
 
+import { TuningPartName } from '@/@types/calculator';
 import { PartSortBy } from '@/@types/globals';
 import { selectAutoGen } from '@/lib/features/autoGen/autoGenSlice';
 import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
@@ -83,6 +84,16 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 		));
 	}, [skeletonContent]);
 
+	const isReplacement = useCallback(
+		(partName: TuningPartName) => {
+			return (
+				method === 'auto' &&
+				generatedSetup?.replacementParts?.names.includes(partName)
+			);
+		},
+		[method, generatedSetup?.replacementParts],
+	);
+
 	if (!currentEngine) return;
 
 	return (
@@ -148,6 +159,11 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 												' ',
 												'-',
 											)}-row`}
+											className={
+												isReplacement(part.name)
+													? 'text-accent text-semibold'
+													: undefined
+											}
 										>
 											<td>
 												x{part.quantity} {part.name}

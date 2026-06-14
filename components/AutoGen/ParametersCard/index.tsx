@@ -37,7 +37,7 @@ export default function ParametersCard({ className }: BaseProps) {
 							Include replacement parts
 							<div
 								className="tooltip tooltip-top"
-								data-tip="Damaged parts that will need to be replaced for the same job."
+								data-tip="Damaged parts that will need to be replaced for the same job. It will only be included in the build, if it makes the build cheaper."
 							>
 								<FaRegCircleQuestion />
 							</div>

@@ -4,7 +4,7 @@ const helpAndSupportPage = () => {
 	return (
 		<div className="relative flex flex-col items-center justify-center">
 			<div className="bg-linear-to-b from-base-100 via-base-300 to-base-100 absolute w-full h-full" />
-			<div className="relative py-16 p-8 space-y-20 w-full max-w-7xl">
+			<div className="relative py-16 p-8 space-y-20 w-full max-w-6xl">
 				<div className="space-y-8">
 					<h1 className="text-5xl font-bold">Help & Support</h1>
 					<p>
@@ -51,6 +51,24 @@ const helpAndSupportPage = () => {
 									some parts are missing. If you find any
 									missing parts, please report them on GitHub
 									and they will be added to the app.
+								</div>
+							</div>
+							<div className="collapse bg-base-100 border border-accent collapse-arrow">
+								<input
+									aria-label="Expand FAQ"
+									type="checkbox"
+								/>
+								<div className="collapse-title font-semibold">
+									Q: I added a replacement part, but
+									auto-generation did not include it in the
+									best setup. Why is that?
+								</div>
+								<div className="collapse-content text-sm">
+									A: If the replacement part still has a worse
+									cost to boost ratio than other parts and
+									it&apos;s cheaper to upgrade something else,
+									the app will not upgrade the part and you
+									will just have to replace it.
 								</div>
 							</div>
 						</div>
