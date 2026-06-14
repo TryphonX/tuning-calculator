@@ -27,7 +27,7 @@ export default function Home() {
 							<h1 className="text-5xl font-bold">
 								Tune efficiently!
 							</h1>
-							<div className="py-2">
+							<div className="py-2 leading-relaxed">
 								Tune efficiently using this calculator to
 								determine the optimal setups with the best cost
 								to boost ratio for your job!

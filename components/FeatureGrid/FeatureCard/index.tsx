@@ -21,10 +21,7 @@ export const FeatureCard = ({ feature }: Props) => {
 					<p className="flex-grow-0">{feature.description}</p>
 					<ul className="list-inside mt-4 space-y-2 text-accent">
 						{feature.benefits.map((benefit, index) => (
-							<li
-								key={index}
-								className="text-sm inline-flex gap-2"
-							>
+							<li key={index} className="text-sm flex gap-2">
 								<LuCircleCheckBig
 									className="flex-shrink-0 mt-1"
 									size={14}
