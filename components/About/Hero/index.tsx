@@ -6,7 +6,7 @@ import { FaGithub, FaPlay } from 'react-icons/fa6';
 
 export const Hero = () => {
 	return (
-		<div className="hero min-h-screen relative">
+		<div className="hero min-h-svh relative bottom-[65px]">
 			<div className="hero-content text-center p-8">
 				<div>
 					<Image

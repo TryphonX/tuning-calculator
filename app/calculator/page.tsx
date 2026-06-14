@@ -4,10 +4,10 @@ import { FaArrowRight } from 'react-icons/fa6';
 
 export default function Calculator() {
 	return (
-		<div className="relative">
+		<div className="relative flex flex-1 items-center">
 			<div className="bg-linear-to-b from-base-100 via-base-300 to-base-100 absolute w-full h-full" />
 
-			<div className="relative hero min-h-[88.5vh]">
+			<div className="relative hero min-h-full">
 				<div className="hero-content text-center">
 					<div className="max-w-xl space-y-4">
 						<h1 className="text-5xl font-bold text-primary">

@@ -9,7 +9,6 @@ const AboutPage = () => {
 			<Hero />
 			<HowitWorks />
 			<Contributors />
-			{/* <GithubIssueSection /> */}
 		</div>
 	);
 };

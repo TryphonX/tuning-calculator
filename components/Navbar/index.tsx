@@ -7,7 +7,7 @@ import { HiMenuAlt2 } from 'react-icons/hi';
 
 export default function Navbar() {
 	return (
-		<div role="navigation" className="navbar bg-base-100">
+		<div role="navigation" className="navbar bg-base-100 z-10">
 			<div className="navbar-start">
 				<div className="dropdown">
 					<div

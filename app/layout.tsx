@@ -47,7 +47,7 @@ export default function RootLayout({
 			</Head>
 			<body className={`${ubuntu.className} flex flex-col min-h-svh`}>
 				<Navbar />
-				{children}
+				<main className="flex-1 flex flex-col">{children}</main>
 				<Footer />
 			</body>
 		</html>
