@@ -33,6 +33,7 @@ export const GHIssueCard = ({
 						{bulletPoints.map((point, index) => (
 							<li key={index} className="text-sm flex gap-2">
 								<LuCircleCheckBig
+									aria-hidden
 									className="flex-shrink-0 mt-1"
 									size={14}
 								/>{' '}

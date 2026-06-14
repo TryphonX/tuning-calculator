@@ -1,5 +1,5 @@
 import { PartSortBy } from '@/@types/globals';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa6';
 
 type SortBtnProps = {
@@ -17,18 +17,21 @@ export default function SortBtn({ sortBy, values, setSortBy }: SortBtnProps) {
 		);
 	}, [setSortBy, sortBy, values]);
 
+	const isAscending = useMemo(() => sortBy === values[0], [sortBy, values]);
+
 	return (
 		<button
 			type="button"
+			aria-label={`Sort by ${isAscending ? 'ascending' : 'descending'}`}
 			className={`btn btn-xs btn-square btn-ghost ${
 				values.some((val) => val === sortBy) ? 'btn-active' : ''
 			}`}
 			onClick={handleClick}
 		>
-			{sortBy === values[0] ? (
-				<FaCaretUp aria-label="Sort ascending" />
+			{isAscending ? (
+				<FaCaretUp aria-hidden />
 			) : (
-				<FaCaretDown aria-label="Sort descending" />
+				<FaCaretDown aria-hidden />
 			)}
 		</button>
 	);

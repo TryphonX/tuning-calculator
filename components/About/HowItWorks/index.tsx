@@ -16,13 +16,13 @@ export const HowitWorks = () => {
 				</div>
 				<div className="grid grid-cols-1 gap-10 xl:grid-cols-2 xl:gap-x-50">
 					<GenFeatureCard
-						icon={<LuWrench />}
+						icon={<LuWrench aria-hidden />}
 						title="Manual Build"
 						description="Hand-pick your performance parts one by one to experiment with custom builds while tracking your real-time performance metrics and efficiency ratios."
 						upTo={4}
 					/>
 					<GenFeatureCard
-						icon={<LuWandSparkles />}
+						icon={<LuWandSparkles aria-hidden />}
 						title="Auto-Generated Setup"
 						description="Input your desired boost percentage and specify any parts you already need to replace. The app will calculate the absolute most cost-effective combination, factoring in whether it's cheaper to outright upgrade a part rather than replacing it with stock."
 					/>

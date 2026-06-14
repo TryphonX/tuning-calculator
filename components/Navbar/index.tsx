@@ -15,6 +15,7 @@ export default function Navbar() {
 						tabIndex={0}
 						role="button"
 						className="btn btn-ghost lg:hidden"
+						aria-label="Open navigation menu"
 					>
 						<HiMenuAlt2 size={24} aria-hidden />
 					</div>
@@ -41,7 +42,8 @@ export default function Navbar() {
 								href="https://paypal.me/TryphonKsydas"
 								target="_blank"
 							>
-								<FaPaypal /> Donate
+								<FaPaypal aria-hidden /> Donate
+								<span className="sr-only"> via PayPal</span>
 							</Link>
 						</li>
 					</ul>
@@ -80,7 +82,8 @@ export default function Navbar() {
 						type="button"
 						className="btn btn-sm bg-[#00457C] hover:bg-[#00457C]/50"
 					>
-						<FaPaypal /> Donate
+						<FaPaypal aria-hidden /> Donate
+						<span className="sr-only"> via PayPal</span>
 					</button>
 				</Link>
 			</div>

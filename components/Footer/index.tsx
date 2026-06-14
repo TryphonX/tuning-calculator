@@ -1,13 +1,7 @@
 import { PLLogo } from '@/modules/resources';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-	FaDiscord,
-	FaGithub,
-	FaGlobe,
-	FaLinkedinIn,
-	FaRegCircleQuestion,
-} from 'react-icons/fa6';
+import { FaDiscord, FaGithub, FaGlobe, FaLinkedinIn } from 'react-icons/fa6';
 
 export default function Footer() {
 	const dateString = new Date(
@@ -39,13 +33,7 @@ export default function Footer() {
 						className="link link-hover"
 						href="https://github.com/TryphonX/cms-tuning-calculator/issues/new"
 					>
-						Open an Issue{' '}
-						<div
-							className="tooltip tooltip-right"
-							data-tip="Feature requests, bug reports, incorrect data, and questions can be submitted here."
-						>
-							<FaRegCircleQuestion />
-						</div>
+						Open an Issue
 					</Link>
 				</nav>
 				<nav>
@@ -96,7 +84,9 @@ export default function Footer() {
 						<FaGithub aria-hidden /> GitHub
 					</Link>
 					<span className="inline-flex items-center gap-2">
-						<FaDiscord aria-label="Discord Logo" /> TryphonX
+						<FaDiscord aria-hidden />
+						<span className="sr-only">Discord username:</span>{' '}
+						TryphonX
 					</span>
 				</nav>
 			</footer>

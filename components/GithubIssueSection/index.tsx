@@ -1,4 +1,4 @@
-import { LuBug, LuLightbulb } from 'react-icons/lu';
+import { LuBug, LuDatabase, LuLightbulb } from 'react-icons/lu';
 import { GHIssueCard } from './GHIssueCard';
 
 export default function GithubIssueSection() {
@@ -29,12 +29,12 @@ export default function GithubIssueSection() {
 					}}
 				/>
 				<GHIssueCard
-					icon={<LuBug aria-hidden />}
+					icon={<LuDatabase aria-hidden />}
 					title="Incorrect Data"
 					description="See anything wrong with the engine or part data? Please report it!"
 					bulletPoints={[
 						'Missing parts or full engines',
-						'Incorrect prices, boost or links',
+						'Incorrect prices, boost, quantity, links, etc',
 					]}
 					btnData={{
 						text: 'Report Incorrect Data',

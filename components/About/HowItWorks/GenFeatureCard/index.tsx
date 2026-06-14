@@ -42,6 +42,7 @@ export const GenFeatureCard = ({ icon, title, description, upTo }: Props) => {
 							<li key={index} className="text-sm flex gap-2">
 								<LuCircleCheckBig
 									className="flex-shrink-0 mt-1"
+									aria-hidden
 									size={14}
 								/>{' '}
 								{point}

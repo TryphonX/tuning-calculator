@@ -15,7 +15,7 @@ export default function Home() {
 							className="mb-6 rounded-full size-4/12 md:size-1/4 lg:size-1/6 mx-auto"
 							src={PLLogo.src}
 							alt={PLLogo.alt}
-							aria-hidden
+							aria-label={PLLogo.alt}
 							width={202.66}
 							height={202.66}
 							priority

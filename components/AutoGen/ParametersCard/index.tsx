@@ -10,6 +10,10 @@ import { useCallback } from 'react';
 import { FaRegCircleQuestion } from 'react-icons/fa6';
 import { TargetIncrease } from '../TargetIncrease';
 
+const TOOLTIP_DESCRIPTION_ID = 'replacement-parts-tooltip-text';
+const TOOLTIP_CONTENT =
+	'Damaged parts that will need to be replaced for the same job. It will only be included in the build, if it makes the build cheaper.';
+
 export default function ParametersCard({ className }: BaseProps) {
 	const dispatch = useAppDispatch();
 	const { withReplacements } = useAppSelector(selectAutoGen);
@@ -35,12 +39,24 @@ export default function ParametersCard({ className }: BaseProps) {
 						/>
 						<div className="flex flex-row gap-2">
 							Include replacement parts
-							<div
+							<button
+								type="button"
 								className="tooltip tooltip-top"
-								data-tip="Damaged parts that will need to be replaced for the same job. It will only be included in the build, if it makes the build cheaper."
+								data-tip={TOOLTIP_CONTENT}
+								aria-describedby={TOOLTIP_DESCRIPTION_ID}
 							>
 								<FaRegCircleQuestion />
-							</div>
+								<span className="sr-only">
+									More info about including replacement parts
+									and what to expect
+								</span>
+							</button>
+							<span
+								className="sr-only"
+								id={TOOLTIP_DESCRIPTION_ID}
+							>
+								{TOOLTIP_CONTENT}
+							</span>
 						</div>
 					</label>
 					{withReplacements && <ReplacementPartsTable />}

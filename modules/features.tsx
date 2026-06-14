@@ -16,7 +16,7 @@ export interface Feature {
 
 export const FEATURES: Feature[] = [
 	{
-		icon: <LuWandSparkles />,
+		icon: <LuWandSparkles aria-hidden />,
 		title: 'Auto-Tuning',
 		description:
 			'Sit back and let the app do the work for you! The auto-generated tuning method will select the best parts for your engine based on your target performance boost.',
@@ -28,7 +28,7 @@ export const FEATURES: Feature[] = [
 		],
 	},
 	{
-		icon: <LuWrench />,
+		icon: <LuWrench aria-hidden />,
 		title: 'Manual Sandbox',
 		description:
 			'Want full control over your tuning? The manual tuning method allows you to select the parts you want to use for your engine and see the cost and performance boost for each part.',
@@ -40,7 +40,7 @@ export const FEATURES: Feature[] = [
 		],
 	},
 	{
-		icon: <LuFilter />,
+		icon: <LuFilter aria-hidden />,
 		title: 'Parts Filtering',
 		description:
 			'Based on the engine selection, parts are automatically filtered to show only those that fit your engine.',
@@ -50,7 +50,7 @@ export const FEATURES: Feature[] = [
 		],
 	},
 	{
-		icon: <LuTrendingUp />,
+		icon: <LuTrendingUp aria-hidden />,
 		title: 'Cost-to-Boost Efficiency Ratio',
 		description:
 			'Never overpay for minor gains. The app handles the math to show you exactly which parts give you the highest performance increase per dollar spent, helping you maximize profit on customer jobs.',
@@ -61,7 +61,7 @@ export const FEATURES: Feature[] = [
 		],
 	},
 	{
-		icon: <LuHardHat />,
+		icon: <LuHardHat aria-hidden />,
 		title: 'Realism & Integrity Checks',
 		description:
 			'To maintain mechanical realism, the app ensures matching parts are either tuned everywhere on the engine or left entirely stock, generating 100% realistic builds that work perfectly in-game.',
@@ -73,11 +73,13 @@ export const FEATURES: Feature[] = [
 	{
 		icon: (
 			<span aria-label="CMS21 to CMS26">
-				CMS2
-				<span className="text-rotate duration-5000">
-					<span>
-						<span>1</span>
-						<span>6</span>
+				<span aria-hidden>
+					CMS2
+					<span aria-hidden className="text-rotate duration-5000">
+						<span>
+							<span>1</span>
+							<span>6</span>
+						</span>
 					</span>
 				</span>
 			</span>

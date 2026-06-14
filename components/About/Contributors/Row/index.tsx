@@ -13,7 +13,11 @@ export const Row = ({ contributor }: Props) => {
 		<li className="list-row">
 			<div>
 				<Image
-					className={`size-10 rounded-box ${contributor.isCreator ? 'ring ring-accent ring-offset-base-100 ring-offset-2' : ''}`.trimEnd()}
+					className={`size-10 rounded-box ${
+						contributor.isCreator
+							? 'ring ring-accent ring-offset-base-100 ring-offset-2'
+							: ''
+					}`.trimEnd()}
 					src={contributor.avatarUrl}
 					alt={`${contributor.username}'s avatar`}
 					width={40}
@@ -40,20 +44,22 @@ export const Row = ({ contributor }: Props) => {
 				href={`https://github.com/${contributor.username}`}
 				target="_blank"
 			>
-				<button type="button" className="btn btn-ghost btn-square">
+				<button
+					type="button"
+					aria-label={`Go to ${contributor.username}'s GitHub profile`}
+					className="btn btn-ghost btn-square"
+				>
 					<FaGithub aria-hidden />
-					<span className="sr-only">
-						Go to {contributor.username}&apos;s GitHub profile
-					</span>
 				</button>
 			</Link>
 			{contributor.websiteUrl && (
 				<Link href={contributor.websiteUrl} target="_blank">
-					<button type="button" className="btn btn-ghost btn-square">
+					<button
+						type="button"
+						aria-label={`Go to ${contributor.username}'s website`}
+						className="btn btn-ghost btn-square"
+					>
 						<FaGlobe aria-hidden />
-						<span className="sr-only">
-							Go to {contributor.username}&apos;s website
-						</span>
 					</button>
 				</Link>
 			)}
