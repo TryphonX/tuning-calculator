@@ -20,7 +20,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tryphonx/cms-tuning-calculator">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="250" height="250">
   </a>
 
 <h3 align="center">CMS Tuning Calculator</h3>
@@ -203,3 +203,26 @@ Distributed under the GNU GPL v3 License. See `COPYING.txt` for more information
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [semantic-release-url]: https://github.com/semantic-release/semantic-release
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://tryphonx.github.io/"><img src="https://avatars.githubusercontent.com/u/32367640?v=4?s=100" width="100px;" alt="Tryfon Xydas"/><br /><sub><b>Tryfon Xydas</b></sub></a><br /><a href="https://github.com/TryphonX/cms-tuning-calculator/commits?author=TryphonX" title="Code">💻</a> <a href="#data-TryphonX" title="Data">🔣</a> <a href="https://github.com/TryphonX/cms-tuning-calculator/commits?author=TryphonX" title="Documentation">📖</a> <a href="#a11y-TryphonX" title="Accessibility">️️️️♿️</a> <a href="#design-TryphonX" title="Design">🎨</a> <a href="#infra-TryphonX" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-TryphonX" title="Maintenance">🚧</a> <a href="https://github.com/TryphonX/cms-tuning-calculator/pulls?q=is%3Apr+reviewed-by%3ATryphonX" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://barrass.dev/"><img src="https://avatars.githubusercontent.com/u/20770871?v=4?s=100" width="100px;" alt="Joshua Barrass"/><br /><sub><b>Joshua Barrass</b></sub></a><br /><a href="https://github.com/TryphonX/cms-tuning-calculator/commits?author=joshbarrass" title="Code">💻</a> <a href="#data-joshbarrass" title="Data">🔣</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
