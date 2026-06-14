@@ -29,7 +29,7 @@ export default function OverviewCard({ className }: BaseProps) {
 			{
 				label: (
 					<>
-						<FaRegCircleXmark aria-hidden /> Clear replacements
+						<FaRegCircleXmark aria-hidden /> Clear
 					</>
 				),
 				className: 'btn-error',
