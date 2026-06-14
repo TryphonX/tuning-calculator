@@ -59,7 +59,10 @@ export const Hero = () => {
 					<div className="flex-col space-y-4">
 						<div>
 							<Link className="block" href={Page.Cms21Calculator}>
-								<button className="btn btn-secondary btn-lg btn-wide">
+								<button
+									type="button"
+									className="btn btn-secondary btn-lg btn-wide"
+								>
 									<FaPlay aria-hidden /> Try it out now!
 								</button>
 							</Link>
