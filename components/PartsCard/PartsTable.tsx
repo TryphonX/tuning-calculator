@@ -10,7 +10,6 @@ import {
 } from '@/lib/features/calculator/calculatorSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { getFullPartByName, partSortFn } from '@/modules/common';
-import { UpdateSortEvent } from '@/modules/customEvents';
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import MissingPartAlert from '../MissingPartAlert';
 import SortBtn from '../SortBtn';
@@ -39,20 +38,6 @@ export const PartsTable = () => {
 		useAppSelector(selectCalculator);
 	const [anyPartMissing, setAnyPartMissing] = useState(false);
 	const [sortBy, setSortBy] = useState<PartSortBy>('name_asc');
-
-	// onMount
-	useEffect(() => {
-		const handleUpdateSort = (e: Event) => {
-			e.stopPropagation();
-			setSortBy((e as CustomEvent<PartSortBy>).detail ?? 'name_asc');
-		};
-
-		window.addEventListener(UpdateSortEvent.name, handleUpdateSort);
-
-		return () => {
-			window.removeEventListener(UpdateSortEvent.name, handleUpdateSort);
-		};
-	}, []);
 
 	// onUpdate only if selectedParts changed
 	useEffect(() => {
@@ -99,25 +84,24 @@ export const PartsTable = () => {
 
 			dispatch(toggleSelectedPart({ name: partName, quantity: partQt }));
 		},
-		[],
+		[dispatch],
 	);
 
 	const handleToggleAllParts = useCallback(
 		({ currentTarget }: ChangeEvent<HTMLInputElement>) => {
-			const newParts =
-				currentTarget.checked ?
-					currentEngine!.compatibleParts
+			const newParts = currentTarget.checked
+				? currentEngine!.compatibleParts
 						.filter((part) => !part.missing)
 						.map((part) => ({
 							name: part.name,
 							quantity: part.quantity,
 						}))
-				:	[];
+				: [];
 
 			dispatch(updateSelectedParts(newParts));
 			markAllCheckboxes(currentTarget.checked);
 		},
-		[currentEngine],
+		[currentEngine, dispatch],
 	);
 
 	const sortedCompatibleParts = useMemo(
@@ -148,6 +132,7 @@ export const PartsTable = () => {
 								Part{' '}
 								<SortBtn
 									sortBy={sortBy}
+									setSortBy={setSortBy}
 									values={['name_asc', 'name_desc']}
 								/>
 							</th>
@@ -155,6 +140,7 @@ export const PartsTable = () => {
 								Boost{' '}
 								<SortBtn
 									sortBy={sortBy}
+									setSortBy={setSortBy}
 									values={['boost_asc', 'boost_desc']}
 								/>
 							</th>
@@ -162,6 +148,7 @@ export const PartsTable = () => {
 								Cost{' '}
 								<SortBtn
 									sortBy={sortBy}
+									setSortBy={setSortBy}
 									values={['cost_asc', 'cost_desc']}
 								/>
 							</th>
@@ -169,6 +156,7 @@ export const PartsTable = () => {
 								Cost / Boost{' '}
 								<SortBtn
 									sortBy={sortBy}
+									setSortBy={setSortBy}
 									values={[
 										'costToBoost_asc',
 										'costToBoost_desc',
@@ -210,18 +198,18 @@ export const PartsTable = () => {
 									</td>
 									<td
 										className={
-											part.missing ?
-												'line-through text-error'
-											:	''
+											part.missing
+												? 'line-through text-error'
+												: ''
 										}
 									>
 										x{part.quantity} {part.name}
 									</td>
 									<td
 										className={`text-right ${
-											part.missing ?
-												'line-through text-error'
-											:	''
+											part.missing
+												? 'line-through text-error'
+												: ''
 										}`}
 									>
 										+
@@ -233,9 +221,9 @@ export const PartsTable = () => {
 									</td>
 									<td
 										className={`text-right ${
-											part.missing ?
-												'line-through text-error'
-											:	''
+											part.missing
+												? 'line-through text-error'
+												: ''
 										}`}
 									>
 										{tuningPartData?.cost * part.quantity}{' '}
@@ -243,9 +231,9 @@ export const PartsTable = () => {
 									</td>
 									<td
 										className={`text-right max-md:hidden ${
-											part.missing ?
-												'line-through text-error'
-											:	''
+											part.missing
+												? 'line-through text-error'
+												: ''
 										}`}
 										title={(
 											tuningPartData?.cost /

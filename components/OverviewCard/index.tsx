@@ -11,20 +11,17 @@ import { FaRegCircleXmark } from 'react-icons/fa6';
 
 export default function OverviewCard({ className }: BaseProps) {
 	const dispatch = useAppDispatch();
-	const {
-		targetIncrease,
-		withReplacements: withRepairs,
-		replacementParts: repairParts,
-	} = useAppSelector(selectAutoGen);
+	const { targetIncrease, withReplacements, replacementParts } =
+		useAppSelector(selectAutoGen);
 
-	const hasAnyRepairPart = useMemo(
-		() => Object.values(repairParts).some((part) => part.quantity > 0),
-		[repairParts],
+	const hasAnyReplacement = useMemo(
+		() => Object.values(replacementParts).some((part) => part.quantity > 0),
+		[replacementParts],
 	);
 
-	const hasActualRepairs = useMemo(
-		() => withRepairs && hasAnyRepairPart,
-		[withRepairs, hasAnyRepairPart],
+	const hasActualReplacements = useMemo(
+		() => withReplacements && hasAnyReplacement,
+		[withReplacements, hasAnyReplacement],
 	);
 
 	const actions = useMemo<Action[]>(
@@ -32,15 +29,15 @@ export default function OverviewCard({ className }: BaseProps) {
 			{
 				label: (
 					<>
-						<FaRegCircleXmark aria-hidden /> Clear repairs
+						<FaRegCircleXmark aria-hidden /> Clear replacements
 					</>
 				),
 				className: 'btn-error',
 				onClick: () => dispatch(resetReplacementParts()),
-				disabled: !hasActualRepairs,
+				disabled: !hasActualReplacements,
 			},
 		],
-		[hasActualRepairs, dispatch],
+		[hasActualReplacements, dispatch],
 	);
 
 	return (
@@ -52,14 +49,14 @@ export default function OverviewCard({ className }: BaseProps) {
 						{targetIncrease}%
 					</p>
 					<p>
-						<span className="font-bold">Includes Repairs</span>:{' '}
-						{hasActualRepairs ? 'Yes' : 'No'}
+						<span className="font-bold">Includes Replacements</span>
+						: {hasActualReplacements ? 'Yes' : 'No'}
 					</p>
-					{hasActualRepairs && (
+					{hasActualReplacements && (
 						<p>
-							<span className="font-bold">Repairing:</span>
+							<span className="font-bold">Replacing:</span>
 							<ul className="list-disc px-8 py-2">
-								{Object.entries(repairParts).map(
+								{Object.entries(replacementParts).map(
 									([partName, part]) => (
 										<li key={partName}>
 											x{part.quantity} {partName}

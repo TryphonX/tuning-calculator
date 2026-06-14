@@ -9,15 +9,15 @@ const isNewSetupBetter = (newSetup: TuningSetup, currentBest: TuningSetup) => {
 	const currentBestNetCost =
 		currentBest.replacementParts?.netCost ?? currentBest.cost;
 
-	return newSetUpNetCost !== currentBestNetCost ?
-			newSetUpNetCost < currentBestNetCost
-		:	newSetup.boost > currentBest.boost;
+	return newSetUpNetCost !== currentBestNetCost
+		? newSetUpNetCost < currentBestNetCost
+		: newSetup.boost > currentBest.boost;
 };
 
 onmessage = function (e: MessageEvent<CalculatorWorkerMessage>) {
 	const parts = e.data.parts;
 	const targetBoostIncrease = e.data.targetBoostIncrease;
-	const repairParts = e.data.replacementParts;
+	const replacementParts = e.data.replacementParts;
 
 	const numParts = parts.length;
 	let bestSetup: TuningSetup | null = null;
@@ -27,8 +27,8 @@ onmessage = function (e: MessageEvent<CalculatorWorkerMessage>) {
 		let comboCost = 0;
 		let netCost = 0;
 		let comboBoost = 0;
-		let hasRepairParts = false;
-		const repairPartNames = [] as TuningPartName[];
+		let hasReplacementParts = false;
+		const replacementPartNames = [] as TuningPartName[];
 
 		const partNames: TuningPartName[] = [];
 
@@ -42,11 +42,11 @@ onmessage = function (e: MessageEvent<CalculatorWorkerMessage>) {
 				comboBoost += part.boost;
 				partNames.push(part.name);
 
-				// remove the cost of the original part if it is being repaired
-				if (Object.keys(repairParts).includes(part.name)) {
-					netCost += repairParts[part.name].deductibleCost;
-					repairPartNames.push(part.name);
-					hasRepairParts = true;
+				// remove the cost of the original part if it is being replaced
+				if (Object.keys(replacementParts).includes(part.name)) {
+					netCost += replacementParts[part.name].deductibleCost;
+					replacementPartNames.push(part.name);
+					hasReplacementParts = true;
 				}
 			}
 		}
@@ -59,15 +59,14 @@ onmessage = function (e: MessageEvent<CalculatorWorkerMessage>) {
 				cost: comboCost,
 				boost: comboBoost,
 				costToBoost: costToBoost,
-				replacementParts:
-					hasRepairParts ?
-						{
-							names: repairPartNames,
+				replacementParts: hasReplacementParts
+					? {
+							names: replacementPartNames,
 							netCost: netCost,
 							netCostToBoost: netCost / comboBoost,
 							totalSaved: comboCost - netCost,
-						}
-					:	undefined,
+					  }
+					: undefined,
 			};
 
 			// update bestSetup

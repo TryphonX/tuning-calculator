@@ -3,9 +3,12 @@ import tuningParts from '@/data/cms21/tuning-parts.json';
 
 export type Method = 'auto' | 'manual';
 
-type Enumerate<N extends number, Acc extends number[] = []> =
-	Acc['length'] extends N ? Acc[number]
-	:	Enumerate<N, [...Acc, Acc['length']]>;
+type Enumerate<
+	N extends number,
+	Acc extends number[] = [],
+> = Acc['length'] extends N
+	? Acc[number]
+	: Enumerate<N, [...Acc, Acc['length']]>;
 
 export type IntRange<F extends number, T extends number> = Exclude<
 	Enumerate<T>,
@@ -113,7 +116,7 @@ export declare interface TuningSetup {
 	costToBoost: number;
 	replacementParts?: {
 		names: TuningPartName[];
-		/** The cost of the tuning minus the repairs */
+		/** The cost of the tuning minus the replacements */
 		netCost: number;
 		netCostToBoost: number;
 		totalSaved: number;
@@ -127,7 +130,7 @@ declare interface ReplacementPartValue {
 
 /**
  * key: TuningPartName
- * value: The cost of the repair part x(-1)
+ * value: The cost of the replacement part x(-1)
  */
 export type ReplacementParts = Record<
 	Partial<TuningPartName>,

@@ -9,14 +9,14 @@ import { partSortFn } from '@/modules/common';
 import { useCallback, useMemo } from 'react';
 import { RangeInput } from './RangeInput';
 
-export const RepairPartsTable = () => {
+export const ReplacementPartsTable = () => {
 	const dispatch = useAppDispatch();
-	const { replacementParts: repairParts } = useAppSelector(selectAutoGen);
+	const { replacementParts } = useAppSelector(selectAutoGen);
 	const currentEngine = useAppSelector(selectCurrentEngine);
 
-	const onRepairPartsChange = useCallback(
-		(repairParts: ReplacementParts) => {
-			dispatch(setReplacementParts(repairParts));
+	const onReplacementPartsChange = useCallback(
+		(replacementParts: ReplacementParts) => {
+			dispatch(setReplacementParts(replacementParts));
 		},
 		[dispatch],
 	);
@@ -35,7 +35,7 @@ export const RepairPartsTable = () => {
 				<table className="table table-pin-rows table-xs sm:table-sm xl:table-md">
 					<thead>
 						<tr className="text-lg">
-							<th className="w-1/2">Repair Part</th>
+							<th className="w-1/2">Replacement Part</th>
 							<th className="text-right">Quantity</th>
 						</tr>
 					</thead>
@@ -52,9 +52,9 @@ export const RepairPartsTable = () => {
 									<td>
 										<RangeInput
 											part={part}
-											repairParts={repairParts}
-											onRepairPartsChange={
-												onRepairPartsChange
+											replacementParts={replacementParts}
+											onReplacementPartsChange={
+												onReplacementPartsChange
 											}
 										/>
 									</td>

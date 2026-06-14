@@ -2,15 +2,15 @@ import { CompatiblePart, ReplacementParts } from '@/@types/calculator';
 import { useRef } from 'react';
 
 interface Props {
-	repairParts: ReplacementParts;
-	onRepairPartsChange: (parts: ReplacementParts) => void;
+	replacementParts: ReplacementParts;
+	onReplacementPartsChange: (parts: ReplacementParts) => void;
 	part: CompatiblePart;
 }
 
 export const RangeInput = ({
 	part,
-	repairParts,
-	onRepairPartsChange,
+	replacementParts,
+	onReplacementPartsChange,
 }: Props) => {
 	const id = `rangeInput-${part.name.replaceAll(' ', '-')}`;
 	const ref = useRef<HTMLInputElement>(null);
@@ -18,7 +18,7 @@ export const RangeInput = ({
 	return (
 		<>
 			<label className="sr-only" htmlFor={id}>
-				How many to be repaired of this part?
+				How many to be replaced of this part?
 			</label>
 			<div
 				className="max-sm:tooltip max-sm:tooltip-secondary w-full"
@@ -31,20 +31,21 @@ export const RangeInput = ({
 					type="range"
 					min={0}
 					max={part.quantity}
-					defaultValue={repairParts[part.name]?.quantity ?? 0}
+					defaultValue={replacementParts[part.name]?.quantity ?? 0}
 					onChange={({ currentTarget: { value } }) => {
-						const newRepairParts = structuredClone(repairParts);
+						const newReplacementParts =
+							structuredClone(replacementParts);
 
 						if (!~~value) {
-							delete newRepairParts[part.name];
+							delete newReplacementParts[part.name];
 						} else {
-							newRepairParts[part.name] = {
+							newReplacementParts[part.name] = {
 								quantity: ~~value,
 								deductibleCost: ~~value * part.cost * -1,
 							};
 						}
 
-						onRepairPartsChange(newRepairParts);
+						onReplacementPartsChange(newReplacementParts);
 					}}
 				/>
 			</div>

@@ -5,8 +5,7 @@ import { selectAutoGen } from '@/lib/features/autoGen/autoGenSlice';
 import { selectCalculator } from '@/lib/features/calculator/calculatorSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { getFullPartByName, partSortFn } from '@/modules/common';
-import { UpdateSortEvent } from '@/modules/customEvents';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import SortBtn from '../SortBtn';
 
 interface Props {
@@ -19,20 +18,6 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 	const { generatedSetup } = useAppSelector(selectAutoGen);
 
 	const [sortBy, setSortBy] = useState<PartSortBy>('name_asc');
-
-	// onMount
-	useEffect(() => {
-		const handleUpdateSort = (e: Event) => {
-			e.stopPropagation();
-			setSortBy((e as CustomEvent<PartSortBy>).detail ?? 'name_asc');
-		};
-
-		window.addEventListener(UpdateSortEvent.name, handleUpdateSort);
-
-		return () => {
-			window.removeEventListener(UpdateSortEvent.name, handleUpdateSort);
-		};
-	}, []);
 
 	const sortedSelectedParts = useMemo(
 		() => selectedParts.toSorted(partSortFn(sortBy)),
@@ -52,9 +37,9 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 
 	const totalDisplayCost = useMemo(
 		() =>
-			generatedSetup?.replacementParts ?
-				generatedSetup.replacementParts.netCost
-			:	totalCost,
+			generatedSetup?.replacementParts
+				? generatedSetup.replacementParts.netCost
+				: totalCost,
 		[generatedSetup?.replacementParts, totalCost],
 	);
 
@@ -76,9 +61,9 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 
 	const totalDisplayCostToBoost = useMemo(
 		() =>
-			generatedSetup?.replacementParts ?
-				generatedSetup.replacementParts.netCostToBoost
-			:	totalCostToBoost,
+			generatedSetup?.replacementParts
+				? generatedSetup.replacementParts.netCostToBoost
+				: totalCostToBoost,
 		[generatedSetup?.replacementParts, totalCostToBoost],
 	);
 
@@ -110,6 +95,7 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 								Part{' '}
 								<SortBtn
 									sortBy={sortBy}
+									setSortBy={setSortBy}
 									values={['name_asc', 'name_desc']}
 								/>
 							</th>
@@ -117,6 +103,7 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 								Boost{' '}
 								<SortBtn
 									sortBy={sortBy}
+									setSortBy={setSortBy}
 									values={['boost_asc', 'boost_desc']}
 								/>
 							</th>
@@ -124,6 +111,7 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 								Cost{' '}
 								<SortBtn
 									sortBy={sortBy}
+									setSortBy={setSortBy}
 									values={['cost_asc', 'cost_desc']}
 								/>
 							</th>
@@ -131,6 +119,7 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 								Cost / Boost{' '}
 								<SortBtn
 									sortBy={sortBy}
+									setSortBy={setSortBy}
 									values={[
 										'costToBoost_asc',
 										'costToBoost_desc',
@@ -140,57 +129,58 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 						</tr>
 					</thead>
 					<tbody>
-						{isSkeleton ?
-							getSkeletonRows()
-						:	sortedSelectedParts.map((part) => {
-								const tuningPartData = getFullPartByName(
-									part.name,
-								);
+						{isSkeleton
+							? getSkeletonRows()
+							: sortedSelectedParts.map((part) => {
+									const tuningPartData = getFullPartByName(
+										part.name,
+									);
 
-								if (!tuningPartData) {
-									console.warn(`Part missing: ${part.name}`);
-								}
+									if (!tuningPartData) {
+										console.warn(
+											`Part missing: ${part.name}`,
+										);
+									}
 
-								return (
-									<tr
-										key={`${part.name.replaceAll(
-											' ',
-											'-',
-										)}-row`}
-									>
-										<td>
-											x{part.quantity} {part.name}
-										</td>
-										<td className="text-right">
-											+
-											{(
-												tuningPartData?.boost *
-												part.quantity
-											).toFixed(2)}
-											%
-										</td>
-										<td className="text-right">
-											{tuningPartData?.cost *
-												part.quantity}{' '}
-											CR
-										</td>
-										<td
-											className="text-right max-md:hidden"
-											title={(
-												tuningPartData?.cost /
-												tuningPartData?.boost
-											).toString()}
+									return (
+										<tr
+											key={`${part.name.replaceAll(
+												' ',
+												'-',
+											)}-row`}
 										>
-											{(
-												tuningPartData?.cost /
-												tuningPartData?.boost
-											).toFixed(0)}{' '}
-											CR/Boost
-										</td>
-									</tr>
-								);
-							})
-						}
+											<td>
+												x{part.quantity} {part.name}
+											</td>
+											<td className="text-right">
+												+
+												{(
+													tuningPartData?.boost *
+													part.quantity
+												).toFixed(2)}
+												%
+											</td>
+											<td className="text-right">
+												{tuningPartData?.cost *
+													part.quantity}{' '}
+												CR
+											</td>
+											<td
+												className="text-right max-md:hidden"
+												title={(
+													tuningPartData?.cost /
+													tuningPartData?.boost
+												).toString()}
+											>
+												{(
+													tuningPartData?.cost /
+													tuningPartData?.boost
+												).toFixed(0)}{' '}
+												CR/Boost
+											</td>
+										</tr>
+									);
+							  })}
 					</tbody>
 					<tfoot className="text-xs 2xl:text-sm">
 						{method === 'auto' &&
@@ -222,23 +212,24 @@ export const SelectedPartsTable = ({ isSkeleton }: Props) => {
 						<tr className="bg-secondary text-secondary-content">
 							<th>Total:</th>
 							<th className="text-right">
-								{isSkeleton ?
-									skeletonContent
-								:	`+${totalBoost.toFixed(2)}%`}
+								{isSkeleton
+									? skeletonContent
+									: `+${totalBoost.toFixed(2)}%`}
 							</th>
 							<th className="text-right">
-								{isSkeleton ?
-									skeletonContent
-								:	`${totalDisplayCost}CR`}
+								{isSkeleton
+									? skeletonContent
+									: `${totalDisplayCost}CR`}
 							</th>
 							<th
 								className="text-right max-md:hidden"
 								title={totalDisplayCostToBoost.toFixed(2)}
 							>
-								{isSkeleton ?
-									skeletonContent
-								:	`${totalDisplayCostToBoost.toFixed(0)} CR/Boost`
-								}
+								{isSkeleton
+									? skeletonContent
+									: `${totalDisplayCostToBoost.toFixed(
+											0,
+									  )} CR/Boost`}
 							</th>
 						</tr>
 					</tfoot>

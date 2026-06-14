@@ -1,5 +1,5 @@
 import { BaseProps } from '@/@types/globals';
-import { RepairPartsTable } from '@/components/AutoGen/RepairPartsTable';
+import { ReplacementPartsTable } from '@/components/AutoGen/ReplacementPartsTable';
 import Card from '@/components/Card';
 import {
 	selectAutoGen,
@@ -12,9 +12,9 @@ import { TargetIncrease } from '../TargetIncrease';
 
 export default function ParametersCard({ className }: BaseProps) {
 	const dispatch = useAppDispatch();
-	const { withReplacements: withRepairs } = useAppSelector(selectAutoGen);
+	const { withReplacements } = useAppSelector(selectAutoGen);
 
-	const handleIncludeRepairsChange = useCallback(
+	const handleIncludeReplacementsChange = useCallback(
 		({ target }: React.ChangeEvent<HTMLInputElement>) => {
 			dispatch(setWithReplacements(target.checked));
 		},
@@ -30,8 +30,8 @@ export default function ParametersCard({ className }: BaseProps) {
 						<input
 							type="checkbox"
 							className="toggle toggle-primary"
-							defaultChecked={withRepairs}
-							onChange={handleIncludeRepairsChange}
+							defaultChecked={withReplacements}
+							onChange={handleIncludeReplacementsChange}
 						/>
 						<div className="flex flex-row gap-2">
 							Include replacement parts
@@ -43,7 +43,7 @@ export default function ParametersCard({ className }: BaseProps) {
 							</div>
 						</div>
 					</label>
-					{withRepairs && <RepairPartsTable />}
+					{withReplacements && <ReplacementPartsTable />}
 				</div>
 			</div>
 		</Card>
