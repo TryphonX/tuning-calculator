@@ -13,7 +13,7 @@ export const FeatureCard = ({ feature }: Props) => {
 					<h2 className="card-title text-accent">
 						{feature.icon} {feature.title}
 						{feature.comingSoon && (
-							<span className="badge badge-xs badge-primary badge-soft">
+							<span className="max-sm:hidden badge badge-xs badge-primary badge-soft">
 								Coming soon!
 							</span>
 						)}

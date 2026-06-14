@@ -1,5 +1,4 @@
 import { FeatureGrid } from '@/components/FeatureGrid';
-import GithubIssueSection from '@/components/GithubIssueSection';
 import { Page } from '@/modules/navigation';
 import { PLLogo } from '@/modules/resources';
 import Image from 'next/image';
@@ -47,7 +46,7 @@ export default function Home() {
 					</div>
 				</div>
 				<FeatureGrid />
-				<GithubIssueSection />
+				{/* <GithubIssueSection /> */}
 			</div>
 		</>
 	);

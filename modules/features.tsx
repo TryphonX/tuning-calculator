@@ -16,16 +16,6 @@ export interface Feature {
 
 export const FEATURES: Feature[] = [
 	{
-		icon: <LuFilter />,
-		title: 'Parts Filtering',
-		description:
-			'The engine election screen automatically filters parts based on the selected engine.',
-		benefits: [
-			"No more wasted time scrolling through parts that don't fit your engine!",
-			'Stats are shown for each part, including cost, performance boost, and cost-to-boost ratio.',
-		],
-	},
-	{
 		icon: <LuWandSparkles />,
 		title: 'Auto-Tuning',
 		description:
@@ -47,6 +37,16 @@ export const FEATURES: Feature[] = [
 			'See the stats of your build in real-time! The cart is updated as you select parts.',
 			'Easy comparison of parts! All the data is available to you.',
 			'Sort parts by cost, boost, or cost-to-boost ratio to find the parts you need!',
+		],
+	},
+	{
+		icon: <LuFilter />,
+		title: 'Parts Filtering',
+		description:
+			'Based on the engine selection, parts are automatically filtered to show only those that fit your engine.',
+		benefits: [
+			"No more wasted time scrolling through parts that don't fit your engine!",
+			'Stats are shown for each part, including cost, performance boost, and cost-to-boost ratio.',
 		],
 	},
 	{

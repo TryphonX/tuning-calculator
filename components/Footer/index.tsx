@@ -20,7 +20,7 @@ export default function Footer() {
 
 	return (
 		<>
-			<footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10">
+			<footer className="max-sm:footer-vertical footer footer-horizontal bg-base-300 text-base-content p-10">
 				<nav>
 					<h6 className="footer-title">Help</h6>
 					<Link
@@ -100,7 +100,7 @@ export default function Footer() {
 					</span>
 				</nav>
 			</footer>
-			<footer className="footer md:footer-horizontal items-center p-4 bg-base-300 text-neutral-content">
+			<footer className="max-sm:footer-vertical max-sm:place-content-center footer footer-horizontal items-center p-4 bg-base-300 text-neutral-content">
 				<aside className="items-center grid-flow-col">
 					<Image
 						className="rounded-full"
