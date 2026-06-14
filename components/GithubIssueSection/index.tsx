@@ -1,45 +1,46 @@
-import Link from 'next/link';
-import { FaGithub } from 'react-icons/fa6';
+import { LuBug, LuLightbulb } from 'react-icons/lu';
+import { GHIssueCard } from './GHIssueCard';
 
 export default function GithubIssueSection() {
 	return (
-		<div className="grid grid-cols-1 grid-rows-4 md:grid-cols-3 md:grid-rows-2 gap-8">
-			<div className="space-y-4">
-				<h3 className="text-3xl font-bold">Suggestions</h3>
-				<p>
-					If you have any suggestions for improvement, feel free to
-					let me know by clicking the button below.
-				</p>
-			</div>
-			<div className="space-y-4">
-				<h3 className="text-3xl font-bold">Feedback & Bugs</h3>
-				<p>
-					Have any feedback about the app? Maybe you found a bug?
-					Please take the time to submit an issue by clicking the
-					button below.
-				</p>
-			</div>
-			<div className="space-y-4">
-				<h3 className="text-3xl font-bold">Incorrect Data</h3>
-				<p>
-					See anything wrong with the information about the engine
-					specs, parts or missing links between parts and engines?
-					Please take the time to submit an issue by clicking the
-					button below.
-				</p>
-			</div>
-			<div className="md:col-span-3">
-				<Link
-					href="https://github.com/TryphonX/cms-tuning-calculator/issues/new"
-					target="_blank"
-				>
-					<button
-						type="button"
-						className="btn btn-secondary btn-block"
-					>
-						<FaGithub aria-hidden /> Open an issue
-					</button>
-				</Link>
+		<div className="w-full flex items-center justify-center">
+			<div className="grid grid-flow-row grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 py-6 max-w-7xl">
+				<GHIssueCard
+					icon={<LuLightbulb aria-hidden />}
+					title="Suggestions"
+					description="Have any ideas for improving the app? Let us know!"
+					bulletPoints={[
+						'New ideas for features',
+						'Enhancements to existing features',
+					]}
+					btnData={{
+						text: 'Submit Suggestion',
+						url: 'https://github.com/TryphonX/cms-tuning-calculator/issues/new?template=feature_request.md',
+					}}
+				/>
+				<GHIssueCard
+					icon={<LuBug aria-hidden />}
+					title="Bugs"
+					description="Encountered a bug? Please report it so we can fix it!"
+					bulletPoints={['Performance issues', 'Unexpected behavior']}
+					btnData={{
+						text: 'Report Bug',
+						url: 'https://github.com/TryphonX/cms-tuning-calculator/issues/new?template=bug_report.md',
+					}}
+				/>
+				<GHIssueCard
+					icon={<LuBug aria-hidden />}
+					title="Incorrect Data"
+					description="See anything wrong with the engine or part data? Please report it!"
+					bulletPoints={[
+						'Missing parts or full engines',
+						'Incorrect prices, boost or links',
+					]}
+					btnData={{
+						text: 'Report Incorrect Data',
+						url: 'https://github.com/TryphonX/cms-tuning-calculator/issues/new?template=incorrect_data.md',
+					}}
+				/>
 			</div>
 		</div>
 	);

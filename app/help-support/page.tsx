@@ -5,7 +5,7 @@ const helpAndSupportPage = () => {
 		<div className="relative flex flex-col items-center justify-center">
 			<div className="bg-linear-to-b from-base-100 via-base-300 to-base-100 absolute w-full h-full" />
 			<div className="relative py-16 p-8 space-y-20 w-full max-w-6xl">
-				<div className="space-y-8">
+				<div className="space-y-6">
 					<h1 className="text-5xl font-bold">Help & Support</h1>
 					<p>
 						Got a question or found a bug? Check the quick guides
@@ -17,7 +17,7 @@ const helpAndSupportPage = () => {
 					<div className="space-y-8">
 						<h2 className="text-4xl font-bold">FAQs</h2>
 						<div className="space-y-3">
-							<div className="collapse bg-base-100 border border-accent collapse-arrow">
+							<div className="collapse bg-secondary/20 collapse-arrow">
 								<input
 									aria-label="Expand FAQ"
 									type="checkbox"
@@ -38,7 +38,7 @@ const helpAndSupportPage = () => {
 									app will not generate this setup.
 								</div>
 							</div>
-							<div className="collapse bg-base-100 border border-accent collapse-arrow">
+							<div className="collapse bg-secondary/20 collapse-arrow">
 								<input
 									aria-label="Expand FAQ"
 									type="checkbox"
@@ -53,7 +53,7 @@ const helpAndSupportPage = () => {
 									and they will be added to the app.
 								</div>
 							</div>
-							<div className="collapse bg-base-100 border border-accent collapse-arrow">
+							<div className="collapse bg-secondary/20 collapse-arrow">
 								<input
 									aria-label="Expand FAQ"
 									type="checkbox"
@@ -73,7 +73,7 @@ const helpAndSupportPage = () => {
 							</div>
 						</div>
 					</div>
-					<div className="space-y-8">
+					<div className="space-y-6">
 						<h2 className="text-4xl font-bold">Report an Issue</h2>
 						<p>
 							Found a bug or have a suggestion? Feel free to
