@@ -76,14 +76,20 @@ export const CalculationPage = () => {
 	return (
 		<>
 			<div className="relative">
-				<h1 className="hidden">Car Mechanic Simulator 21 Calculator</h1>
+				<h1 className="sr-only">
+					Car Mechanic Simulator 21 Calculator
+				</h1>
 				<div className="p-8 xl:p-16 space-y-16">
 					<div className="flex w-full justify-center">
 						<ul className="steps steps-horizontal w-2xl">
 							{STEPS.map((step, index) => (
 								<li
 									key={index}
-									className={`step ${index <= currentStepVisual ? 'step-secondary' : ''}`}
+									className={`step ${
+										index <= currentStepVisual
+											? 'step-secondary'
+											: ''
+									}`}
 								>
 									{step}
 								</li>
