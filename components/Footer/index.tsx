@@ -1,6 +1,7 @@
+import { PLLogo } from '@/modules/resources';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaGithub } from 'react-icons/fa6';
+import { FaDiscord, FaGithub, FaGlobe, FaLinkedinIn } from 'react-icons/fa6';
 
 export default function Footer() {
 	const dateString = new Date(
@@ -12,47 +13,121 @@ export default function Footer() {
 	});
 
 	return (
-		<footer className="footer md:footer-horizontal items-center p-4 bg-base-300 text-neutral-content">
-			<aside className="items-center grid-flow-col">
-				<Link
-					target="_blank"
-					href="https://tryphonx.github.io/"
-					aria-label="To TryphonX's Portfolio"
-				>
+		<>
+			<footer className="max-sm:footer-vertical footer footer-horizontal bg-base-300 text-base-content p-10">
+				<nav>
+					<h2 className="footer-title">Help</h2>
+					<Link
+						className="link link-hover"
+						href="https://github.com/TryphonX/cms-tuning-calculator#user-manual"
+					>
+						User Guide
+					</Link>
+					<Link
+						className="link link-hover"
+						href="https://github.com/TryphonX/cms-tuning-calculator/releases/latest"
+					>
+						Release Notes
+					</Link>
+					<Link
+						className="link link-hover"
+						href="https://github.com/TryphonX/cms-tuning-calculator/issues/new"
+					>
+						Open an Issue
+					</Link>
+				</nav>
+				<nav>
+					<h2 className="footer-title">Github</h2>
+					<Link
+						className="link link-hover"
+						href="https://github.com/TryphonX/cms-tuning-calculator"
+					>
+						Repository
+					</Link>
+					<Link
+						className="link link-hover"
+						href="https://github.com/TryphonX/cms-tuning-calculator/issues?q=state%3Aopen%20label%3Aenhancement"
+					>
+						Feature Requests
+					</Link>
+					<Link
+						className="link link-hover"
+						href="https://github.com/TryphonX/cms-tuning-calculator/issues?q=state%3Aopen%20label%3Abug"
+					>
+						Bug Reports
+					</Link>
+					<Link
+						className="link link-hover"
+						href="https://github.com/TryphonX/cms-tuning-calculator#contributing"
+					>
+						Contributing
+					</Link>
+				</nav>
+				<nav>
+					<h2 className="footer-title">Socials</h2>
+					<Link
+						className="link link-hover inline-flex items-center gap-2"
+						href="https://tryphonx.github.io/"
+					>
+						<FaGlobe aria-hidden /> Website
+					</Link>
+					<Link
+						className="link link-hover inline-flex items-center gap-2"
+						href="https://www.linkedin.com/in/tryfon-xydas/"
+					>
+						<FaLinkedinIn aria-hidden /> LinkedIn
+					</Link>
+					<Link
+						className="link link-hover inline-flex items-center gap-2"
+						href="https://github.com/TryphonX"
+					>
+						<FaGithub aria-hidden /> GitHub
+					</Link>
+					<span className="inline-flex items-center gap-2">
+						<FaDiscord aria-hidden />
+						<span className="sr-only">Discord username:</span>{' '}
+						TryphonX
+					</span>
+				</nav>
+			</footer>
+			<footer className="max-sm:footer-vertical max-sm:place-content-center footer footer-horizontal items-center p-4 bg-base-300 text-neutral-content">
+				<aside className="items-center grid-flow-col">
 					<Image
 						className="rounded-full"
 						aria-hidden
 						width={54}
 						height={54}
-						src="/cms-tuning-calculator/images/Avatar2020.webp"
-						alt="TryphonX's avatar"
+						src={PLLogo.src}
+						alt={PLLogo.alt}
 					/>
-				</Link>
-				<div className="space-y-1">
-					<p>
-						Copyright © {new Date().getFullYear()} - All right
-						reserved
-					</p>
-					<p className="text-xs text-base-content/80">
-						<span className="text-secondary font-semibold">
-							v{process.env.APP_VERSION}
-						</span>{' '}
-						| {dateString}
-					</p>
+					<div className="space-y-1">
+						<p>
+							Copyright © {new Date().getFullYear()} - All right
+							reserved
+						</p>
+						<p className="text-xs text-base-content/80">
+							<span className="text-accent font-semibold">
+								v{process.env.APP_VERSION}
+							</span>{' '}
+							| {dateString}
+						</p>
+					</div>
+				</aside>
+				<div className="flex flex-row max-md:w-full max-md:justify-center items-center md:place-self-center md:justify-self-end">
+					<nav className="flex max-md:w-full max-md:justify-center max-md:items-center md:place-self-center md:justify-self-end">
+						<span>
+							Made with ❤️ by{' '}
+							<Link
+								className="link link-hover font-semibold link-accent"
+								href="https://tryphonx.github.io/"
+								target="_blank"
+							>
+								TryphonX
+							</Link>
+						</span>
+					</nav>
 				</div>
-			</aside>
-			<div className="flex flex-row max-md:w-full max-md:justify-center items-center md:place-self-center md:justify-self-end">
-				<nav className="flex max-md:w-full max-md:justify-center max-md:items-center md:place-self-center md:justify-self-end">
-					<Link
-						href="https://github.com/TryphonX/cms-tuning-calculator/issues/new"
-						target="_blank"
-					>
-						<button className="btn btn-secondary btn-sm">
-							<FaGithub aria-hidden /> Open an issue
-						</button>
-					</Link>
-				</nav>
-			</div>
-		</footer>
+			</footer>
+		</>
 	);
 }

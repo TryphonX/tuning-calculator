@@ -3,31 +3,37 @@
 @plugin 'daisyui/theme' {
 	name: 'dark';
 	default: true;
+	prefersdark: true;
+	color-scheme: 'dark';
+	/* https://www.realtimecolors.com/?colors=e1fafa-030f0f-08fdfd-eab308-cada28&fonts=Inter-Inter */
+	--color-base-100: hsl(180, 50%, 5%);
+	--color-base-200: hsl(180, 50%, 4%);
+	--color-base-300: hsl(180, 50%, 2%);
+	--color-base-content: oklch(97.807% 0.029 256.847);
 	--color-primary: #03f5f7;
+	--color-primary-content: #030f0f;
 	--color-secondary: #eab308;
-	--color-primary-content: #130c00;
-	--color-secondary-content: #130c00;
-	--color-base-content: #a6adbb;
-}
-
-[data-theme='dark'] {
-	.btn {
-		border-radius: var(--radius-xl);
-	}
-
-	.select {
-		border-radius: var(--radius-xl);
-	}
-}
-
-@theme {
-	--background-image-gradient-radial: radial-gradient(
-		var(--tw-gradient-stops)
-	);
-	--background-image-gradient-conic: conic-gradient(
-		from 180deg at 50% 50%,
-		var(--tw-gradient-stops)
-	);
+	--color-secondary-content: #030f0f;
+	--color-accent: #cada28;
+	--color-accent-content: #030f0f;
+	--color-neutral: #0d4040;
+	--color-neutral-content: #e1fafa;
+	--color-info: oklch(74% 0.16 232.661);
+	--color-info-content: #030f0f;
+	--color-success: oklch(79% 0.209 151.711);
+	--color-success-content: #030f0f;
+	--color-warning: oklch(82% 0.189 84.429);
+	--color-warning-content: #030f0f;
+	--color-error: oklch(63% 0.237 25.331);
+	--color-error-content: #030f0f;
+	--radius-selector: 0.5rem;
+	--radius-field: 1rem;
+	--radius-box: 1rem;
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+	--border: 1px;
+	--depth: 1;
+	--noise: 0;
 }
 
 /*

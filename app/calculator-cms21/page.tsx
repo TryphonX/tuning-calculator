@@ -1,35 +1,16 @@
 'use client';
 
-import CalculatorWrapper from '@/components/CalculatorWrapper';
-import CompatiblePartsCard from '@/components/CompatiblePartsCard';
-import EngineCard from '@/components/EngineCard';
-import SelectedPartsCard from '@/components/SelectedPartsCard';
+import { CalculationPage } from '@/components/CalculationPage';
+import { appStore } from '@/lib/store';
+import { Provider } from 'react-redux';
 
 export default function Calculator() {
 	return (
-		<CalculatorWrapper>
-			<h1 className="hidden">Car Mechanic Simulator 21 Calculator</h1>
-			{/* Desktop View */}
-			<div
-				className="
-				grow
-				hidden
-				xl:grid xl:grid-flow-row xl:grid-cols-5 xl:gap-8 m-8"
-			>
-				<div className="xl:col-span-2 flex-col space-y-8">
-					<EngineCard />
-					<SelectedPartsCard className="max-xl:hidden" />
-				</div>
-				<div className="xl:col-span-3 flex-col space-y-8">
-					<CompatiblePartsCard className="max-xl:hidden" />
-				</div>
+		<Provider store={appStore}>
+			<div className="relative">
+				<div className="bg-linear-to-b from-base-100 via-base-300 to-base-100 absolute w-full h-full" />
+				<CalculationPage />
 			</div>
-			{/* Mobile View */}
-			<div className="grow flex flex-col m-8 gap-8 xl:hidden">
-				<EngineCard />
-				<CompatiblePartsCard />
-				<SelectedPartsCard />
-			</div>
-		</CalculatorWrapper>
+		</Provider>
 	);
 }
