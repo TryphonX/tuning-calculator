@@ -1,34 +1,36 @@
 'use client';
 
 import { Engine, EngineName } from '@/@types/calculator';
-import engines from '../../data/cms21/engines.json';
-import { ChangeEvent, useCallback, useContext, useState } from 'react';
-import { CalculatorContext } from '@/modules/contexts';
-import { ChangeEngineEvent } from '@/modules/customEvents';
 import { BaseProps } from '@/@types/globals';
+import {
+	resetReplacementParts,
+	setGeneratedSetup,
+} from '@/lib/features/autoGen/autoGenSlice';
+import {
+	selectCurrentEngine,
+	updateEngine,
+} from '@/lib/features/calculator/calculatorSlice';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { ENGINE_CONFIGURATIONS } from '@/modules/common';
-
-const handleEngineChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
-	const engineName = target.value as EngineName;
-	ChangeEngineEvent.dispatch(
-		structuredClone(engines[engineName as EngineName]) as Engine,
-	);
-};
-
-const EngineConfigOptions = () => {
-	return (
-		<>
-			<option value="">Any</option>
-			{ENGINE_CONFIGURATIONS.map((option) => (
-				<option key={option}>{option}</option>
-			))}
-		</>
-	);
-};
+import { ChangeEvent, useCallback, useState } from 'react';
+import engines from '../../data/cms21/engines.json';
 
 export default function EngineSelect({ className }: BaseProps) {
-	const { currentEngine } = useContext(CalculatorContext);
-	const [engineConfig, setEngineConfig] = useState('');
+	const currentEngine = useAppSelector(selectCurrentEngine);
+	const dispatch = useAppDispatch();
+	const [engineConfig, setEngineConfig] = useState<string>('');
+
+	const handleEngineChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
+		const engineName = target.value as EngineName | null;
+		const engine =
+			engineName ?
+				(structuredClone(engines[engineName as EngineName]) as Engine)
+			:	null;
+
+		dispatch(updateEngine(engine));
+		dispatch(resetReplacementParts());
+		dispatch(setGeneratedSetup(null));
+	};
 
 	const handleEngineConfigChange = ({
 		target,
@@ -39,31 +41,14 @@ export default function EngineSelect({ className }: BaseProps) {
 			return;
 		}
 
-		ChangeEngineEvent.dispatch(
-			structuredClone(
-				Object.values(engines).find(
-					(engine) => engine.specs.configuration === target.value,
-				) ?? null,
-			) as Engine | null,
-		);
-	};
+		const newEngine = structuredClone(
+			Object.values(engines).find(
+				(engine) => engine.specs.configuration === target.value,
+			) ?? null,
+		) as Engine | null;
 
-	const EngineOptions = () => {
-		return (
-			<>
-				{!engineConfig && <option>-- None --</option>}
-				{Object.keys(engines)
-					.filter(
-						(key) =>
-							!engineConfig ||
-							engines[key as EngineName].specs.configuration ===
-								engineConfig,
-					)
-					.map((option) => (
-						<option key={option}>{option}</option>
-					))}
-			</>
-		);
+		dispatch(updateEngine(newEngine));
+		dispatch(resetReplacementParts());
 	};
 
 	const getClassName = useCallback(
@@ -72,24 +57,37 @@ export default function EngineSelect({ className }: BaseProps) {
 	);
 
 	return (
-		<div className={getClassName()}>
-			<label className="select xl:select-md w-full">
+		<div className={`flex flex-col sm:flex-row gap-4 ${getClassName()}`}>
+			<label className="select sm:select-sm md:select-md w-full">
 				<span className="label">Configuration</span>
 				<select
 					value={engineConfig}
 					onChange={handleEngineConfigChange}
 				>
-					<EngineConfigOptions />
+					<option value="">Any</option>
+					{ENGINE_CONFIGURATIONS.map((option) => (
+						<option key={option}>{option}</option>
+					))}
 				</select>
 			</label>
 
-			<label className="select mt-3 xl:select-md w-full">
+			<label className="select sm:select-sm md:select-md w-full">
 				<span className="label">Engine</span>
 				<select
 					value={currentEngine?.name ?? ''}
 					onChange={handleEngineChange}
 				>
-					<EngineOptions />
+					{!engineConfig && <option>-- None --</option>}
+					{Object.keys(engines)
+						.filter(
+							(key) =>
+								!engineConfig ||
+								engines[key as EngineName].specs
+									.configuration === engineConfig,
+						)
+						.map((option) => (
+							<option key={option}>{option}</option>
+						))}
 				</select>
 			</label>
 		</div>

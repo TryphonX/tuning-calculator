@@ -4,24 +4,29 @@ import { FaArrowRight } from 'react-icons/fa6';
 
 export default function Calculator() {
 	return (
-		<div className="hero min-h-[88.5vh]">
-			<div className="hero-content text-center">
-				<div className="max-w-xl">
-					<h1 className="text-5xl font-bold text-primary">
-						Coming Soon!
-					</h1>
-					<p className="py-6">
-						Car Mechanic Simulator 26 Tuning Calculator will be
-						released once the full game is released and the
-						necessary data can be extracted. Stay tuned for updates,
-						and in the meantime, check out CMS 21 Tuning Calculator,
-						if you haven&apos;t already!
-					</p>
-					<Link href={Page.Cms21Calculator}>
-						<button className="btn btn-secondary">
-							To CMS 21 Calculator <FaArrowRight aria-hidden />
-						</button>
-					</Link>
+		<div className="relative flex flex-1 items-center">
+			<div className="bg-linear-to-b from-base-100 via-base-300 to-base-100 absolute w-full h-full" />
+
+			<div className="relative hero min-h-full">
+				<div className="hero-content text-center">
+					<div className="max-w-xl space-y-4">
+						<h1 className="text-5xl font-bold text-primary">
+							Coming Soon!
+						</h1>
+						<p className="py-2">
+							Car Mechanic Simulator 26 Tuning Calculator will be
+							released once the full game is released and the
+							necessary data can be extracted. Stay tuned for
+							updates, and in the meantime, check out CMS 21
+							Tuning Calculator, if you haven&apos;t already!
+						</p>
+						<Link href={Page.Cms21Calculator}>
+							<button type="button" className="btn btn-secondary">
+								To CMS 21 Calculator{' '}
+								<FaArrowRight aria-hidden />
+							</button>
+						</Link>
+					</div>
 				</div>
 			</div>
 		</div>

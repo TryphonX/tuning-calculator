@@ -1,35 +1,37 @@
-'use client';
-
 import { PartSortBy } from '@/@types/globals';
-import { UpdateSortEvent } from '@/modules/customEvents';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa6';
 
 type SortBtnProps = {
 	sortBy: PartSortBy;
 	values: [PartSortBy, PartSortBy];
+	setSortBy: (sortBy: PartSortBy) => void;
 };
 
-export default function SortBtn({ sortBy, values }: SortBtnProps) {
+export default function SortBtn({ sortBy, values, setSortBy }: SortBtnProps) {
 	const handleClick = useCallback(() => {
-		UpdateSortEvent.dispatch(
+		setSortBy(
 			sortBy === (values[0] as PartSortBy)
 				? (values[1] as PartSortBy)
 				: (values[0] as PartSortBy),
 		);
-	}, [sortBy, values]);
+	}, [setSortBy, sortBy, values]);
+
+	const isAscending = useMemo(() => sortBy === values[0], [sortBy, values]);
 
 	return (
 		<button
+			type="button"
+			aria-label={`Sort by ${isAscending ? 'ascending' : 'descending'}`}
 			className={`btn btn-xs btn-square btn-ghost ${
 				values.some((val) => val === sortBy) ? 'btn-active' : ''
 			}`}
 			onClick={handleClick}
 		>
-			{sortBy === values[0] ? (
-				<FaCaretUp aria-label="Sort ascending" />
+			{isAscending ? (
+				<FaCaretUp aria-hidden />
 			) : (
-				<FaCaretDown aria-label="Sort descending" />
+				<FaCaretDown aria-hidden />
 			)}
 		</button>
 	);

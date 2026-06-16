@@ -1,63 +1,89 @@
+import { Page } from '@/modules/navigation';
+import { PLLogo } from '@/modules/resources';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FaPaypal } from 'react-icons/fa6';
-import { Page } from '@/modules/navigation';
+import { HiMenuAlt2 } from 'react-icons/hi';
 
 export default function Navbar() {
 	return (
-		<div role="navigation" className="navbar bg-base-300 shadow-xl">
-			<div className="flex-1">
-				<Link className="btn btn-ghost" href={Page.Home}>
-					<span className="text-xl">Tuning Calculator</span>
+		<div role="navigation" className="navbar bg-base-100 z-10">
+			<div className="navbar-start">
+				<div className="dropdown">
+					<div
+						title="Menu"
+						tabIndex={0}
+						role="button"
+						className="btn btn-ghost lg:hidden"
+						aria-label="Open navigation menu"
+					>
+						<HiMenuAlt2 size={24} aria-hidden />
+					</div>
+					<ul
+						tabIndex={-1}
+						className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+					>
+						<li>
+							<Link href={Page.Cms26Calculator}>CMS 2026</Link>
+						</li>
+						<li>
+							<Link href={Page.Cms21Calculator}>CMS 2021</Link>
+						</li>
+						<li>
+							<Link href={Page.HelpAndSupport}>
+								Help & Support
+							</Link>
+						</li>
+						<li>
+							<Link href={Page.About}>About</Link>
+						</li>
+						<li className="sm:hidden">
+							<Link
+								href="https://paypal.me/TryphonKsydas"
+								target="_blank"
+							>
+								<FaPaypal aria-hidden /> Donate
+								<span className="sr-only"> via PayPal</span>
+							</Link>
+						</li>
+					</ul>
+				</div>
+				<Link href={Page.Home} className="btn btn-ghost text-xl">
+					<Image
+						src={PLLogo.src}
+						alt={PLLogo.alt}
+						aria-hidden
+						width={30}
+						height={30}
+						priority
+					/>
+					CmsTuningCalculator
 				</Link>
 			</div>
-			<div className="flex-none">
+			<div className="navbar-center hidden lg:flex">
 				<ul className="menu menu-horizontal px-1">
-					<li className="max-sm:hidden">
-						<Link
-							className="rounded-xl font-bold"
-							href={Page.Cms26Calculator}
-						>
-							CMS 2026{' '}
-							<span className="text-xs text-primary/70">
-								Coming Soon!
-							</span>
-						</Link>
+					<li>
+						<Link href={Page.Cms26Calculator}>CMS 2026</Link>
 					</li>
-					<li className="max-sm:hidden">
-						<Link
-							className="rounded-xl"
-							href={Page.Cms21Calculator}
-						>
-							CMS 2021
-						</Link>
+					<li>
+						<Link href={Page.Cms21Calculator}>CMS 2021</Link>
 					</li>
-					<li className="sm:hidden">
-						<details>
-							<summary />
-							<ul className="p-2 bg-base-100 rounded-t-none z-10">
-								<li>
-									<Link
-										href={Page.Cms21Calculator}
-										className="whitespace-nowrap"
-									>
-										CMS 2021
-									</Link>
-								</li>
-								<li>
-									<Link
-										href={Page.Cms26Calculator}
-										className="whitespace-nowrap"
-									>
-										CMS 2026
-									</Link>
-								</li>
-							</ul>
-						</details>
+					<li>
+						<Link href={Page.HelpAndSupport}>Help & Support</Link>
+					</li>
+					<li>
+						<Link href={Page.About}>About</Link>
 					</li>
 				</ul>
+			</div>
+			<div className="navbar-end hidden sm:inline-flex">
 				<Link href="https://paypal.me/TryphonKsydas" target="_blank">
-					<button type="button" className="btn btn-sm bg-[#00457C]">
-						<FaPaypal /> Donate
+					<button
+						type="button"
+						className="btn btn-sm bg-[#00457C] hover:bg-[#00457C]/50"
+					>
+						<FaPaypal aria-hidden /> Donate
+						<span className="sr-only"> via PayPal</span>
 					</button>
 				</Link>
 			</div>

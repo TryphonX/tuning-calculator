@@ -1,7 +1,25 @@
 import engines from '@/data/cms21/engines.json';
 import tuningParts from '@/data/cms21/tuning-parts.json';
 
+export type Method = 'auto' | 'manual';
+
+type Enumerate<
+	N extends number,
+	Acc extends number[] = [],
+> = Acc['length'] extends N
+	? Acc[number]
+	: Enumerate<N, [...Acc, Acc['length']]>;
+
+export type IntRange<F extends number, T extends number> = Exclude<
+	Enumerate<T>,
+	Enumerate<F>
+>;
+
 export declare interface CompatiblePart extends TuningPartBase {
+	/**
+	 * The name of the part
+	 */
+	name: TuningPartName;
 	/**
 	 * The number of times this type of part is fitted on each engine
 	 */
@@ -65,6 +83,10 @@ export declare interface TuningPartBase {
 
 export declare interface SelectedPart extends TuningPartBase {
 	/**
+	 * The name of the part
+	 */
+	name: TuningPartName;
+	/**
 	 * The number of times this type of part is fitted on each engine
 	 */
 	quantity: number;
@@ -92,17 +114,31 @@ export declare interface TuningSetup {
 	cost: number;
 	boost: number;
 	costToBoost: number;
-	repairs?: {
-		repairPartNames: TuningPartName[];
-		/** The cost of the tuning minus the repairs */
+	replacementParts?: {
+		names: TuningPartName[];
+		/** The cost of the tuning minus the replacements */
 		netCost: number;
 		netCostToBoost: number;
 		totalSaved: number;
 	};
 }
 
+declare interface ReplacementPartValue {
+	quantity: number;
+	deductibleCost: number;
+}
+
 /**
  * key: TuningPartName
- * value: The cost of the repair part x(-1)
+ * value: The cost of the replacement part x(-1)
  */
-export type RepairParts = Record<Partial<TuningPartName>, number>;
+export type ReplacementParts = Record<
+	Partial<TuningPartName>,
+	ReplacementPartValue
+>;
+
+declare interface CalculatorWorkerMessage {
+	parts: TuningPart[];
+	targetBoostIncrease: number;
+	replacementParts: ReplacementParts;
+}

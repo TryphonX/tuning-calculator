@@ -1,0 +1,42 @@
+{
+	"projectName": "cms-tuning-calculator",
+	"projectOwner": "TryphonX",
+	"repoType": "github",
+	"repoHost": "https://github.com",
+	"files": [
+		"README.md"
+	],
+	"imageSize": 100,
+	"commit": false,
+	"commitConvention": "angular",
+	"contributors": [
+		{
+			"login": "TryphonX",
+			"name": "Tryfon Xydas",
+			"avatar_url": "https://avatars.githubusercontent.com/u/32367640?v=4",
+			"profile": "https://tryphonx.github.io/",
+			"contributions": [
+				"code",
+				"data",
+				"doc",
+				"a11y",
+				"design",
+				"infra",
+				"maintenance",
+				"review"
+			]
+		},
+		{
+			"login": "joshbarrass",
+			"name": "Joshua Barrass",
+			"avatar_url": "https://avatars.githubusercontent.com/u/20770871?v=4",
+			"profile": "https://barrass.dev/",
+			"contributions": [
+				"code",
+				"data"
+			]
+		}
+	],
+	"contributorsPerLine": 7,
+	"linkToUsage": false
+}
