@@ -10,7 +10,7 @@ const getIsMainBranch = () => {
 				encoding: 'utf8',
 			}).trim() === 'main'
 		);
-	} catch (error) {
+	} catch {
 		console.warn('Could not determine Git branch, defaulting to "main"');
 		return true;
 	}
