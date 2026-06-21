@@ -10,16 +10,16 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)][semantic-release-url]
-[![Contributors](https://img.shields.io/github/contributors/tryphonx/cms-tuning-calculator)](https://github.com/tryphonx/cms-tuning-calculator/graphs/contributors)
-[![Github Issues](https://img.shields.io/github/issues/tryphonx/cms-tuning-calculator)](https://github.com/tryphonx/cms-tuning-calculator/issues)
-[![GNU GPL v3 License](https://img.shields.io/github/license/tryphonx/cms-tuning-calculator)](https://github.com/tryphonx/cms-tuning-calculator/blob/main/COPYING.txt)
-[![Deployment Status](https://github.com/tryphonx/cms-tuning-calculator/actions/workflows/prod-deploy.yml/badge.svg?branch=main)](https://github.com/tryphonx/cms-tuning-calculator/actions/workflows/prod-deploy.yml)
-[![CI Dev](https://github.com/tryphonx/cms-tuning-calculator/actions/workflows/ci.yml/badge.svg?branch=dev)](https://github.com/tryphonx/cms-tuning-calculator/actions/workflows/ci.yml)
+[![Contributors](https://img.shields.io/github/contributors/tryphonx/tuning-calculator)](https://github.com/tryphonx/tuning-calculator/graphs/contributors)
+[![Github Issues](https://img.shields.io/github/issues/tryphonx/tuning-calculator)](https://github.com/tryphonx/tuning-calculator/issues)
+[![GNU GPL v3 License](https://img.shields.io/github/license/tryphonx/tuning-calculator)](https://github.com/tryphonx/tuning-calculator/blob/main/COPYING.txt)
+[![Deployment Status](https://github.com/tryphonx/tuning-calculator/actions/workflows/prod-deploy.yml/badge.svg?branch=main)](https://github.com/tryphonx/tuning-calculator/actions/workflows/prod-deploy.yml)
+[![CI Dev](https://github.com/tryphonx/tuning-calculator/actions/workflows/ci.yml/badge.svg?branch=dev)](https://github.com/tryphonx/tuning-calculator/actions/workflows/ci.yml)
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/tryphonx/cms-tuning-calculator">
+  <a href="https://github.com/tryphonx/tuning-calculator">
     <img src="images/logo.png" alt="Logo" width="250" height="250">
   </a>
 
@@ -29,15 +29,15 @@
     Tune efficiently using this calculator to determine the optimal setups with the best cost to boost ratio for your job!
     <br />
     <!--
-		<a href="https://github.com/tryphonx/cms-tuning-calculator/docs/"><strong>Explore the docs »</strong></a>
+		<a href="https://github.com/tryphonx/tuning-calculator/docs/"><strong>Explore the docs »</strong></a>
 		-->
     <br />
     <br />
-    <a href="https://tryphonx.github.io/cms-tuning-calculator/">Visit App</a>
+    <a href="https://tryphonx.github.io/tuning-calculator/">Visit App</a>
     ·
-    <a href="https://github.com/tryphonx/cms-tuning-calculator/issues">Report Bug</a>
+    <a href="https://github.com/tryphonx/tuning-calculator/issues">Report Bug</a>
     ·
-    <a href="https://github.com/tryphonx/cms-tuning-calculator/issues">Request Feature</a>
+    <a href="https://github.com/tryphonx/tuning-calculator/issues">Request Feature</a>
   </p>
 </div>
 
@@ -117,7 +117,7 @@ The first column (checkbox column) is where you can choose the parts you want to
 
 Third step -and final- step for the auto-generate approach is to check the _**Cart Card**_. It includes a list of all the parts you've selected along with their info (boost, cost, etc.) and their total values. If some of the replacement parts specified are used in the setup, you will also see them highlighted on the table and you will see their effect on the total cost.
 
-_[Visit the app now to try it »](https://tryphonx.github.io/cms-tuning-calculator/)_
+_[Visit the app now to try it »](https://tryphonx.github.io/tuning-calculator/)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -127,7 +127,7 @@ _[Visit the app now to try it »](https://tryphonx.github.io/cms-tuning-calculat
 - [x] Add suggested setups based on required boost
 - [x] Add sorting functionality to the tables
 
-See the [open issues](https://github.com/tryphonx/cms-tuning-calculator/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/tryphonx/tuning-calculator/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
@@ -182,8 +182,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://tryphonx.github.io/"><img src="https://avatars.githubusercontent.com/u/32367640?v=4?s=100" width="100px;" alt="Tryfon Xydas"/><br /><sub><b>Tryfon Xydas</b></sub></a><br /><a href="https://github.com/TryphonX/cms-tuning-calculator/commits?author=TryphonX" title="Code">💻</a> <a href="#data-TryphonX" title="Data">🔣</a> <a href="https://github.com/TryphonX/cms-tuning-calculator/commits?author=TryphonX" title="Documentation">📖</a> <a href="#a11y-TryphonX" title="Accessibility">️️️️♿️</a> <a href="#design-TryphonX" title="Design">🎨</a> <a href="#infra-TryphonX" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-TryphonX" title="Maintenance">🚧</a> <a href="https://github.com/TryphonX/cms-tuning-calculator/pulls?q=is%3Apr+reviewed-by%3ATryphonX" title="Reviewed Pull Requests">👀</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://barrass.dev/"><img src="https://avatars.githubusercontent.com/u/20770871?v=4?s=100" width="100px;" alt="Joshua Barrass"/><br /><sub><b>Joshua Barrass</b></sub></a><br /><a href="https://github.com/TryphonX/cms-tuning-calculator/commits?author=joshbarrass" title="Code">💻</a> <a href="#data-joshbarrass" title="Data">🔣</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://tryphonx.github.io/"><img src="https://avatars.githubusercontent.com/u/32367640?v=4?s=100" width="100px;" alt="Tryfon Xydas"/><br /><sub><b>Tryfon Xydas</b></sub></a><br /><a href="https://github.com/tryphonx/tuning-calculator/commits?author=TryphonX" title="Code">💻</a> <a href="#data-TryphonX" title="Data">🔣</a> <a href="https://github.com/tryphonx/tuning-calculator/commits?author=TryphonX" title="Documentation">📖</a> <a href="#a11y-TryphonX" title="Accessibility">️️️️♿️</a> <a href="#design-TryphonX" title="Design">🎨</a> <a href="#infra-TryphonX" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-TryphonX" title="Maintenance">🚧</a> <a href="https://github.com/tryphonx/tuning-calculator/pulls?q=is%3Apr+reviewed-by%3ATryphonX" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://barrass.dev/"><img src="https://avatars.githubusercontent.com/u/20770871?v=4?s=100" width="100px;" alt="Joshua Barrass"/><br /><sub><b>Joshua Barrass</b></sub></a><br /><a href="https://github.com/tryphonx/tuning-calculator/commits?author=joshbarrass" title="Code">💻</a> <a href="#data-joshbarrass" title="Data">🔣</a></td>
     </tr>
   </tbody>
 </table>

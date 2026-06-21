@@ -69,7 +69,7 @@ export const Hero = () => {
 						</div>
 						<div>
 							<Link
-								href="https://github.com/TryphonX/cms-tuning-calculator"
+								href="https://github.com/tryphonx/tuning-calculator"
 								target="_blank"
 							>
 								<button
@@ -83,7 +83,7 @@ export const Hero = () => {
 								This project is open-source. Licensed under{' '}
 								<Link
 									className="link"
-									href="https://github.com/TryphonX/cms-tuning-calculator/blob/main/COPYING.txt"
+									href="https://github.com/tryphonx/tuning-calculator/blob/main/COPYING.txt"
 									target="_blank"
 								>
 									GNU GENERAL PUBLIC LICENSE v3

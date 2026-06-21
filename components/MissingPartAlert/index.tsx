@@ -24,7 +24,7 @@ const MissingPartAlert = ({ partMissing }: Props) => {
 						<Link
 							className="link"
 							target="_blank"
-							href="https://github.com/TryphonX/cms-tuning-calculator/issues/new"
+							href="https://github.com/tryphonx/tuning-calculator/issues/new"
 						>
 							Open an issue on GitHub.
 						</Link>

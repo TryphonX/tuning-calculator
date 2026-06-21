@@ -15,7 +15,7 @@ export default function GithubIssueSection() {
 					]}
 					btnData={{
 						text: 'Submit Suggestion',
-						url: 'https://github.com/TryphonX/cms-tuning-calculator/issues/new?template=feature_request.md',
+						url: 'https://github.com/tryphonx/tuning-calculator/issues/new?template=feature_request.md',
 					}}
 				/>
 				<GHIssueCard
@@ -25,7 +25,7 @@ export default function GithubIssueSection() {
 					bulletPoints={['Performance issues', 'Unexpected behavior']}
 					btnData={{
 						text: 'Report Bug',
-						url: 'https://github.com/TryphonX/cms-tuning-calculator/issues/new?template=bug_report.md',
+						url: 'https://github.com/tryphonx/tuning-calculator/issues/new?template=bug_report.md',
 					}}
 				/>
 				<GHIssueCard
@@ -38,7 +38,7 @@ export default function GithubIssueSection() {
 					]}
 					btnData={{
 						text: 'Report Incorrect Data',
-						url: 'https://github.com/TryphonX/cms-tuning-calculator/issues/new?template=incorrect_data.md',
+						url: 'https://github.com/tryphonx/tuning-calculator/issues/new?template=incorrect_data.md',
 					}}
 				/>
 			</div>
