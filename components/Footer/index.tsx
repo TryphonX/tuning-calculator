@@ -19,19 +19,19 @@ export default function Footer() {
 					<h2 className="footer-title">Help</h2>
 					<Link
 						className="link link-hover"
-						href="https://github.com/TryphonX/cms-tuning-calculator#user-manual"
+						href="https://github.com/tryphonx/tuning-calculator#user-manual"
 					>
 						User Guide
 					</Link>
 					<Link
 						className="link link-hover"
-						href="https://github.com/TryphonX/cms-tuning-calculator/releases/latest"
+						href="https://github.com/tryphonx/tuning-calculator/releases/latest"
 					>
 						Release Notes
 					</Link>
 					<Link
 						className="link link-hover"
-						href="https://github.com/TryphonX/cms-tuning-calculator/issues/new"
+						href="https://github.com/tryphonx/tuning-calculator/issues/new"
 					>
 						Open an Issue
 					</Link>
@@ -40,25 +40,25 @@ export default function Footer() {
 					<h2 className="footer-title">Github</h2>
 					<Link
 						className="link link-hover"
-						href="https://github.com/TryphonX/cms-tuning-calculator"
+						href="https://github.com/tryphonx/tuning-calculator"
 					>
 						Repository
 					</Link>
 					<Link
 						className="link link-hover"
-						href="https://github.com/TryphonX/cms-tuning-calculator/issues?q=state%3Aopen%20label%3Aenhancement"
+						href="https://github.com/tryphonx/tuning-calculator/issues?q=state%3Aopen%20label%3Aenhancement"
 					>
 						Feature Requests
 					</Link>
 					<Link
 						className="link link-hover"
-						href="https://github.com/TryphonX/cms-tuning-calculator/issues?q=state%3Aopen%20label%3Abug"
+						href="https://github.com/tryphonx/tuning-calculator/issues?q=state%3Aopen%20label%3Abug"
 					>
 						Bug Reports
 					</Link>
 					<Link
 						className="link link-hover"
-						href="https://github.com/TryphonX/cms-tuning-calculator#contributing"
+						href="https://github.com/tryphonx/tuning-calculator#contributing"
 					>
 						Contributing
 					</Link>
