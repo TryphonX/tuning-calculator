@@ -29,7 +29,7 @@ export default function EngineImage() {
 			alt={`${currentEngine?.name}`}
 			width={200}
 			height={188}
-			onLoadingComplete={() => setImageLoaded(true)}
+			onLoad={() => setImageLoaded(true)}
 		/>
 	);
 }
