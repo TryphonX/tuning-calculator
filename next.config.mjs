@@ -18,7 +18,7 @@ const getIsMainBranch = () => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	basePath: '/cms-tuning-calculator',
+	basePath: '/tuning-calculator',
 	env: {
 		APP_VERSION: packagejson.version,
 		LAST_PUBLISH: getIsMainBranch()

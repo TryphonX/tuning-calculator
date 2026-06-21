@@ -1,14 +1,14 @@
 {
-	"name": "cms-tuning-calculator",
+	"name": "tuning-calculator",
 	"version": "3.0.0",
 	"private": false,
 	"license": "GPL-3.0-or-later",
 	"author": "Tryfon Xydas",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/TryphonX/CMS-Tuning-Calculator.git"
+		"url": "https://github.com/TryphonX/tuning-calculator.git"
 	},
-	"homepage": "https://TryphonX.github.io/CMS-Tuning-Calculator",
+	"homepage": "https://TryphonX.github.io/tuning-calculator",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
