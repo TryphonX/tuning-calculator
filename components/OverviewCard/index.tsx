@@ -43,17 +43,28 @@ export default function OverviewCard({ className }: BaseProps) {
 	return (
 		<Card title="Overview" className={className} actions={actions}>
 			<div className="flex flex-col justify-between h-full">
-				<div className="flex flex-col gap-4">
+				<div className="flex flex-col gap-2">
 					<p>
 						<span className="font-bold">Target Increase</span>:{' '}
 						{targetIncrease}%
 					</p>
 					<p>
 						<span className="font-bold">Includes Replacements</span>
-						: {hasActualReplacements ? 'Yes' : 'No'}
+						:{' '}
+						<label>
+							<input
+								type="checkbox"
+								checked={hasActualReplacements}
+								readOnly
+								className="checkbox checkbox-sm checkbox-accent"
+							/>
+							<span className="sr-only">
+								{hasActualReplacements ? 'Yes' : 'No'}
+							</span>
+						</label>
 					</p>
 					{hasActualReplacements && (
-						<p>
+						<div>
 							<span className="font-bold">Replacing:</span>
 							<ul className="list-disc px-8 py-2">
 								{Object.entries(replacementParts).map(
@@ -64,7 +75,7 @@ export default function OverviewCard({ className }: BaseProps) {
 									),
 								)}
 							</ul>
-						</p>
+						</div>
 					)}
 				</div>
 				<StepsNavigation />

@@ -33,7 +33,7 @@ export default function ParametersCard({ className }: BaseProps) {
 					<label className="flex flex-row gap-4 items-center">
 						<input
 							type="checkbox"
-							className="toggle toggle-primary"
+							className="toggle toggle-accent"
 							defaultChecked={withReplacements}
 							onChange={handleIncludeReplacementsChange}
 						/>
