@@ -39,7 +39,7 @@ export default function RootLayout({
 	children: ReactNode;
 }>) {
 	return (
-		<html lang="en" data-theme="dark">
+		<html lang="en">
 			<Head>
 				<link rel="icon" href="/favicon.ico" sizes="any" />
 				<link rel="preload" as="image" href={PLLogo.src} />

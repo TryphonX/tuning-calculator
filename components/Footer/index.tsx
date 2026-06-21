@@ -90,7 +90,7 @@ export default function Footer() {
 					</span>
 				</nav>
 			</footer>
-			<footer className="max-sm:footer-vertical max-sm:place-content-center footer footer-horizontal items-center p-4 bg-base-300 text-neutral-content">
+			<footer className="max-sm:footer-vertical max-sm:place-content-center footer footer-horizontal items-center p-4 bg-base-300">
 				<aside className="items-center grid-flow-col">
 					<Image
 						className="rounded-full"

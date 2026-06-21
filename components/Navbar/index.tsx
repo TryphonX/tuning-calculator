@@ -80,7 +80,7 @@ export default function Navbar() {
 				<Link href="https://paypal.me/TryphonKsydas" target="_blank">
 					<button
 						type="button"
-						className="btn btn-sm bg-[#00457C] hover:bg-[#00457C]/50"
+						className="btn btn-sm text-white bg-[#00457C] hover:bg-[#00457C]/50 border-none"
 					>
 						<FaPaypal aria-hidden /> Donate
 						<span className="sr-only"> via PayPal</span>
