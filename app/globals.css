@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @plugin 'daisyui';
 @plugin 'daisyui/theme' {
-	name: 'dark';
+	name: 'cms-dark';
 	default: true;
 	prefersdark: true;
 	color-scheme: 'dark';
