@@ -1,3 +1,18 @@
+## [4.0.0](https://github.com/TryphonX/tuning-calculator/compare/v3.0.0...v4.0.0) (2026-06-21)
+
+### ⚠ BREAKING CHANGES
+
+* multiple dependencies with major release updates
+
+### Features
+
+* add CMS 26 page and update theme to CMS 26 ([64b9e87](https://github.com/TryphonX/tuning-calculator/commit/64b9e87a895524ae6db843ca7f52044ff3b1f424))
+* redesign for CMS26 upcoming release ([d6d989b](https://github.com/TryphonX/tuning-calculator/commit/d6d989be57b210fab4541f24369f75e8ae500cb4))
+
+### Miscellaneous Chores
+
+* update to minimize vulnerabilities ([#29](https://github.com/TryphonX/tuning-calculator/issues/29)) ([cb18e1f](https://github.com/TryphonX/tuning-calculator/commit/cb18e1ffeb5832fab73d42e34bd450d06fdeda01))
+
 ## [3.0.0](https://github.com/tryphonx/tuning-calculator/compare/v2.2.1...v3.0.0) (2025-07-23)
 
 ### ⚠ BREAKING CHANGES
